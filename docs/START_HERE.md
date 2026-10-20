@@ -97,7 +97,7 @@ Keputusan: `docs/decisions/ADR-001-stack-baseline.md`.
 | Item | Nilai |
 |---|---|
 | Sesi | `2026-10-20T1800+0700` (penutup REA + publikasi) |
-| Fase | M0 — Foundation · **Fase A (REA) ditutup** |
+| Fase | M0 — Foundation · **Fase A (REA): static analysis tuntas, runtime analysis belum** |
 | Milestone aktif | M0 |
 | Task aktif | `UPDF-012` (Save As → atomic write) |
 | Stack | **Diputuskan & dikonfirmasi** (ADR-001, skor 463/500) |

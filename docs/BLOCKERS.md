@@ -135,3 +135,85 @@ hanya `try_create_from_user_profile_languages()` dan
 sebagai jalur utama.
 
 **Status:** terbuka.
+
+---
+
+# B-07 — Keputusan yang menunggu persetujuan pengguna
+
+> **Status: Menunggu Persetujuan.**
+> Midland atas permintaan pengguna (2026-10-20): keputusan produk & teknologi
+> **wajib** dikonfirmasi, tidak cukup hanya didokumentasikan.
+> Aturan ini kini codified di `AGENTS.md` §5a.
+> Daftar di bawah adalah keputusan yang **sudah saya terapkan** dan
+> **perlu ratifikasi** — atau instruksi untuk mengubahnya.
+
+## B-07.1 — Stack baseline (ADR-001)
+
+**Telah diterapkan:** Python 3.13 · PySide6 6.11 · MuPDF 1.27 (PyMuPDF) ·
+Windows OCR. Skor 463/500 dibanding 3 kandidat lain.
+
+**Trade-off:** kandidat .NET & Electron gagal karena **tidak punya API authoring
+anotasi/form/redaksi** yang permissive → M3–M4 runtuh. Sebaliknya, MuPDF
+memaksa lisensi proyek AGPL-3.0 (Anda sudah menyetujui).
+
+**Perlu konfirmasi:** setujui / ubah / minta spike tambahan sebelum dikunci.
+**Cara membatalkan:** ADR-002 (bukan edit diam-diam atas ADR-001).
+
+## B-07.2 — Cakupan fitur: 7 REJECT + 30 DEFER
+
+**Telah diterapkan** di `docs/FEATURE_MATRIX.md`.
+
+**REJECT (7):** XFA form · Nitro Sign / cloud sign · Add-in Microsoft Office ·
+Integrasi DMS (iManage) · Sensitivity label (MIP) · System tray · PDF Portfolio
+
+**DEFER (30) — yang paling berdampak bagi Anda:**
+
+| Area | Fitur yang ditunda | Dampak ke pengguna |
+|---|---|---|
+| Konversi | PDF→Word, PDF→Excel, PDF→PowerPoint, Office→PDF | Tidak ada konversi Office sama sekali |
+| Tanda tangan | Kriptografis, validasi, pengelolaan private key | Hanya tanda tangan gambar |
+| Kepatuhan | PDF/A | Tidak bisa kirim ke arsip yang butuh PDF/A |
+| Form | Flatten, import/export data form, field calculation, tab order | Form dasar saja |
+| Cetak | Virtual printer (cetak ke PDF) | — |
+| Akuisisi | TWAIN scan, barcode scan, barcode field | — |
+| Aksesibilitas | PDF/UA tagging | — |
+| Integrasi | WebDAV, cloud storage, preview & thumbnail di Explorer | — |
+| Distribusi | Auto-update | Update manual |
+
+**Perlu konfirmasi:** apakah ada yang **harus ada** (bukan "nice to have")?
+
+## B-07.3 — Strategi M8 (edit teks existing)
+
+**Telah diterapkan:** DEFER M8; meantime sediakan **overlay teks + redaksi-reinsert**
+dengan label jujur (bukan diklaim sebagai "edit teks asli").
+
+**Dasar:** analisis biner v14 menunjukkan "Edit Text" diimplementasikan di
+`np_annotations.dll` → pendekatan v14 adalah manipulasi **lapisan anotasi**,
+bukan content-stream surgery. Jadi risiko M8 jauh lebih rendah dari dugaan awal.
+
+**Perlu konfirmasi:** maukah M8 dinaikkan prioritasnya sekarang (M7/M8 jadi M5)?
+
+## B-07.4 — Publikasi repository
+
+**Telah diterapkan:** <https://github.com/anprar/UnionPDF> publik, branch `main`,
+3 commit, 93 blob. Nama repo & URL **sudah permanen** di dialog "Tentang".
+
+**Perlu konfirmasi:** nama repo & branding final sudah pas? (perubahan nama
+repo = tautan lama mati)
+
+## B-07.5 — Publikasi bukti analisis vs hak cipta
+
+**Telah diterapkan:** korpus mentah hasil ekstraksi biner (14.452 string UI,
+783 kontrol, 10.284 identifier — ±1,4 MB) **TIDAK** dipublikasikan; hanya
+`docs/research/V14_UI_EVIDENCE_SUMMARY.md` (kutipan terkurasi) yang masuk repo.
+Alasan: mengindeks string UI proprietary berskala besar = redistribusi.
+
+**Perlu konfirmasi:** setujui batas ini, atau minta lain (mis. mengunggah
+korpus penuh ke repo / gist pribadi / tetap lokal).
+
+## B-07.6 — Model lisensi proyek
+
+**Telah disetujui Anda:** AGPL-3.0. Berkas `LICENSE` + `NOTICE` dibuat,
+source offer dipasang di dialog "Tentang", 14 test menjaga.
+→ **TIDAK perlu konfirmasi ulang.** Disimpan di sini hanya untuk kelengkapan.
+

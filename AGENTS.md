@@ -69,6 +69,36 @@ WAJIB:
   bukan lewat asumsi.
 - Jika stack awal tidak cocok, bandingkan alternatif, catat alasannya di ADR baru.
 
+### 5a. GATE PERSETUJUAN PENGGUNA (berlaku sejak 2026-10-20)
+
+Ditetapkan atas permintaan eksplisit pengguna. Keputusan berikut **TIDAK BOLEH
+diambil agent tanpa persetujuan eksplisit** — dokumentasi saja tidak cukup:
+
+| Kategori | Contoh keputusan yang WAJIB dikonfirmasi |
+|---|---|
+| **Stack & arsitektur inti** | Memilih/mengganti runtime, shell UI, engine PDF, bahasa |
+| **Cakupan fitur** | Menetapkan KEEP/IMPROVE/**REPLACE**/**DEFER**/**REJECT** untuk fitur |
+| **Model lisensi** | Lisensi proyek, kewajiban distribusi, strategi source offer |
+| **Publikasi** | Membuat repo publik, pushing, code signing, nama domain |
+| **Hak cipta** | Apa yang dipublikasikan vs disimpan lokal; memakai aset pihak ketiga |
+| **Anggaran & ukuran** | Toleransi ukuran distribusi, dependensi besar (mis. model OCR) |
+| **Arah produk** | Menambah/menghapus milestone, mengubah target platform |
+
+**Yang TIDAK perlu persetujuan** (boleh lanjut sendiri):
+- Menyelidiki, menganalisis, mengukur, mendokumentasi.
+- Menulis kode, test, spike, dokumentasi.
+- Memperbaiki bug dan kesalahan dokumentasi.
+- Menerapkan keputusan yang **sudah** disetujui pengguna.
+- Keputusan non-kritis dengan default konservatif → catat di `docs/ASSUMPTIONS.md`.
+
+**Cara meminta persetujuan:** tuliskan opsi + trade-off + rekomendasi, lalu
+**tunggu jawaban** sebelum menerapkan. Jangan memblokir task independen yang
+aman. Keputusan yang menunggu persetujuan dicatat di `docs/BLOCKERS.md` dengan
+status `Menunggu Persetujuan`.
+
+**Setelah persetujuan:** catat di `docs/DECISIONS.md` / ADR terkait, dan tambahkan
+baris di `docs/TASKS.md` sebagai `DONE` dengan rujukan ke persetujuan itu.
+
 ## 6. Aturan implementasi
 
 - Bahasa penjelasan/dokumentasi: **Bahasa Indonesia**.

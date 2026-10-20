@@ -17,7 +17,7 @@
 | Lisensi proyek | **AGPL-3.0** (B-01 selesai) — open source, source offer aktif |
 | Review pasca-REA | **SELESAI + dikonfirmasi** — `docs/POST_REA_TECH_REVIEW.md` §18, skor tetap 463/500 |
 | Inspeksi biner referensi | **DIIZINKAN & DILAKUKAN** (B-02 selesai) |
-| Status REA | **DITUTUP** — U-08/U-10/U-11/U-12 closed; U-07/U-09 partial |
+| Status REA | **SUBSTANSIAL SELESAI** — static analysis tuntas; 6 unknown closed, 2 partial, **4 masih UNKNOWN** (U-01/U-04/U-05/U-06); **observasi & uji runtime TIDAK dijalankan** |
 
 ---
 
