@@ -86,7 +86,16 @@ dan model "gratis, open source, tanpa paywall" adalah tujuan produk UnionPDF.
 Konsekuensinya: UnionPDF **wajib open-source**, dan source lengkap harus
 disediakan saat distribusi.
 
+**Source:** <https://github.com/anprar/UnionPDF>
+(Tautan ini juga tampil di dialog "Tentang" aplikasi — itu adalah
+*source offer* yang diwajibkan AGPL-3.0.)
+
 - `LICENSE` — teks lengkap GNU AGPL v3
 - `NOTICE` — komponen pihak ketiga, kewajiban distribusi, dan aset yang
   **tidak** dipakai
 - Audit lengkap: `docs/LICENSE_REVIEW.md`
+
+## Repository
+
+<https://github.com/anprar/UnionPDF> · Lisensi: AGPL-3.0 · Python 3.13 ·
+PySide6 6.11 · MuPDF 1.27 · Windows OCR · Windows x64.

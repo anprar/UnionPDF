@@ -96,15 +96,16 @@ Keputusan: `docs/decisions/ADR-001-stack-baseline.md`.
 
 | Item | Nilai |
 |---|---|
-| Sesi | `2026-10-20T1700+0700` (lanjutan dari `2026-10-20T1624+0700`) |
-| Fase | M0 — Foundation · Fase A (analisis referensi) **v2 selesai** |
+| Sesi | `2026-10-20T1800+0700` (penutup REA + publikasi) |
+| Fase | M0 — Foundation · **Fase A (REA) ditutup** |
 | Milestone aktif | M0 |
 | Task aktif | `UPDF-012` (Save As → atomic write) |
-| Stack | **Diputuskan & dikonfirmasi v2** (ADR-001, skor 463/500) |
-| Lisensi proyek | **AGPL-3.0** — open source (`LICENSE` + `NOTICE`) |
-| Analisis referensi | 14.452 string UI · 783 kontrol ribbon · 10.284 identifier fitur |
-| Test | 55 pytest PASS · smoke app 9/9 PASS · lint 0 temuan |
-| Blocker aktif | B-03 (ukuran) · B-04 (edit teks) · B-05 (bahasa OCR) |
+| Stack | **Diputuskan & dikonfirmasi** (ADR-001, skor 463/500) |
+| Lisensi | **AGPL-3.0** — open source, source offer aktif |
+| Repository | **<https://github.com/anprar/UnionPDF>** (public, `main`, `336538a`) |
+| Analisis referensi | 14.452 string UI · 783 kontrol ribbon · 10.284 identifier fitur · 20 paket bahasa OCR |
+| Test | 69 pytest PASS · smoke app 9/9 PASS · lint 0 temuan |
+| Blocker aktif | B-03 (ukuran) · B-04 (edit teks, **risiko turun**) · B-05 (bahasa OCR) |
 
 ---
 
@@ -118,6 +119,12 @@ Keputusan: `docs/decisions/ADR-001-stack-baseline.md`.
 .\scripts\smoke_app.py   # verifikasi aplikasi jalan
 .\.venv\Scripts\python.exe scripts\lint.py   # linter workspace
 ```
+
+## 5b. Repository publik
+
+<https://github.com/anprar/UnionPDF> — public, branch `main`, lisensi AGPL-3.0.
+Tautan ini juga tampil di dialog "Tentang" aplikasi sebagai *source offer*
+yang diwajibkan AGPL-3.0.
 
 ---
 

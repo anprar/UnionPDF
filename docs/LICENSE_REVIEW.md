@@ -75,16 +75,22 @@ Alternatif yang **tidak** dipilih:
 
 ## 5. Kewajiban redistribusi (checklist engineering)
 
-- [ ] Sertakan `LICENSE` (AGPL-3.0) di root paket distribusi.
-- [ ] Sertakan `NOTICE` + lisensi tiap komponen.
-- [ ] Sertakan sumber PyMuPDF/MuPDF: cara paling sederhana → sertakan URL
-      git resmi + nomor versi, atau lampirkan tarball sumber.
-- [ ] Sertakan lisensi LGPL-3.0 Qt dan **tawarkan** sumber Qt (dynamic linking).
+- [x] Sertakan `LICENSE` (AGPL-3.0) di root paket distribusi.
+- [x] Sertakan `NOTICE` + lisensi tiap komponen.
+- [x] **Source offer** — repository publik: <https://github.com/anprar/UnionPDF>
+      (dibuat & dipublikasikan 2026-10-20). Sumber MuPDF upstream:
+      <https://git.artifex.com/mupdf>.
+- [ ] Sertakan lisensi LGPL-3.0 Qt dan **tawarkan** sumber Qt
+      (<https://code.qt.io/cgit/pyside/pyside-setup.git/>).
 - [ ] Pastikan exe dapat berjalan dengan Qt versi lain yang pengguna Miliki
-      (dynamic linking, bukan static).
-- [ ] Tampilkan dialog "Tentang" yang menyebut: nama, versi, lisensi
-      UnionPDF, dan tautan sumber.
-- [ ] Dokumentasikan setiap dependensi dalam `DEPENDENCIES.md` (sudah ada).
+      (dynamic linking, bukan static) — **NOT_RUN**, uji saat packaging (M12).
+- [x] Dialog "Tentang" menyebut lisensi UnionPDF + tautan source
+      (`src/unionpdf/about.py` → `SOURCE_URL`, dipakai di `ui/main_window.py`).
+- [x] Diuji otomatis oleh `tests/test_license_compliance.py`.
+- [x] Dokumentasikan setiap dependensi dalam `DEPENDENCIES.md` (sudah ada).
+- [x] Korpus mentah hasil ekstraksi biner aplikasi referensi **tidak** ikut
+      repositori (lihat `.gitignore`) — mencegah redistribusi konten proprietary
+      dalam skala besar; yang dipublikasikan hanya ringkasan turunan.
 
 ## 6. Hal yang belum sicher
 

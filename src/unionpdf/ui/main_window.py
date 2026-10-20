@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (
 )
 
 from unionpdf import __version__
+from unionpdf import about
 from unionpdf.application.session import EditSession
 from unionpdf.domain.errors import UnionPdfError
 from unionpdf.engine.mupdf_engine import MupdfDocumentEngine
@@ -279,11 +280,16 @@ class MainWindow(QMainWindow):
     def _show_about(self) -> None:
         QMessageBox.about(
             self,
-            "Tentang UnionPDF",
-            f"<b>UnionPDF</b> {__version__}<br><br>"
-            "Aplikasi PDF gratis, offline, tanpa watermark.<br>"
-            "Lisensi: AGPL-3.0.<br><br>"
-            f"Engine PDF: {self._engine.name} {getattr(self._engine, '_version', '')}",
+            f"Tentang {about.APP_NAME}",
+            f"<b>{about.APP_NAME}</b> {__version__}<br><br>"
+            f"{about.SUMMARY}<br><br>"
+            f"<b>Lisensi:</b> {about.LICENSE_NAME}<br>"
+            f"{about.COPYRIGHT}<br><br>"
+            "<b>Kode sumber (lisensi AGPL-3.0 mewajibkan sumber tersedia):</b><br>"
+            f'<a href="{about.SOURCE_URL}">{about.SOURCE_URL}</a><br><br>'
+            f"Engine PDF: {self._engine.name} {getattr(self._engine, '_version', '')}<br>"
+            "OCR: Windows.Media.Ocr (bawaan sistem)<br><br>"
+            "Aplikasi ini tidak mengirim telemetri maupun mengunggah dokumen.",
         )
 
     # -------------------------------------------------------------- shortcuts

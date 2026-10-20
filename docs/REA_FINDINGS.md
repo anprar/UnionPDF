@@ -340,22 +340,106 @@ Tidak ada temuan baru yang_**membatalkan** muatan 463/500.
 
 ---
 
-## 8. Yang masih belum diketahui
+## 8. Yang masih belum diketahui (per 2026-10-20, sesi v3)
 
-| # | Pertanyaan | Kenapa belum tertutup |
-|---|---|---|
-| U-01 | Apakah MuPDF bisa edit teks existing dengan reflow? | Belum diuji (B-04) |
-| U-04 | Performa >5.000 halaman | Belum diukur |
-| U-06 | Pustaka tanda tangan kriptografis | pyHanko belum dievaluasi |
-| U-08 | Ghidra gagal mengimpor `NitroPDF.exe` (16 MB CEF) | Batas startup; analisis native pada exe utama belum tuntas |
-| U-09 | Perilaku internal `np_ocr.dll` (algoritme) | Belum dianalisis native (hanya string) |
-| U-10 | Daftar bahasa OCR yang benar-benar dipakai v14 | Tidak ada di `.mui`; bergantung installer |
-| U-11 | Apakah v14 punya "Edit Text" sungguhan atau baru placeholder UI | Hanya identifier ribbon yang ditemukan; perlu uji interaksi |
+| # | Pertanyaan | Status | Cara menutup / catatan |
+|---|---|---|---|
+| U-01 | Apakah MuPDF bisa edit teks existing dengan reflow? | **UNKNOWN** | Belum diuji (B-04). V2 memperkecil risiko: lihat §10.3. |
+| U-04 | Performa >5.000 halaman | **UNKNOWN** | Belum diukur |
+| U-05 | Office→PDF (COM vs LibreOffice) | **UNKNOWN** | Belum diuji |
+| U-06 | Pustaka tanda tangan kriptografis | **UNKNOWN** | pyHanko belum dievaluasi |
+| U-07 | Pintasan keyboard v14 | **PARTIAL** | BCG menyimpan shortcut di **resource biner ribbon**, bukan teks. Hanya 1 literal `Ctrl+Shift+W` (milik BCGSoft) ditemukan. → butuh observasi runtime |
+| U-08 | Analisis native `NitroPDF.exe` (executable utama) | **CLOSED (via substitusi)** | Ghidra timeout (>1 MB). Bukti setara diperoleh lewat PE resources + string. Lihat §10.2 |
+| U-09 | Algoritme internal OCR v14 | **PARTIAL** | Engine teridentifikasi (IRIS) + 20 paket bahasa + UI strings. Dekompilasi `np_ocr.dll` (3,3 MB) gagal — Ghidra timeout. Untuk UnionPDF tidak krusial: OCR-nya sendiri |
+| U-10 | Daftar bahasa OCR yang dipakai v14 | **CLOSED** | 20 paket di `IRIS_OCR\resources` → §10.4 |
+| U-11 | Apakah "Edit Text" di v14 fitur nyata? | **CLOSED** | `NitroTextEditing` dimiliki `np_annotations.dll` → §10.3 |
+| U-12 | Struktur internal JS/HTML aplikasi | **CLOSED** | Logika aplikasi **native**; snapshot V8 hanya berisi builtins → §10.1 |
 
 ---
 
 ## 9. Bukti
 
-Lihat `docs/EVIDENCE_INDEX.md` (E-4xx = bukti analisis mendalam v2).
-Data mentah: `docs/research/mui_strings_en-US.json`, `ribbon_controls_v14.json`,
-`native_feature_ids_v14.json`.
+Lihat `docs/EVIDENCE_INDEX.md` (E-0xx eksternal, E-1xx workspace, E-2xx spike,
+E-3xx keputusan, E-4xx analisis mendalam).
+Data mentah: `docs/research/*.json` (**lokal saja, tidak di-commit**).
+Ringkasan turunan yang dipublikasikan: `docs/research/V14_UI_EVIDENCE_SUMMARY.md`.
+
+---
+
+## 10. Penutup v3 — temuan struktural penutup
+
+### 10.1 Logika aplikasi native, bukan JavaScript
+
+| Bukti | Arti |
+|---|---|
+| `snapshot_blob.bin` (311.746 B) & `v8_context_snapshot.bin` (686.805 B) → V8 **12.2.281.22** | Ada runtime V8/Chromium |
+| Isi kedua snapshot: **hanya builtins V8** (`WebAssembly.*`, `Intl`, `TaggedNotEqual`, dsb.) — **nol string aplikasi** | Snapshot bukan tempat logika aplikasi |
+| `cef\resources\*.pak` = resource pack **Chromium standar** (44 lokalisasi) | CEF dipakai sebagai webview, bukan sebagai tempat logika |
+| Simbol C++ mangled: `CBCGPRibbonEditCtrl`, `CBCGPVisualManagerVS2012/2013/2016`, `CBCGPGridCtrl`, `CBCGPEditCtrl`, `CBCGPSpinButtonCtrl` | UI = **MFC + BCGSoft BCGControlBar 24.30** (`BCGCBPRO2430u120.dll`, 9,9 MB) |
+
+**Kesimpulan:** logika aplikasi Nitro **native C++**. CEF hanya untuk panel web
+(Nitro Cloud, Knowledge Assistant, bantuan). Tidak ada berkas `.js`/`.asar` di
+disk.
+
+**Implikasi UnionPDF (menguatkan ADR-001):** shell native **sangat** memadai;
+UnionPDF **tidak perlu** webview sama sekali. Shell Qt (bukan CEF) bukan
+kompromi — justru lebih ringan dari v14 yang membawa 240 MB untuk webview
+yang hanya dipakai sebagian kecil fitur.
+
+### 10.2 Batas Ghidra & bukti pengganti
+
+| Target | Ukuran | Hasil Ghidra |
+|---|---|---|
+| `np_pdfa.dll` | 656 KB | ✅ 1.852 prosedur, 1.165 string, 8 segment |
+| `np_ocr.dll` | 3,3 MB | ❌ timeout (330 s startup) |
+| `NitroPDF.exe` | 16,2 MB | ❌ timeout |
+
+Bukti pengganti yang berhasil: `inspect_pe_resources` (target-free) +
+ekstraksi string + parser resource PE sendiri + `VersionInfo` + manifest.
+**Kesimpulan:** analisis native penuh v14 **tidak praktis** dengan toolchain
+tersedia; analisis string sudah memberi materialize yang dibutuhkan (UI,
+perilaku, arsitektur).
+
+### 10.3 "Edit Text" diimplementasikan di modul anotasikan
+
+`AVRibbon:*NitroTextEditing*` dan `AVRibbon:*ReplaceText*` dimiliki
+**`np_annotations.dll`** (bukan modul terpisah).
+
+**Artinya:** pendekatan v14 untuk mengedit teks adalah **manipulasi lapisan
+anotasi** — hapus/tebalkan teks asli, sisipkan teks pengganti — **bukan**
+penulisan ulang content stream murni.
+
+**Dampak ke M8 (penting):** rencana UnionPDF (redaksi + reinsert, diberi label
+jujur) **sejalan secara arsitektur** dengan yang dilakukan v14. Risiko M8
+turun drastis: tidak perlu membangun pengukuran ulang font & reflow paragraf
+seperti klaim "paragraph-level reflow" — cukup operasi anotasi yang sudah
+terbukti di engine (spike S3, S5).
+
+**Catatan jujur:** ini **tidak** berarti UnionPDF punya fitur yang sama
+dengan v14. UnionPDF akan:* jelas dan jujur** — label "teks pengganti (isi
+asli dihapus)" vs "edit teks asli dengan reflow" (belum tersedia).
+
+### 10.4 Inventaris bahasa OCR v14 (U-10 tertutup)
+
+20 paket bahasa/skirp di `IRIS_OCR\resources` (±23 MB): `eng`, `spn`, `frn`,
+`grm`, `itl`, `prt`, `brz`, `dut`, `dan`, `fin`, `nrw`, `swd`, `latin`,
+`cyrillic`, `greek`, `hebrew`, `handpr`, `ocra1`, `ocrb1`, `autolang`.
+
+Detail + tabel ukuran: `docs/research/V14_UI_EVIDENCE_SUMMARY.md` §3.
+
+**Bar pembanding untuk M5:** Windows OCR (spike S10, 145,3 ms/hlm) hanya
+mengenali bahasa yang terpasang di Windows — jauh lebih sedikit dari 20.
+Tesseract bisa 100+ bahasa tapi butuh biner eksternal. Model ONNX sendiri
+adalah opsi ketiga (tanpa biner, tapi ±150 MB model).
+
+### 10.5 Batas yang jujur
+
+| Yang **tidak** diklaim |
+|---|
+| Bahwa UnionPDF setara dengan v14 |
+| Bahwa "Edit Text" v14 = reflow sempurna (hanya identifier ribbon yang terlihat) |
+| Pintasan keyboard v14 (binary resource) |
+| Tata letak visual, ikon, perilaku dinamis (tidak ada observasi runtime) |
+| Performa Nitro (nol benchmark) |
+| Source asli Nitro (tidak ada dekompilasi yang berhasil) |
+

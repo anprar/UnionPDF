@@ -85,6 +85,19 @@ Izin eksplisit pengguna, 2026-10-20. Skrip: `scripts/extract_mui_strings.py`,
 | E-412 | String `DocumentPdfUAComplianceSet`, `SetPdfUALanguage` | Dukungan PDF/UA | `REA_FINDINGS.md` §4.11 | VERIFIED |
 | E-413 | String `pdfa_converter::preflight_result` | Preflight pada konversi PDF/A | `REA_FINDINGS.md` §4.11 | VERIFIED |
 
+## Bukti penutup v3
+
+| ID | Sumber | Isi | Digunakan di | Tingkat |
+|---|---|---|---|---|
+| E-501 | `IRIS_OCR\resources` (25 berkas) | **20 paket bahasa/skirp OCR** (±23 MB) — menutup U-10 | `REA_FINDINGS.md` §10.4 | VERIFIED |
+| E-502 | `snapshot_blob.bin`, `v8_context_snapshot.bin` | Snapshot **V8 12.2.281.22**; isi **hanya builtins V8**, nol string aplikasi → logika native | `REA_FINDINGS.md` §10.1 | VERIFIED |
+| E-503 | `cef\resources\*.pak` | 44 resource pack Chromium standar; **nol** berkas `.js`/`.asar` di instalasi | `REA_FINDINGS.md` §10.1 | VERIFIED |
+| E-504 | `BCGCBPRO2430u120.dll` + simbol C++ mangled | UI = **MFC + BCGSoft BCGControlBar 24.30** | `REA_FINDINGS.md` §10.1 | VERIFIED |
+| E-505 | Kepemilikan kontrol ribbon per modul | `NitroTextEditing` & `ReplaceText` → **`np_annotations.dll`** — menutup U-11 | `REA_FINDINGS.md` §10.3 | VERIFIED |
+| E-506 | Pencarian literal `Ctrl+` di 32 modul | Hanya 1 hit (`Ctrl+Shift+W` milik BCGSoft) → shortcut disimpan di resource biner | `REA_FINDINGS.md` §10.5 | VERIFIED |
+| E-507 | `gh repo view anprar/UnionPDF` | Repo publik dibuat 2026-10-20, branch `main`, 89 blob | `docs/PROJECT_STATE.md` | VERIFIED |
+| E-508 | `tests/test_license_compliance.py` | 14 test kepatuhan AGPL (source offer, LICENSE/NOTICE, korpus mentah ter-ignore) | `docs/LICENSE_REVIEW.md` §5 | VERIFIED |
+
 ## Bukti keputusan
 
 | ID | Artefak | Isi |

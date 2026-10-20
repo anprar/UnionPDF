@@ -5,18 +5,19 @@
 | Field | Nilai |
 |---|---|
 | Tanggal | 2026-10-20 |
-| Waktu | 17:21 WIB (UTC+7) |
+| Waktu | 18:29 WIB (UTC+7) |
 | Zona waktu | Asia/Bangkok / SE Asia Standard Time |
-| Session ID | `2026-10-20T1700+0700` (lanjutan dari `2026-10-20T1624+0700`) |
-| Fase aktif | **Fase A selesai (v2 — analisis mendalam)** · Fase B terkonfirmasi · Fase C selesai |
+| Session ID | `2026-10-20T1800+0700` (penutup REA + publikasi) |
+| Fase aktif | **Fase A selesai — REA ditutup** · Fase B terkonfirmasi · Fase C selesai |
 | Milestone aktif | **M0 — Foundation** |
 | Task aktif | `UPDF-012` — Save As → atomic write + verifikasi |
-| Git repo | **Belum** diinisialisasi (belum ada izin commit) |
-| Working tree | N/A — belum ada repo |
-| Stack | **Diputuskan & dikonfirmasi v2** — Python 3.13 · PySide6 6.11 · MuPDF 1.27 · Windows OCR (ADR-001) |
-| Lisensi proyek | **AGPL-3.0** (B-01 selesai) — open source |
-| Review pasca-REA | **SELESAI + dikonfirmasi v2** — `docs/POST_REA_TECH_REVIEW.md` §18, skor tetap 463/500 |
+| Git repo | **`github.com/anprar/UnionPDF`** (public, branch `main`) — commit `336538a` |
+| Working tree | Bersih (89 file, 0,4 MB) |
+| Stack | **Diputuskan & dikonfirmasi v2/v3** — Python 3.13 · PySide6 6.11 · MuPDF 1.27 · Windows OCR (ADR-001) |
+| Lisensi proyek | **AGPL-3.0** (B-01 selesai) — open source, source offer aktif |
+| Review pasca-REA | **SELESAI + dikonfirmasi** — `docs/POST_REA_TECH_REVIEW.md` §18, skor tetap 463/500 |
 | Inspeksi biner referensi | **DIIZINKAN & DILAKUKAN** (B-02 selesai) |
+| Status REA | **DITUTUP** — U-08/U-10/U-11/U-12 closed; U-07/U-09 partial |
 
 ---
 
@@ -58,10 +59,23 @@
 
 | Suite | Hasil | Waktu |
 |---|---|---|
-| `pytest tests -q` | **55 passed** | 2026-10-20 16:49 |
-| `scripts/smoke_app.py` | **9/9 PASS** | 2026-10-20 16:49 |
-| `scripts/lint.py` | **0 temuan** | 2026-10-20 16:49 |
+| `pytest tests -q` | **69 passed** | 2026-10-20 18:29 |
+| `scripts/smoke_app.py` | **9/9 PASS** | 2026-10-20 18:29 |
+| `scripts/lint.py` | **0 temuan** | 2026-10-20 18:29 |
 | Spike S1–S12 | 9 PASS · 1 PASS bersyarat · 2 NOT AVAILABLE | 2026-10-20 16:35 |
+
+## Repository publik
+
+| Item | Nilai |
+|---|---|
+| URL | <https://github.com/anprar/UnionPDF> |
+| Visibilitas | Public |
+| Branch default | `main` |
+| Commit awal | `336538a` — feat(unionpdf): M0 — fondasi, analisis referensi mendalam, dan vertical slice viewer |
+| Isi | 89 blob, 0,4 MB (tanpa `.venv`, tanpa spike output, tanpa korpus mentah) |
+| Topik | pdf, pdf-editor, windows, python, pyside6, agpl-3-0, desktop-app, ocr, reverse-engineering |
+| Source offer | `src/unionpdf/about.py` → `SOURCE_URL`, tampil di dialog "Tentang"; diuji oleh `tests/test_license_compliance.py` |
+
 
 ## Inventory workspace
 

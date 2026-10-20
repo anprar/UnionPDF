@@ -10,35 +10,56 @@ Versi mengikuti [SemVer](https://semver.org/lang/id/).
 Status: **Fase M0 — Foundation.** Belum ada rilis publik.
 
 ### Ditambahkan
+- **Repository publik:** <https://github.com/anprar/UnionPDF> (branch `main`,
+  commit `336538a`, 89 blob, 0,4 MB).
+- **Source offer AGPL-3.0** diintegrasikan ke aplikasi: `src/unionpdf/about.py`
+  (metadata terpusat + `SOURCE_URL`), dialog "Tentang" menampilkan tautan
+  source, diuji oleh `tests/test_license_compliance.py` (14 test baru).
 - **Lisensi proyek ditetapkan: AGPL-3.0** + berkas `LICENSE` (661 baris) dan
   `NOTICE` di root workspace.
 - **Analisis biner read-only mendalam** aplikasi referensi (izin pengguna):
   14.452 string UI dari 35 berkas `.mui`, 783 kontrol ribbon (14 tab +
   90 toolbar kontekstual), 10.284 identifier fitur dari 30 modul, analisis
-  native Ghidra atas `np_pdfa.dll` (1.852 prosedur).
-  → `docs/REA_FINDINGS.md` v2, `docs/research/V14_RIBBON_STRUCTURE.md`,
-  `docs/research/V14_UI_EVIDENCE.md`.
+  native Ghidra atas `np_pdfa.dll` (1.852 prosedur), inventaris 20 paket
+  bahasa OCR.
+  → `docs/REA_FINDINGS.md` v2/v3, `docs/research/V14_RIBBON_STRUCTURE.md`,
+  `docs/research/V14_UI_EVIDENCE_SUMMARY.md`.
 - Skrip analisis: `extract_mui_strings.py`, `extract_native_strings.py`,
-  `build_ribbon_map.py`, `analyze_ui_evidence.py`.
-- Struktur dokumentasi kontinuitas lengkap (33 dokumen di `docs/`).
+  `build_ribbon_map.py`, `analyze_ui_evidence.py`,
+  `extract_shortcuts_and_ocr_lang.py`.
+- Struktur dokumentasi kontinuitas lengkap (42 berkas di `docs/`).
 - Analisis aplikasi referensi Nitro PDF Pro 14.41.0.15: inventaris read-only
   install tree + dokumentasi publik → `docs/REA_FINDINGS.md`.
 - Batas analisis → `docs/REA_LIMITATIONS.md`.
-- Indeks bukti `E-001`…`E-413` → `docs/EVIDENCE_INDEX.md`.
+- Indeks bukti `E-001`…`E-508` → `docs/EVIDENCE_INDEX.md`.
 - Matriks 97 fitur dengan keputusan KEEP/IMPROVE/REPLACE/DEFER/REJECT →
   `docs/FEATURE_MATRIX.md`.
-- Review teknologi pasca-REA (gate) → `docs/POST_REA_TECH_REVIEW.md`.
+- Review teknologi pasca-REA (gate) → `docs/POST_REA_TECH_REVIEW.md` §18.
 - Evaluasi stack 4 kandidat berbobot (A=463, B=384, C=322, B'=320) →
-  `docs/STACK_EVALUATION.md`.
+  `docs/STACK_EVALUATION.md` §9.
 - 12 technical spike terukur → `docs/TECH_SPIKES.md`, `spikes/`.
 - ADR-001 stack baseline → `docs/decisions/ADR-001-stack-baseline.md`.
 - Arsitektur berlapis + kontrak engine → `docs/ARCHITECTURE.md`.
 - Audit lisensi dependency → `docs/LICENSE_REVIEW.md`.
 - Skeleton aplikasi `src/unionpdf/` (domain, application, engine, infrastructure, ui).
 - Vertical slice M1: open, render, zoom, fit, navigasi, thumbnail, cari, simpan.
-- 55 pytest (unit, integrasi engine, UI smoke) + smoke app 9/9.
+- 69 pytest (unit, integrasi engine, UI smoke, kepatuhan lisensi) + smoke app 9/9.
 - Skrip: `setup.ps1`, `run.ps1`, `test.ps1`, `run_spikes.ps1`, `smoke_app.py`,
-  `lint.py`, `repair_docs.py`.
+  `lint.py`, `repair_docs.py`, + 5 alat analisis biner.
+
+### Keputusan
+- Lisensi proyek **AGPL-3.0** (B-01 selesai) — open source, sesuai tujuan produk.
+- Inspeksi biner read-only **diizinkan & dilakukan** (B-02 selesai).
+- Stack: Python 3.13 + PySide6 6.11 + MuPDF 1.27 + Windows OCR (ADR-001).
+  Analisis v2/v3 **menguatkan** keputusan ini; tidak ada temuan yang membatalkannya.
+- Korpus mentah hasil ekstraksi biner **tidak dipublikasikan** (`.gitignore`).
+
+### Temuan yang menurunkan risiko M8
+- "Edit Text" di v14 dimiliki `np_annotations.dll` → pendekatan **manipulasi
+  lapisan anotasi**, bukan content-stream surgery. Rencana UnionPDF
+  (redaksi + reinsert, berlabel jujur) arsitektur-sejalan dengan v14.
+- Logika aplikasi v14 **native C++**; snapshot V8 hanya berisi builtins.
+  Shell native memadai → UnionPDF tidak perlu webview.
 
 ### Keputusan
 - Lisensi proyek **AGPL-3.0** (B-01 selesai) — open source, sesuai tujuan produk.

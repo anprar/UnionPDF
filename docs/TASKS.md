@@ -32,9 +32,13 @@ ter Relevan sudah dijalankan. Kode yang ada saja **bukan** bukti selesai.
 | UPDF-019 | Analisis biner read-only mendalam aplikasi referensi | Tinggi | **DONE** | `docs/REA_FINDINGS.md` v2; 14.452 string UI, 783 kontrol ribbon, 10.284 identifier fitur |
 | UPDF-020 | Tinjauan ulang stack setelah analisis v2 | Tinggi | **DONE** | `docs/POST_REA_TECH_REVIEW.md` §18 — **KEEP**, skor tetap 463/500 |
 | UPDF-021 | Lisensi proyek AGPL-3.0 + LICENSE + NOTICE | Tinggi | **DONE** | `LICENSE` (661 baris), `NOTICE` |
-| UPDF-022 | Turunkan korpus pesan error v14 jadi checklist uji UnionPDF | Sedang | TODO | Sumber: `docs/research/V14_UI_EVIDENCE.md` |
+| UPDF-022 | Turunkan korpus pesan error v14 jadi checklist uji UnionPDF | Sedang | TODO | Sumber: `docs/research/V14_UI_EVIDENCE_SUMMARY.md` |
 | UPDF-023 | Pembersihan dokumen 12-channel (M7 perluasan) | Sedang | TODO | Temuan v2 (T-2); MuPDF punya flag channel — verifikasi |
 | UPDF-024 | Deteksi halaman tanpa text layer + opsi paksa OCR | Sedang | TODO | Temuan v2 (OCR skip halaman ber-text) |
+| UPDF-025 | Ringkasan kurasi bukti v14 untuk repo publik | Tinggi | **DONE** | `docs/research/V14_UI_EVIDENCE_SUMMARY.md`; korpus mentah di-gitignore |
+| UPDF-026 | Repository publik `anprar/UnionPDF` | Tinggi | **DONE** | Commit `336538a`, public, branch `main`, 89 blob |
+| UPDF-027 | Source offer AGPL (dialog Tentang + metadata + test) | Tinggi | **DONE** | `src/unionpdf/about.py`, `tests/test_license_compliance.py` (14 test) |
+| UPDF-028 | Metadata repo: description, homepage, topics | Sedang | **DONE** | 9 topik: pdf, pdf-editor, windows, python, pyside6, agpl-3-0, desktop-app, ocr, reverse-engineering |
 
 ## M1 — VIEWER
 

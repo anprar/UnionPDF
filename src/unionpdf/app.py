@@ -8,6 +8,7 @@ import sys
 from PySide6.QtWidgets import QApplication
 
 from unionpdf import __version__
+from unionpdf import about
 from unionpdf.ui.main_window import MainWindow
 from unionpdf.ui.theme import QSS
 
@@ -15,9 +16,9 @@ from unionpdf.ui.theme import QSS
 def build_application(argv: list[str] | None = None) -> QApplication:
     """Buat QApplication dengan tema UnionPDF."""
     app = QApplication(argv if argv is not None else sys.argv)
-    app.setApplicationName("UnionPDF")
-    app.setApplicationDisplayName("UnionPDF")
-    app.setOrganizationName("UnionPDF")
+    app.setApplicationName(about.APP_NAME)
+    app.setApplicationDisplayName(about.APP_NAME)
+    app.setOrganizationName(about.ORGANIZATION_NAME)
     app.setApplicationVersion(__version__)
     app.setStyle("Fusion")
     app.setStyleSheet(QSS)

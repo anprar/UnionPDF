@@ -2,42 +2,40 @@
 
 > Untuk sesi berikutnya. Baca bersama `PROJECT_STATE.md` dan `TASKS.md`.
 
-**Sesi terakhir:** `2026-10-20T1700+0700` · 2026-10-20 17:21 WIB (UTC+7)
-**Fase:** M0 — Foundation · Fase A (analisis referensi) **v2 selesai**
-**Sesi sebelumnya:** `2026-10-20T1624+0700`
+**Sesi terakhir:** `2026-10-20T1800+0700` · 2026-10-20 18:29 WIB (UTC+7)
+**Fase:** M0 — Foundation · Fase A (analisis referensi) **DITUTUP**
+**Sesi sebelumnya:** `2026-10-20T1700+0700` · `2026-10-20T1624+0700`
 
 ---
 
 ## 1. Posisi saat ini
 
-Dua blocker besar **sudah ditutup**:
-- **B-01** → lisensi proyek **AGPL-3.0**, open source. `LICENSE` + `NOTICE` dibuat.
-- **B-02** → inspeksi biner read-only **diizinkan & dilakukan**.
+Tiga milestone terpenuhi sekaligus:
+- **REA ditutup.** Enam unknown ditutup (U-08/U-10/U-11/U-12 *closed*,
+  U-07/U-09 *partial* dengan alasan).
+- **Repository publik aktif:** <https://github.com/anprar/UnionPDF>
+  (public, `main`, commit `336538a`, 89 blob, 0,4 MB).
+- **Source offer AGPL** terpasang di aplikasi (`src/unionpdf/about.py` → dialog
+  "Tentang") dan dijaga 14 test otomatis.
 
-Analisis referensi kini **jauh lebih kuat**: 14.452 string UI asli, 783 kontrol
-ribbon (14 tab + 90 toolbar kontekstual), 10.284 identifier fitur, plus analisis
-native Ghidra atas `np_pdfa.dll` (1.852 prosedur). Struktur UI v14 yang tadinya
-"mustahil diamati" kini **terekstraksi** dari binary.
-
-Stack **tidak berubah** — tinjauan ulang pasca-v2 (`POST_REA_TECH_REVIEW.md` §18)
-mengonfirmasi skor tetap 463/500.
-
-Fondasi + vertical slice M1 tetap berjalan: 55 pytest PASS, smoke 9/9 PASS.
+Stack **tidak berubah** — tinjauan ulang pasca-v2/v3 mengonfirmasi skor
+463/500. Temuan terbaru justru **menurunkan risiko M8**: "Edit Text" di v14
+diimplementasikan di `np_annotations.dll` (manipulasi lapisan anotasi), bukan
+content-stream surgery.
 
 ## 2. Langkah terakhir yang BERHASIL
 
-`REA search_strings` pada `np_pdfa.dll` → menemukan pola
-`AVCmdHandler*_RegisterCommandsProc` / `_WorkProc` dan `*_plugin::init`, yang
-membuktikan arsitektur command-handler per fitur. Lihat
-`docs/REA_FINDINGS.md` §5.
+`git push -u origin main` → branch `main` ter-track; `gh repo edit` menambah
+description, homepage, dan 9 topik. Verifikasi: 89 blob di remote, `LICENSE` /
+`NOTICE` / `README` / `src` ada, korpus mentah **tidak** ikut.
 
 ## 3. Langkah terakhir yang GAGAL
 
 | Kegagalan | Akar masalah | Perbaikan |
 |---|---|---|
-| REA `binary_overview` pada `NitroPDF.exe` (16 MB CEF) | Ghidra timeout import (330 s) | Pivot ke modul kecil (`np_pdfa.dll` → berhasil) + jalur target-free `inspect_pe_resources` + parser PE sendiri. Dicatat sebagai `U-08`. |
-| Parser resource PE: `struct.error: unpack_from requires a buffer of at least 955774581 bytes` | Offset subdirektori resource relatif terhadap **root** resource directory, bukan direktori aktif | Perbaiki `walk_resource_dir` → ekstraksi 14.452 string berhasil |
-| Edit §18 `POST_REA_TECH_REVIEW.md` menimpa header §1 | `oldString` mencakup header yang terhapus | Pulihkan §1 + pindahkan §18 ke akhir lewat skrip penyusun |
+| REA `binary_overview` pada `np_ocr.dll` (3,3 MB) | Ghidra timeout startup 330 s | Batas Ghidra ≈ 700 KB; pivot ke jalur string + PE resources (bukti setara) |
+| `git commit -F - <<'EOF'` | PowerShell tidak mendukung heredoc | Tulis pesan ke file, lalu `git commit -F <file>` |
+| Ekstraksi shortcut menghasilkan noise ("control bar", "controller") | Regex terlalu longgar; "Ctrl" muncul di dalam nama kelas C++ (`CBCGP**Ctrl**`) | Diketahui sebagai keterbatasan BCG (binary resource) → U-07 partial |
 
 ## 4. Berkas yang sedang dimodifikasi
 
@@ -68,9 +66,11 @@ Setelah itu, task aktif berikutnya adalah `UPDF-012` (lihat `TASKS.md`).
 | ID | Keputusan | Impact |
 |---|---|---|
 | B-03 | Toleransi ukuran distribusi? | Menentukan strategi build & trimming PySide6 |
-| B-04 | Kapan membangun edit teks existing? | Menentukan cakupan M8 |
-| — | Inisialisasi git + nama repo? | Menentukan cara memenuhi kewajiban "source offer" AGPL |
-| — | Host repository (GitHub/GitLab)? | Menentukan URL source offer di dialog "Tentang" |
+| B-04 | Kapan membangun edit teks existing? | Sekarang **rendah risiko** (T-12) — tinggal proof-of-concept |
+| B-05 | Sumber daftar bahasa OCR untuk Windows OCR? | Memengaruhi UX M5 |
+| — | Nama/host repository | ✅ **SELESAI** — `github.com/anprar/UnionPDF` |
+| — | Code signing certificate | Untuk rilis M12 (opsional) |
+| — | Nama domain / halaman dokumentasi publik | Untuk M12 |
 
 ## 9. Kerja yang SUDAH selesai — jangan diulang
 
@@ -79,10 +79,13 @@ Setelah itu, task aktif berikutnya adalah `UPDF-012` (lihat `TASKS.md`).
 - Perbandingan stack A/B/C/B' + pembobotan — **jangan** buka ulang; sudah
   dikonfirmasi pada §18 `POST_REA_TECH_REVIEW.md`.
 - **Ekstraksi UI biner v14** (14.452 string, 783 kontrol) — **jangan** ulangi;
-  hasilnya sudah di `docs/research/*.json`. Skripnya ada di `scripts/`.
+  hasilnya sudah di `docs/research/*.json` (lokal, tidak di-commit).
+- Inventaris bahasa OCR (20 paket) — **jangan** ulangi.
 - Penyiapan venv + daftar dependency — sudah ada di `requirements*.txt`.
 - Struktur `src/unionpdf/` — sudah sesuai ADR-001.
-- Berkas `LICENSE` + `NOTICE` — sudah dibuat.
+- Berkas `LICENSE` + `NOTICE` + repo publik — sudah dibuat.
+- Metadata `src/unionpdf/about.py` — jangan diduplikasi; itu satu-satunya
+  sumber kebenaran untuk tautan source.
 
 ## 10. Lima langkah berikutnya
 
@@ -90,23 +93,25 @@ Setelah itu, task aktif berikutnya adalah `UPDF-012` (lihat `TASKS.md`).
    `src/unionpdf/ui/main_window.py`, `src/unionpdf/infrastructure/file_store.py`.
 2. **UPDF-013** — operasi halaman di UI (putar, hapus, gabung) memakai
    `JobRunner` + progress + cancel → `src/unionpdf/ui/`, `application/jobs.py`.
-3. **UPDF-015** — spike edit teks existing (redact + reinsert vs content-stream
-   surgery) → `spikes/spike_06_text_edit.py`. **Lebih prioritas** karena
-   analisis v2 mengonfirmasi fitur ini nyata di v14 (`NitroTextEditing`).
+3. **UPDF-015** — spike edit teks existing, **diarahkan T-12**: uji pendekatan
+   annotate-layer (redact + reinsert) lebih dulu sebelum content-stream surgery
+   → `spikes/spike_06_text_edit.py`.
 4. **UPDF-014** — pasang PyInstaller di venv dev, build one-dir, **ukur**
    ukuran → `docs/PACKAGING.md`, `docs/BLOCKERS.md` B-03.
-5. **UPDF-022** — turunkan korpus pesan error v14 jadi checklist uji UnionPDF
-   (sumber: `docs/research/V14_UI_EVIDENCE.md`).
+5. **UPDF-022** — checklist pesan error dari `docs/research/V14_UI_EVIDENCE_SUMMARY.md`.
 
 ## 11. Peringatan
 
 - `scripts/lint.py` **wajib** dijalankan setiap kali selesai menulis dokumen —
   karakter CJK/Hangul pernah masuk beberapa kali (bug berulang). Perbaikannya
   ada di `scripts/repair_docs.py`.
-- `docs/research/V14_UI_EVIDENCE.md` memuat label yang **tidak semuanya**
-  diverifikasi sebagai aktif pada build ini — perlakukan sebagai indikasi.
-- Jangan buat commit tanpa izin pengguna. `git` belum diinisialisasi.
+- **Jangan commit korpus mentah** di `docs/research/*.json` — itu konten
+  proprietary pihak ketiga dalam skala besar; sudah di-gitignore dengan alasan.
+  Yang dipublikasikan hanya `V14_UI_EVIDENCE_SUMMARY.md` (kutipan terkurasi).
+- `docs/research/V14_UI_EVIDENCE_SUMMARY.md` memuat label yang **tidak
+  semuanya** diverifikasi sebagai aktif pada build ini — perlakukan sebagai
+  indikasi.
+- Ghidra **tidak bisa** menganalisis modul Nitro > ~700 KB pada toolchain ini.
+  Jangan coba berulang tanpa menaikkan `REA_GHIDRA_STARTUP_TIMEOUT_MS`.
+- Jangan pernah push tanpa review `git status` + `git diff --cached --stat`.
 - `spikes/` **terpisah** dari `src/`. Jangan import spike ke kode produksi.
-- Ghidra **tidak bisa** menganalisis `NitroPDF.exe` (16 MB, CEF) dalam batas
-  startup default. Jangan coba berulang tanpa menaikkan
-  `REA_GHIDRA_STARTUP_TIMEOUT_MS` di environment REA.

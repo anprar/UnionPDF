@@ -48,7 +48,7 @@ LANG_NAMES = {
     "handpr": "Tulisan tangan",
     "hebrew": "Ibrani",
     "itl": "Italia",
-    "latin": "Latin (huruf众所)",
+    "latin": "Latin (huruf latin umum)",
     "nop": "Tanpa operasi (no-op)",
     "nrw": "Norwegia",
     "ocra1": "OCR-A (mesin ketik)",
