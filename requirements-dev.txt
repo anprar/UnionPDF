@@ -1,0 +1,5 @@
+# UnionPDF — dependensi pengembangan (versi di-pin eksak).
+
+-r requirements.txt
+
+pytest==8.3.4

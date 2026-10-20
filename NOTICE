@@ -1,0 +1,118 @@
+UnionPDF
+Copyright (C) 2026 UnionPDF Contributors
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+details.
+
+You should have received a copy of the GNU Affero General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
+
+================================================================================
+THIRD-PARTY COMPONENTS
+================================================================================
+
+UnionPDF memuat komponen pihak ketiga berikut. Seluruh daftar lengkap beserta
+versi dan lisensi ada di docs/DEPENDENCIES.md.
+
+--------------------------------------------------------------------------------
+PyMuPDF / MuPDF — AGPL-3.0
+--------------------------------------------------------------------------------
+Halaman muka (wrapper) atas MuPDF. Digunakan sebagai engine PDF UnionPDF.
+
+  PyMuPDF  : https://pypi.org/project/PyMuPDF/
+  MuPDF    : https://mupdf.com/
+  Lisensi  : AGPL-3.0 (atau lisensi komersial Artifex — UnionPDF memakai AGPL-3.0)
+
+  Sumber MuPDF dan PyMuPDF dapat diakses pada:
+    https://git.artifex.com/mupdf
+    https://github.com/pymupdf/PyMuPDF
+
+  Modifikasi MuPDF (jika ada) juga harus dipublikasikan di bawah AGPL-3.0.
+
+--------------------------------------------------------------------------------
+Qt for Python (PySide6) — LGPL-3.0
+--------------------------------------------------------------------------------
+Shell antarmuka UnionPDF.
+
+  Proyek   : https://www.qt.io/qt-for-python
+  Lisensi  : LGPL-3.0 (dynamic linking)
+
+  Sesuai LGPL-3.0, UnionPDF:
+  - menautkan Qt secara dinamis, sehingga pengguna dapat mengganti versi Qt;
+  - menyertakan teks lisensi LGPL-3.0;
+  - menyediakan akses ke sumber pustaka Qt yang digunakan.
+
+  Sumber Qt 6 untuk Python:
+    https://code.qt.io/cgit/pyside/pyside-setup.git/
+
+  Lisensi Qt sendiri:
+    https://www.qt.io/licensing/ (open source, LGPL-3.0)
+
+--------------------------------------------------------------------------------
+Pillow — MIT-CMU
+--------------------------------------------------------------------------------
+Manipulasi gambar (thumbnail, ekspor PNG/JPEG).
+
+  Proyek  : https://python-pillow.org/
+  Lisensi : MIT-CMU (dengan Motion Picture Association), lihat LICENSE-Pillow.txt
+
+--------------------------------------------------------------------------------
+Python — PSF License
+--------------------------------------------------------------------------------
+Runtime bahasa.
+
+  Proyek  : https://www.python.org/
+  Lisensi : Python Software Foundation License
+
+--------------------------------------------------------------------------------
+pytest — MIT
+--------------------------------------------------------------------------------
+Kerangka pengujian (hanya untuk pengembangan).
+
+  Proyek  : https://pytest.org/
+  Lisensi : MIT
+
+--------------------------------------------------------------------------------
+Binding Windows Runtime (winrt-*) — MIT
+--------------------------------------------------------------------------------
+Antarmuka Python untuk Windows.Media.Ocr (OCR lokal).
+
+  Proyek  : https://github.com/pywinrt
+  Lisensi : MIT
+
+--------------------------------------------------------------------------------
+Tesseract OCR — Apache-2.0 (OPSIONAL)
+--------------------------------------------------------------------------------
+Hanya dipakai bila pengguna memilih jalur OCR lanjut dan memasang Tesseract
+sendiri. Bukan dependency wajib; tidak disertakan dalam distribusi UnionPDF.
+
+  Proyek  : https://github.com/tesseract-ocr/tesseract
+  Lisensi : Apache-2.0
+  Catatan : Tesseract tidak boleh digunakan untuk menyiratkan dukungan/TM.
+
+================================================================================
+CATATAN DISTRIBUSI
+================================================================================
+
+1. Setiap binary UnionPDF yang dibagikan WAJIB menyertakan berkas LICENSE
+   (AGPL-3.0) dan berkas NOTICE ini.
+2. UnionPDF adalah aplikasi desktop, bukan layanan jaringan. Pasal 13 AGPL-3.0
+   tetap dipenuhi melalui penyediaan source lengkap saat distribusi.
+3. Cara menyediakan source didokumentasikan di docs/LICENSE_REVIEW.md §5 dan
+   akan berlaku pada setiap rilis.
+4. UnionPDF tidak memuat, menyalin, atau bergantung pada engine, DLL, ikon,
+   atau aset proprietary aplikasi pihak lain.
+
+================================================================================
+KODE & DOKUMENTASI
+================================================================================
+Bahasa pengantar  : Bahasa Indonesia
+Bahasa identifier  : Bahasa Inggris
+Lisensi kode       : AGPL-3.0 (sama dengan proyek)

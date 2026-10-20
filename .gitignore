@@ -1,0 +1,65 @@
+# .gitignore — UnionPDF
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Test & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Spike output (hasil eksperimen, bukan kode produksi)
+spikes/out/
+spikes/fixtures/
+
+# Korpus mentah hasil ekstraksi biner aplikasi referensi.
+# Alasan: ini adalah konten proprietary pihak ketiga yang diindeks dalam skala
+# besar; mempublikkannya akan menjadi=redistribusi, bukan analisis.
+# Ringkasan turunan yang boleh dipublikasikan ada di
+# docs/research/V14_UI_EVIDENCE_SUMMARY.md
+docs/research/mui_strings_en-US.json
+docs/research/native_feature_ids_v14.json
+docs/research/ribbon_controls_v14.json
+docs/research/ocr_languages_and_shortcuts_v14.json
+docs/research/V14_UI_EVIDENCE.md
+
+# Editor & OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
+
+# Build & release
+*.exe
+*.msi
+*.msix
+*.zip
+
+# Rahasia — JANGAN pernah di-commit
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Log
+*.log
+
+# Catatan lokal
+*.local.md
