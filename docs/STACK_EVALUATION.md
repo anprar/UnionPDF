@@ -4,6 +4,12 @@
 **Sesi:** `2026-10-20T1624+0700`
 **Dasar bukti:** `TECH_SPIKES.md` (S1–S12) dan `REA_FINDINGS.md`.
 
+> **Catatan 2026-10-21 (sesi `2026-10-21T1057+0700`).** Bagian 1–9 adalah evaluasi v1
+> (dasar ADR-001) dan dipertahankan sebagai histori. Kata "dikonfirmasi" pada §9
+> berarti evaluasi ulang oleh agent, **bukan** persetujuan pengguna. Beberapa klaim
+> berlabel FAKTA terbukti keliru — lihat **§10.1 Errata**. Perbandingan baseline
+> restart ada di **§10**. Stack final **BELUM DISETUJUI**.
+
 ---
 
 ## 1. Metodologi
@@ -316,3 +322,136 @@ penggantian engine, runtime, atau shell. Yang berubah hanya **cakupan**
 (M5, M7) dan **keyakinan** pada keputusan — bukan nilai skornya.
 
 Detail tinjauan per lapisan: `docs/POST_REA_TECH_REVIEW.md` §18.
+
+---
+
+## 10. Evaluasi ulang baseline restart (2026-10-21)
+
+**Status:** DRAFT perbandingan — **bukan keputusan**. Stack final **BELUM DISETUJUI**.
+**Sesi:** `2026-10-21T1057+0700`.
+**Dasar:** `docs/POST_ALL_REFERENCES_TECH_REVIEW.md` (fakta upstream terverifikasi),
+`docs/FEATURE_MATRIX.md` §13 (capability matrix), spike lama S1–S12 sebagai benchmark.
+
+Aturan bagian ini:
+- Maksimal tiga baseline yang menjawab kebutuhan yang sama.
+- **Tanpa skor numerik.** Penilaian kualitatif dengan label bukti.
+- Performa dan ukuran stack baru = **NOT_MEASURED**.
+- Implementasi Python/PySide6 lama = **benchmark**, bukan kandidat otomatis.
+
+### 10.1 Errata evaluasi v1 (teks asli di atas tidak diubah)
+
+| Lokasi v1 | Klaim v1 | Koreksi | Sumber koreksi |
+|---|---|---|---|
+| §4 K1 (baris "FAKTA: PDFium bersifat read-only…") | PDFium read-only, tidak menulis dokumen | **Keliru.** PDFium memiliki `FPDFPage_CreateAnnot` (13 subtipe), API objek halaman, import/hapus/rotasi halaman, dan `FPDF_SaveAsCopy` | header publik PDFium (review §2.1) |
+| §2 "Alasan kandidat yang TIDAK dimasukkan" — Java (PDFBox) | Tidak punya authoring anotasi/redaksi yang memadai | **Tidak berdasar untuk anotasi**: PDFBox 3.0 punya kelas pembuatan anotasi markup & contoh pembuatan AcroForm/signature. Untuk redaksi: memang tidak ditemukan API tingkat tinggi | PDFBox Migration Guide & examples (review §2.4) |
+| §2 — Tauri + Rust | Menambah runtime kedua tanpa manfaat jelas | Dievaluasi ulang di bawah; bukan lagi alasan eksklusi otomatis | — |
+| §4 K1 — PdfSharp, pdf-lib | Tidak punya authoring anotasi/form/redaksi | `NOT-VERIFIED` pada sesi ini; tidak dipakai untuk keputusan restart | — |
+| §4 K4 | B dan C diberi skor 1 karena "ketiadaan API" PDFium | Dasar skor tidak valid karena klaim PDFium keliru; skor v1 tidak boleh dipakai ulang | — |
+
+### 10.2 Kriteria (ditetapkan sebelum perbandingan)
+
+**10.2a — Usulan v1 (sesi `2026-10-21T1057+0700`; tidak disetujui pengguna karena daftar
+lengkap belum ditampilkan). Dipertahankan sebagai histori; ID E-1…E-9 di §10.3 merujuk
+daftar ini — mapping ke v2 ada di §10.2b.**
+
+| ID | Kriteria | Mengapa |
+|---|---|---|
+| E-1 | Integritas output & kapabilitas penulisan P0 (CR-04, CR-05, CR-07, CR-09, CR-10) | Dokumen rusak = kegagalan produk |
+| E-2 | Kelayakan secure redaction (CR-14) | Risiko keamanan; mudah salah klaim |
+| E-3 | Jalur signature dengan library terpelihara (CR-17) | Tidak realistis ditulis dari nol |
+| E-4 | Lisensi & kewajiban distribusi | Model gratis; AGPL sudah dipakai proyek tetapi belum diratifikasi ulang |
+| E-5 | Jumlah runtime & kompleksitas IPC | Memengaruhi ukuran, keandalan, pemeliharaan |
+| E-6 | Packaging & resource usage | **NOT_MEASURED** — hanya bisa dinilai setelah spike |
+| E-7 | Provenance biner | Keamanan rantai pasok |
+| E-8 | Testability & pemeliharaan | Kontinuitas proyek |
+| E-9 | Jarak ke bukti pertama | Kemampuan memakai ulang pengetahuan yang sudah diukur |
+
+**10.2b — Kriteria v2 mengikuti arah prioritas pengguna (2026-10-21).** Urutan = urutan
+prioritas yang dinyatakan pengguna. Status: **REVIEW** — menunggu konfirmasi final
+(UPDF-043). Tanpa bobot numerik. Ukuran instalasi kecil **tidak** boleh menjadi alasan
+tunggal memilih stack.
+
+| ID v2 | Kriteria | Definisi ringkas | Bukti yang dipakai | Mencakup v1 |
+|---|---|---|---|---|
+| K2-1 | Integritas, keamanan dokumen, ketepatan output | Input tidak pernah rusak; output dapat dibuka ulang dan benar oleh pembaca independen; redaksi benar-benar menghapus; signature valid; tidak ada kebocoran data; provenance biner dapat dipertanggungjawabkan | Spike RS-02…RS-08 (verifikasi lintas engine), pemeriksa struktur | E-1, E-2 (aspek kebenaran), E-7 |
+| K2-2 | Cakupan kemampuan yang dapat dibuktikan | Kapabilitas P0 (anotasi, form, field authoring, page ops, redaksi, signature) terbukti lewat spike — bukan hanya ada di dokumentasi API | Capability matrix `FEATURE_MATRIX.md` §13 + hasil spike | E-1, E-2, E-3 (cakupan) |
+| K2-3 | Lisensi & kelayakan distribusi | Lisensi semua komponen kompatibel dengan model gratis tanpa paywall; kewajiban notice/source dapat dipenuhi; tidak ada SDK komersial/trial | Dokumen lisensi resmi, third-party notices biner | E-4, E-7 (aspek lisensi) |
+| K2-4 | Responsivitas & penggunaan resource | Render halaman terlihat lebih dulu, operasi panjang di luar UI dengan progress/cancel, RAM & CPU wajar | Pengukuran waktu, RAM, cancel (RS-01, RS-09, RS-10) | E-6 (sebagian) |
+| K2-5 | Pemeliharaan, testability, recovery | Jumlah runtime & bahasa, kompleksitas IPC, kemudahan test otomatis, pemulihan dari crash worker & kegagalan simpan | Desain + RS-06, RS-10 | E-5, E-8 |
+| K2-6 | UX modern & kemudahan penggunaan | Kemampuan shell membangun UI modern, aksesibel, konsisten | Prototipe UI (belum ada) | — |
+| K2-7 | Ukuran distribusi | Ukuran download, terpasang, runtime eksternal, komponen OS — dilaporkan terpisah | RS-09 | E-6 (ukuran) |
+| K2-8 | Kecepatan implementasi | Jarak ke bukti & fitur pertama, pemakaian ulang pengetahuan | Estimasi berdasar bukti | E-9 |
+
+**Anggaran ukuran (A-2).** Target perencanaan awal: installer core ≤ 250 MB, instalasi
+core ≤ 750 MB; OCR language pack, konversi Office, dan AI lokal diukur & dilaporkan
+terpisah. Untuk tahap saat ini pengguna menyatakan **ukuran mengikuti kebutuhan library
+(berapa pun diperbolehkan)** — angka di atas tetap dipakai sebagai acuan pelaporan,
+bukan batas keras. Wajib dilaporkan terpisah: ukuran download, ukuran terpasang, runtime
+eksternal yang diperlukan, komponen yang sudah ada di OS, RAM, dan waktu startup.
+Dependency yang sebenarnya wajib tidak boleh disembunyikan sebagai "download tambahan".
+
+### 10.3 Perbandingan kualitatif
+
+| Kriteria | A — PDFium + QPDF | B — PDFium + Java/PDFBox | C — MuPDF/PyMuPDF worker |
+|---|---|---|---|
+| E-1 Penulisan P0 | Anotasi 13 subtipe `API`; isi form `API`; **buat field `CUSTOM`**; page ops `API` | Anotasi `API` (PDFium/PDFBox); isi & buat field `API` (PDFBox); page ops `API` | Semua P0 `API`; **diukur** di stack lama (S2–S4) — belum di integrasi Tauri |
+| E-2 Redaksi | `CUSTOM` penuh (PDFium tanpa API redaksi; QPDF tidak paham content stream) | `CUSTOM` (PDFBox tanpa API redaksi tingkat tinggi) | `API` `apply_redactions` + caveat dokumentasi; S5 PASS pada dokumen sintetis sederhana |
+| E-3 Signature | **`BLOCKED`** — PDFium hanya introspeksi; QPDF tidak; tidak ada library Rust terverifikasi | `API` PDFBox + Bouncy Castle (contoh resmi) | `UNPROVEN` (signing tidak ditemukan di dok PyMuPDF yang diperiksa) |
+| E-4 Lisensi | BSD-style / MIT-Apache; QPDF `NOT-VERIFIED` | BSD-style / Apache-2.0; Bouncy Castle `NOT-VERIFIED` | **AGPL-3.0** atau komersial — konsisten dengan `LICENSE` saat ini, tetapi mewajibkan seluruh aplikasi AGPL dan *producer line* "ideally" dipertahankan |
+| E-5 Runtime & IPC | Rust + 2 biner native (PDFium, QPDF); IPC paling sederhana | Rust + **JVM** sidecar; IPC lintas proses + 2 engine dengan pemilik mutasi terpisah | Rust + **Python** sidecar (atau FFI C yang belum dievaluasi); IPC lintas proses |
+| E-6 Packaging | `NOT_MEASURED` | `NOT_MEASURED` (JRE/jlink menambah ukuran; referensi Stirling membundel JRE 51,9 MB — fakta referensi, bukan estimasi UnionPDF) | `NOT_MEASURED` (packaging Python belum pernah diukur — B-03 lama) |
+| E-7 Provenance | PDFium biner (provenance harus diputuskan) + QPDF biner | PDFium biner + artefak Maven (Apache) + JRE | Wheel PyMuPDF (Artifex) + runtime Python |
+| E-8 Testability | Tinggi untuk Rust; custom code besar = permukaan bug besar | Dua bahasa host (Rust + Java) | Dua bahasa host (Rust + Python); pengetahuan test lama dapat dipakai ulang |
+| E-9 Jarak ke bukti | Terjauh untuk P0 penulisan | Menengah | Terdekat (kapabilitas sudah diukur, tinggal integrasi) |
+
+### 10.4 Ringkasan per baseline
+
+**A — Tauri + React/TS + Rust + PDFium + QPDF**
+- Kekuatan: runtime paling sedikit; lisensi permisif; PDFium cukup untuk viewer,
+  anotasi markup umum, isi form, page ops, flatten, overlay konten.
+- Gap yang harus dijelaskan, bukan disembunyikan: pembuatan field form (`CUSTOM`),
+  anotasi line/polygon/polyline/caret (`CUSTOM`), secure redaction (`CUSTOM` penuh),
+  **signature kriptografis tanpa library terverifikasi (`BLOCKED`)**, enkripsi hanya
+  lewat QPDF.
+- Pemicu no-go: bila RS-02 (appearance anotasi) gagal pada pembaca independen, atau
+  bila tidak ada jalur signature yang dapat diterima tanpa menambah engine.
+
+**B — Tauri + React/TS + Rust + PDFium + Java/PDFBox** (QPDF hanya bila terbukti perlu)
+- Kekuatan: PDFBox menutup field authoring dan signature lewat API/contoh resmi;
+  pola PDFium + PDFBox terlihat (statis) pada Stirling.
+- Gap: redaksi tetap `CUSTOM`; JVM menambah ukuran & proses; dua engine → wajib aturan
+  satu pemilik mutasi per revisi.
+- Catatan Java: minimum PDFBox 3.0 = **Java 8**; Zulu 8 sudah ada di mesin ini.
+  Versi Java yang lebih baru hanya bila dipilih sebagai kebijakan proyek.
+- Pemicu no-go: bila ukuran JRE/jlink + worker melampaui toleransi ukuran yang
+  ditetapkan pengguna (belum ditetapkan), atau IPC JVM tidak andal pada RS-07/RS-09.
+
+**C — Tauri + React/TS + Rust + MuPDF/PyMuPDF worker**
+- Kekuatan: satu engine untuk hampir semua P0, termasuk redaksi dengan API; bukti
+  terukur tertinggi (stack lama).
+- Gap: lisensi AGPL-3.0 (atau komersial) mengikat seluruh aplikasi; worker Python
+  menambah runtime; signing `UNPROVEN`; packaging Python belum pernah diukur;
+  integrasi via FFI C belum dievaluasi.
+- Pemicu no-go: bila pengguna tidak menerima AGPL sebagai lisensi final, atau
+  packaging worker Python gagal berjalan di mesin tanpa toolchain.
+
+### 10.5 Peran implementasi lama (benchmark)
+
+`src/unionpdf/` (Python 3.13 + PySide6 6.11 + PyMuPDF 1.27.2.2) **dipertahankan**
+sebagai:
+1. pembanding fungsional (fixture yang sama harus memberi hasil setara atau lebih baik);
+2. sumber angka `MEASURED-OLD` (S1–S12) — tidak berlaku otomatis untuk stack baru;
+3. jalur fallback bila semua baseline baru gagal pada P0.
+
+Ia **tidak** otomatis menjadi keputusan final.
+
+### 10.6 Usulan langkah (menunggu persetujuan)
+
+Tidak ada baseline yang direkomendasikan untuk dikunci sekarang. Usulan:
+1. Pengguna menetapkan prioritas E-1…E-9 dan toleransi ukuran distribusi.
+2. Jalankan spike P0 (`TECH_SPIKES.md` §R) **setelah** disetujui, dengan urutan:
+   PDFium bersama (RS-01, RS-02, RS-03) karena dipakai A dan B; lalu PDFBox (B) dan
+   MuPDF worker (C) untuk field authoring, redaksi, signature, packaging.
+3. Bila RS-02/RS-03 menunjukkan PDFium cukup dan pengguna menerima gap signature,
+   A tetap terbuka; bila tidak, A gugur tanpa perlu spike lanjutan.
+4. Keputusan dicatat sebagai ADR baru; ADR-001 tidak diedit diam-diam.

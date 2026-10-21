@@ -4,24 +4,52 @@
 
 | Field | Nilai |
 |---|---|
-| Tanggal | 2026-10-20 |
-| Waktu | 18:29 WIB (UTC+7) |
+| Tanggal | 2026-10-21 |
+| Waktu | 11:05 WIB (UTC+7) |
 | Zona waktu | Asia/Bangkok / SE Asia Standard Time |
-| Session ID | `2026-10-20T1800+0700` (penutup REA + publikasi) |
-| Fase aktif | **Fase A selesai — REA ditutup** · Fase B terkonfirmasi · Fase C selesai |
+| Session ID | `2026-10-21T1114+0700` (controlled restart — penerapan keputusan A-1…A-9, commit lokal, spike terbatas) |
+| Fase aktif | **Fase A (analisis referensi) — 3 target selesai**: `docs/ANALYSIS_NITRO14.md` (Nitro 14.41.0.15), `docs/ANALYSIS_STIRLING_PDF.md` (Stirling-PDF 3.2.0), `docs/ANALYSIS_PDFGEAR.md` (PDFgear 3.0.0); sekarang **GATE A (revisi 1) — menunggu keputusan pengguna** (`docs/RESTART_AUDIT.md`) |
 | Milestone aktif | **M0 — Foundation** |
-| Task aktif | `UPDF-012` — Save As → atomic write + verifikasi |
-| Git repo | **`github.com/anprar/UnionPDF`** (public, branch `main`) — commit `336538a` |
-| Working tree | Bersih (89 file, 0,4 MB) |
-| Stack | **Diputuskan & dikonfirmasi v2/v3** — Python 3.13 · PySide6 6.11 · MuPDF 1.27 · Windows OCR (ADR-001) |
-| Lisensi proyek | **AGPL-3.0** (B-01 selesai) — open source, source offer aktif |
-| Review pasca-REA | **SELESAI + dikonfirmasi** — `docs/POST_REA_TECH_REVIEW.md` §18, skor tetap 463/500 |
+| Task aktif | Audit & proposal GATE A revisi 1 **ditulis** → menunggu keputusan (daftar approval di `docs/HANDOFF.md` §0). `UPDF-029`/`030`/`031` DONE (analisis) |
+| Git repo | **`github.com/anprar/UnionPDF`** (public, branch `main`) — HEAD `d01cd16` (commit awal `336538a`) |
+| Working tree | Tidak bersih — file baru **belum di-commit**: 13 file pra-restart (3 dokumen analisis, 3 skrip verifikasi, 3 session log, 4 file checkpoint) + dokumen sesi `2026-10-21T1057+0700`. **Commit/push belum disetujui** |
+| Stack | **Stack final BELUM DISETUJUI.** Implementasi existing: Python 3.13 · PySide6 6.11 · PyMuPDF 1.27 · Windows OCR (ADR-001; status ratifikasi **DISPUTED**, kini berperan sebagai benchmark). Kandidat restart A/B/C: `docs/STACK_EVALUATION.md` §10 |
+| Lisensi proyek | `LICENSE` = **AGPL-3.0** (B-01 tercatat selesai 2026-10-20); untuk restart **belum diratifikasi ulang** — tidak diubah |
+| Review pasca-REA | v1 (histori, dasar ADR-001): `docs/POST_REA_TECH_REVIEW.md`. Pasca-tiga-referensi: `docs/POST_ALL_REFERENCES_TECH_REVIEW.md` (**DRAFT**, tanpa keputusan) |
 | Inspeksi biner referensi | **DIIZINKAN & DILAKUKAN** (B-02 selesai) |
-| Status REA | **SUBSTANSIAL SELESAI** — static analysis tuntas; 6 unknown closed, 2 partial, **4 masih UNKNOWN** (U-01/U-04/U-05/U-06); **observasi & uji runtime TIDAK dijalankan** |
+| Status REA | **Tiga target dianalisis** (Nitro 14 native C++/MFC · Stirling-PDF Tauri+Spring Boot/PDFBox · PDFgear .NET 4.6.2 WPF + 4 pustaka PDF + 2 engine OCR + Copilot 27 aksi) — 35 operasi REA total. **Metode #2 (observasi UI runtime) & #3 (uji I/O) NOT_RUN pada ketiganya**; unknown terbuka: 4 lama (U-01/U-04/U-05/U-06) + 8 (S-01…S-08) + 8 (G-01…G-08) |
 
 ---
 
-## Fitur yang sudah berfungsi
+## Status persetujuan (controlled restart)
+
+**Tetap berlaku:** stack final **BELUM DISETUJUI** · cleanup aplikasi lama **BELUM
+DISETUJUI** · `LICENSE`/`NOTICE` tidak diubah, lisensi belum diratifikasi ulang ·
+**tidak ada izin push/publikasi** · tidak ada scaffold penuh/aplikasi produksi.
+
+Keputusan pengguna 2026-10-21 (sesi `2026-10-21T1114+0700`):
+
+| ID | Lingkup | Status |
+|---|---|---|
+| A-1 | Urutan kriteria evaluasi | **REVIEW** — arah prioritas pengguna diterapkan di `STACK_EVALUATION.md` §10.2b; menunggu konfirmasi final |
+| A-2 | Anggaran ukuran | Acuan awal: installer core ≤ 250 MB, instalasi core ≤ 750 MB; saat ini ukuran mengikuti kebutuhan library; wajib dilaporkan terpisah |
+| A-3 | Redaksi token PostHog & path profil | **Disetujui & diterapkan** |
+| A-4 | Perbaikan `TASKS.md` & indeks sesi | **Disetujui & diterapkan** |
+| A-5 | Commit lokal tanpa push (bersyarat) | **Disetujui** — pelaksanaan & daftar path di `docs/sessions/2026-10-21T1114+0700.md` |
+| A-6 | Spike RS-00, RS-01, bagian PDFium RS-02/03/05 | **Disetujui** (instalasi lokal-proyek saja) |
+| A-7 | Lokasi `experiments/restart/` | **Disetujui** |
+| A-8 | Milestone protokol restart (M9 Signature, M10 Release) | **Disetujui & diterapkan** |
+| A-9 | Pembaruan terbatas `AGENTS.md` | **Disetujui & diterapkan** (§5, §5b) |
+
+Riwayat K-1…K-10 (sesi `2026-10-21T1057+0700`): `docs/RESTART_AUDIT.md` §1.
+
+**Blocker sebelumnya:**
+- ~~PUB-1~~ — project token PostHog pihak ketiga (klasifikasi dikoreksi: menurut dok
+  resmi PostHog boleh publik, bukan personal API key) — **disamarkan**; tidak ada di
+  commit lokal mana pun.
+- ~~DOC-1~~ — defek `docs/TASKS.md` — **diperbaiki** (mapping ID di `TASKS.md`).
+
+## Fitur yang sudah berfungsi (implementasi lama — benchmark)
 
 | Fitur | Status | Bukti |
 |---|---|---|
@@ -53,7 +81,7 @@
 | Build aplikasi | **N/A** — belum ada packaging (B-03) |
 | Import aplikasi | **PASS** — `python -m unionpdf.app` jalan (offscreen) |
 | Smoke test | **PASS** — 9/9 pemeriksaan |
-| Test suite | **PASS** — 55 pytest |
+| Test suite | **PASS** — 69 pytest (2026-10-20 18:29; tidak dijalankan ulang sejak itu) |
 
 ## Test terakhir
 
@@ -124,8 +152,11 @@ Berkas: `docs/REA_FINDINGS.md` v2, `docs/research/V14_RIBBON_STRUCTURE.md`,
 
 ## Langkah berikutnya
 
-1. `UPDF-012` — sambungkan `Save As` UI ke jalur atomik + verifikasi.
-2. `UPDF-013` — operasi halaman di UI (rotate/delete/merge) dengan job background.
-3. `UPDF-014` — pengukuran ukuran build one-dir (menutup B-03).
-4. `UPDF-015` — spike edit teks existing (menutup B-04).
-5. `UPDF-016` — panel anotasi & form minimal (M4).
+1. **Menunggu keputusan pengguna** atas daftar approval di `docs/HANDOFF.md` §0.
+2. Setelah disetujui: tangani prasyarat publikasi (PUB-1) dan defek `TASKS.md` (DOC-1).
+3. Setelah keputusan prioritas & toleransi ukuran: eksekusi spike fase 1
+   (`docs/TECH_SPIKES.md` §R.3) — hanya bila disetujui, termasuk instalasinya.
+4. Keputusan baseline → ADR baru (ADR-001 tidak diedit diam-diam).
+5. Cleanup Fase 2–3 (`docs/CLEANUP_PLAN.md`) hanya setelah keputusan baseline.
+
+Task implementasi lama (`UPDF-012` … `UPDF-016`) **ditahan** sampai keputusan baseline.

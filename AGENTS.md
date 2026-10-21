@@ -59,9 +59,10 @@ WAJIB:
 
 ## 5. Kebijakan pemilihan teknologi
 
-- **Jangan kunci stack sebelum hasil analisis referensi tersedia** (lihat `docs/POST_REA_TECH_REVIEW.md`).
+- **Jangan kunci stack sebelum hasil analisis referensi tersedia** (lihat
+  `docs/POST_ALL_REFERENCES_TECH_REVIEW.md`; `docs/POST_REA_TECH_REVIEW.md` = histori v1).
 - Setelah analisis awal → **WAJIB** evaluasi ulang teknologi, terdokumentasi di
-  `docs/POST_REA_TECH_REVIEW.md` dan `docs/STACK_EVALUATION.md`.
+  `docs/POST_ALL_REFERENCES_TECH_REVIEW.md` dan `docs/STACK_EVALUATION.md`.
 - Bobot kriteria harus ditetapkan **sebelum** penilaian.
 - Pisahkan: **fakta dokumentasi** / **pengukuran** / **estimasi** / **unknown**.
 - Jika belum diukur → tulis `NOT_MEASURED`. **Jangan mengarang angka benchmark.**
@@ -98,6 +99,25 @@ status `Menunggu Persetujuan`.
 
 **Setelah persetujuan:** catat di `docs/DECISIONS.md` / ADR terkait, dan tambahkan
 baris di `docs/TASKS.md` sebagai `DONE` dengan rujukan ke persetujuan itu.
+
+### 5b. Status approval & gate controlled restart (per 2026-10-21)
+
+Status terkini selalu di `docs/PROJECT_STATE.md` § "Status persetujuan"; ringkasan
+saat bagian ini ditulis:
+
+- **Stack final: BELUM DISETUJUI.** Implementasi Python/PySide6/PyMuPDF lama = benchmark.
+- **Cleanup aplikasi lama: BELUM DISETUJUI.** `src/`, `tests/`, `spikes/` dipertahankan.
+- **Lisensi:** `LICENSE` tetap; belum diratifikasi ulang; jangan diubah.
+- **Push/publikasi:** tidak ada izin.
+- Disetujui terbatas: commit lokal tanpa push (dengan syarat), spike RS-00/RS-01 dan
+  bagian PDFium RS-02/03/05 di `experiments/restart/`, instalasi lokal-proyek untuk spike itu.
+
+Gate wajib:
+1. **Sebelum cleanup** aplikasi lama: keputusan baseline disetujui + spike P0 kandidat
+   selesai + persetujuan eksplisit atas daftar target `docs/CLEANUP_PLAN.md`.
+2. **Sebelum implementasi utama / scaffold penuh:** stack disetujui dan dicatat di ADR
+   baru, didukung hasil spike yang tercatat di `docs/TECH_SPIKES.md`.
+3. Sesi baru **tidak** berarti izin baru.
 
 ## 6. Aturan implementasi
 

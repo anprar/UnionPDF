@@ -8,6 +8,11 @@ Session ID berbasis waktu aktual (WIB / UTC+7).
 | [`2026-10-20T1624+0700`](sessions/2026-10-20T1624+0700.md) | 2026-10-20 | M0 | Inisialisasi workspace, analisis referensi, review teknologi, 12 spike, ADR-001, skeleton + vertical slice M1 |
 | [`2026-10-20T1700+0700`](sessions/2026-10-20T1700+0700.md) | 2026-10-20 | M0 (lanjutan) | B-01 ditutup (lisensi AGPL-3.0), B-02 ditutup (inspeksi biner read-only diizinkan), **analisis mendalam**: 14.452 string UI, 783 kontrol ribbon, 10.284 identifier fitur |
 | [`2026-10-20T1800+0700`](sessions/2026-10-20T1800+0700.md) | 2026-10-20 | M0 (penutup) | **REA ditutup** (U-08/U-10/U-11/U-12 closed), repo publik `github.com/anprar/UnionPDF` dibuat & dipublikasikan, source offer AGPL diintegrasikan + 14 test kepatuhan lisensi |
+| [`2026-10-21T0851+0700`](sessions/2026-10-21T0851+0700.md) | 2026-10-21 | M0 (analisis) | **Analysis-first restart**: re-run ekstraksi korporas, 12 operasi REA MCP, dokumen analisis baru `docs/ANALYSIS_NITRO14.md` (katalog penuh 15 domain + deep-dive 25 fitur), `scripts/verify_analysis_corpus.py` (8/8 angka OK) |
+| [`2026-10-21T0932+0700`](sessions/2026-10-21T0932+0700.md) | 2026-10-21 | M0 (analisis) | **Target kedua**: analisis REA Stirling-PDF 3.2.0 (Tauri+Rust shell → Spring Boot 4.1.1/PDFBox 3 lokal), 12 operasi REA, `docs/ANALYSIS_STIRLING_PDF.md`, `scripts/verify_stirling_artifact.py` (10/10 OK) |
+| [`2026-10-21T1000+0700`](sessions/2026-10-21T1000+0700.md) | 2026-10-21 | M0 (analisis) | **Target ketiga**: analisis REA PDFgear 3.0.0 (.NET 4.6.2/WPF, 4 pustaka PDF, 2 engine OCR, Copilot 27 aksi), 11 operasi REA, `docs/ANALYSIS_PDFGEAR.md`, `scripts/verify_pdfgear_artifact.py` (12/12 OK) |
+| [`2026-10-21T1057+0700`](sessions/2026-10-21T1057+0700.md) | 2026-10-21 | M0 (controlled restart) | **GATE A revisi 1**: audit read-only, verifikasi sumber primer (PDFium/PDFBox/QPDF/MuPDF), `RESTART_AUDIT.md`, `CLEANUP_PLAN.md`, `POST_ALL_REFERENCES_TECH_REVIEW.md`, capability matrix v2, rencana spike RS-00…RS-10. Tanpa keputusan stack |
+| [`2026-10-21T1114+0700`](sessions/2026-10-21T1114+0700.md) | 2026-10-21 | M0 (controlled restart) | Keputusan A-1…A-9 diterapkan: redaksi dokumen analisis, perbaikan TASKS/indeks, mapping milestone, pembaruan terbatas `AGENTS.md`, commit lokal tanpa push, spike terbatas RS-00/RS-01/bagian PDFium RS-02/03/05 |
 
 ---
 

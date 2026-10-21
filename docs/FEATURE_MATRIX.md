@@ -3,6 +3,20 @@
 **Status:** DRAFT v1 · **Tanggal:** 2026-10-20
 Referensi: Nitro PDF Pro **14.41.0.15**.
 
+> **Catatan 2026-10-21 (sesi `2026-10-21T1057+0700`).** Bagian 1–12 di bawah adalah
+> matriks v1 (satu referensi, stack lama) dan dipertahankan sebagai histori.
+> Keputusan KEEP/IMPROVE/REPLACE/DEFER/REJECT di dalamnya **belum diratifikasi**
+> pengguna (lihat `BLOCKERS.md` B-07.2). Capability matrix pasca-tiga-referensi ada di
+> **§13**. Stack final **BELUM DISETUJUI**.
+>
+> **Errata v1** (teks asli tidak diubah):
+> - "14 tab ribbon" (§1b) → analisis baru mencatat **13 tab bernama**
+>   (`docs/ANALYSIS_NITRO14.md`).
+> - "90 toolbar kontekstual" (§1b) → analisis baru mencatat **228 grup toolbar
+>   kontekstual** (`docs/ANALYSIS_NITRO14.md`).
+> - Kolom "Kepastian = VERIFIED" pada baris operasi/anotasi/form/redaksi merujuk ke
+>   **spike stack lama (PyMuPDF)**, bukan ke kandidat stack baru.
+
 ## Legenda
 
 **Tingkat kepastian referensi:** `VERIFIED` (terbukti di mesin) ·
@@ -101,8 +115,8 @@ Bukti: `E-401`, `E-406`, `E-407`, `E-408`.
 
 ## 3. Membuat & menambah konten
 
-| Fitur | Referensi | Kepastian | UnionPDF | Milestone |
-|---|---|---|---|---|
+| Fitur | Referensi | Kepastian | UnionPDF | Milestone | Catatan |
+|---|---|---|---|---|---|
 | Gambar → PDF | Ada | DOCUMENTED | KEEP | M3 |
 | Halaman kosong | Ada | DOCUMENTED | KEEP | M3 |
 | Tambah teks | Ada | DOCUMENTED | KEEP | M3 | Overlay, **diberi label** sebagai overlay |
@@ -117,8 +131,8 @@ Bukti: `E-401`, `E-406`, `E-407`, `E-408`.
 
 ## 4. Anotasi & form
 
-| Fitur | Referensi | Kepastian | UnionPDF | Milestone |
-|---|---|---|---|---|
+| Fitur | Referensi | Kepastian | UnionPDF | Milestone | Catatan |
+|---|---|---|---|---|---|
 | Highlight | Ada | VERIFIED | KEEP | M4 | E-204 |
 | Underline / strikeout | Ada | DOCUMENTED | KEEP | M4 | Belum diuji |
 | Note / komentar | Ada | VERIFIED | KEEP | M4 | E-204 |
@@ -137,19 +151,19 @@ Bukti: `E-401`, `E-406`, `E-407`, `E-408`.
 
 ## 5. OCR
 
-| Fitur | Referensi | Kepastian | UnionPDF | Milestone |
-|---|---|---|---|---|
+| Fitur | Referensi | Kepastian | UnionPDF | Milestone | Catatan |
+|---|---|---|---|---|---|
 | OCR → searchable | Ada | DOCUMENTED | KEEP | M5 | Windows OCR terukur (E-211) |
 | OCR → searchable + editable | Ada (marketing) | DOCUMENTED | **REJECT (klaim)** | — | Rekonstruksi editable = M8; menampilkan tombol ini tanpa kemampuan nyata = tombol mati |
 | Prompt OCR otomatis saat membuka scan | Ada | DOCUMENTED | KEEP | M5 | UX murah, sangat berguna |
 | Pilih bahasa OCR | Ada | VERIFIED | KEEP | M5 | Windows OCR: daftar dari sumber sendiri (E-216) |
 | Preferensi OCR (deskew, orientasi, quality) | Ada | DOCUMENTED | KEEP | M5 | |
 | OCR batch | Ada | DOCUMENTED | KEEP | M6 | |
-|/language pack management | Ada | DOCUMENTED | DEFER | M6 | |
+| Language pack management | Ada | DOCUMENTED | DEFER | M6 | |
 
 ## 6. Optimasi & batch
 
-| Fitur | Referensi | Kepastian | UnionPDF | Milestone |
+| Fitur | Referensi | Kepastian | UnionPDF | Milestone | Catatan |
 |---|---|---|---|---|---|
 | Preset kompresi | Ada (3 preset) | DOCUMENTED | KEEP | M6 | Reduced Size / Print Ready / Custom |
 | Resample gambar | Ada | DOCUMENTED | KEEP | M6 | |
@@ -162,7 +176,7 @@ Bukti: `E-401`, `E-406`, `E-407`, `E-408`.
 
 ## 7. Keamanan
 
-| Fitur | Referensi | Kepastian | UnionPDF | Milestone |
+| Fitur | Referensi | Kepastian | UnionPDF | Milestone | Catatan |
 |---|---|---|---|---|---|
 | Enkripsi password (AES-256) | Ada | DOCUMENTED | KEEP | M7 | Terukur (E-209) |
 | Password opening | Ada | DOCUMENTED | KEEP | M7 | |
@@ -174,7 +188,7 @@ Bukti: `E-401`, `E-406`, `E-407`, `E-408`.
 
 ## 8. Konversi
 
-| Fitur | Referensi | Kepastian | UnionPDF | Milestone |
+| Fitur | Referensi | Kepastian | UnionPDF | Milestone | Catatan |
 |---|---|---|---|---|---|
 | PDF → gambar (JPG/PNG/TIFF) | Ada | VERIFIED | KEEP | M9 | 21,3 ms/hlm (E-208) |
 | PDF → plain text | Ada | DOCUMENTED | KEEP | M9 | |
@@ -186,7 +200,7 @@ Bukti: `E-401`, `E-406`, `E-407`, `E-408`.
 
 ## 9. Tanda tangan
 
-| Fitur | Referensi | Kepastian | UnionPDF | Milestone |
+| Fitur | Referensi | Kepastian | UnionPDF | Milestone | Catatan |
 |---|---|---|---|---|---|
 | Gambar tanda tangan | Ada | DOCUMENTED | KEEP | M10 | |
 | Stempel tanda tangan | Ada | DOCUMENTED | KEEP | M10 | |
@@ -250,3 +264,93 @@ otomatis.
 | **Total** | **53** | **9** | **26** | **9** | **97** |
 
 Tidak ada fitur yang "KEEP" tanpa alasan — alasan tercatat per baris.
+
+---
+
+## 13. Capability matrix v2 — pasca-tiga-referensi (2026-10-21)
+
+**Status:** DRAFT untuk keputusan. Tidak ada baris di sini yang berarti fitur selesai.
+`SUPPORTED_BY_API` ≠ fitur selesai. Sumber fakta API: `docs/POST_ALL_REFERENCES_TECH_REVIEW.md` §2.
+
+### 13.1 Legenda
+
+| Kode | Arti |
+|---|---|
+| `API` | SUPPORTED_BY_API — API terdokumentasi ada; belum berarti benar/teruji |
+| `CUSTOM` | REQUIRES_CUSTOM_IMPLEMENTATION — tidak ada API tingkat tinggi; perlu kode sendiri |
+| `ENGINE+` | REQUIRES_ADDITIONAL_ENGINE — butuh engine/tool tambahan |
+| `UNPROVEN` | Belum terbukti; perlu spike |
+| `BLOCKED` | Terhalang keputusan/kondisi lain |
+| N / S / G | Nitro 14 / Stirling-PDF 3.2 / PDFgear 3.0 — bukti **statis** dari dokumen analisis |
+| P0 | Wajib dibuktikan sebelum baseline dipilih |
+| P1 | M1–M2 · P2 = M3–M7 · P3 = M8+ (penomoran milestone menunggu keputusan, lihat `RESTART_AUDIT.md` P-3) |
+
+### 13.2 Kebutuhan, bukti referensi, dan acceptance criteria
+
+| Req | Kapabilitas | Kebutuhan pengguna | Referensi (statis) | Acceptance criteria UnionPDF | Prioritas |
+|---|---|---|---|---|---|
+| CR-01 | Buka PDF (normal, terenkripsi, rusak ringan) | Membuka dokumen apa pun dengan error jujur | N, S, G | Fixture normal/terenkripsi/rusak: dibuka atau ditolak dengan pesan spesifik; tidak crash; password tidak dicatat | P0 |
+| CR-02 | Render, zoom, fit, thumbnail | Melihat dokumen dengan nyaman | N, S, G | Halaman terlihat dirender lebih dulu; render dibatalkan saat pindah halaman; hasil render cocok dengan engine pembanding (pixel diff dalam ambang yang ditetapkan sebelum uji) | P0 |
+| CR-03 | Seleksi, salin, cari teks | Mencari & mengutip | N, S, G | Fixture teks Latin + Unicode: hasil cari dan teks salinan sama dengan ground truth fixture | P1 |
+| CR-04 | Page ops: merge, split, extract, rotate, delete, reorder, insert | Menyusun dokumen | N, S, G (Copilot `extract-page`, `delete-page`, `insert-page`, `rotate-page`) | Jumlah/urutan/rotasi halaman benar; teks per halaman utuh; bookmark/link/form **sesuai scope yang ditetapkan** tetap valid; `qpdf --check` tanpa error | P0 |
+| CR-05 | Save As atomik + penanganan kegagalan | Input tidak pernah rusak | N, S, G | Input tidak berubah (hash sama); output via temp → verifikasi → rename; disk penuh/file terkunci/izin ditolak/cancel menghasilkan error jujur dan tanpa file parsial di lokasi akhir | P0 |
+| CR-06 | Tambah teks, gambar, watermark, header/footer, nomor halaman | Menandai dokumen | N, G (`WatermarkUtils`, `PageHeaderFooters`) | Konten muncul di render setelah buka ulang; teks overlay ditandai sebagai overlay | P2 |
+| CR-07 | Anotasi markup: highlight, underline, strikeout, squiggly, note, freetext, square, circle, ink, stamp | Meninjau dokumen | N, G (Copilot `add-annotation`) | Dibuat → Save As → dibuka ulang oleh engine yang sama **dan** engine independen: subtipe, rect, warna, isi sama; terlihat saat render | P0 |
+| CR-08 | Anotasi line, polygon, polyline, caret | Markup teknis | N | Sama dengan CR-07 | P2 |
+| CR-09 | Isi & simpan form (AcroForm) | Mengisi formulir | N, G (`FlattenWindow`) | Nilai text/checkbox/radio/choice bertahan setelah buka ulang di dua engine; appearance terlihat | P0 |
+| CR-10 | Membuat field form | Mendesain formulir | N (tab Forms) | Field baru dikenali sebagai field (nama, tipe, rect) oleh dua engine; dapat diisi | P0 (penilaian), P2 (fitur) |
+| CR-11 | Flatten anotasi/form | Membekukan hasil | N, G | Setelah flatten: tidak ada lagi objek anotasi/field; tampilan render setara sebelum flatten | P2 |
+| CR-12 | OCR → searchable | Mencari di dokumen pindaian | N (searchable vs editable), S (semantik OCRmyPDF), G (`ConvertToSearchablePdf`) | Teks tak terlihat sejajar dengan gambar; pencarian menemukan kata fixture; tidak diklaim "editable" | P2 |
+| CR-13 | Enkripsi, password, permission | Melindungi dokumen | N (4 algoritma), S (model 2 password), G (`protect-pdf`, `remove-password`) | Output terenkripsi meminta password di dua engine; password user ≠ owner ditegakkan; password tidak tersimpan/tercatat | P2 |
+| CR-14 | Secure redaction | Menghapus data sensitif | N (Redact ≠ Whiteout ≠ Mask), G (`PDFEraserUtil`) | Teks/gambar/vektor di area **tidak dapat diekstrak** oleh dua engine independen; tidak tersisa di content stream, XObject, anotasi, dan metadata yang dicakup; konten di luar area utuh; label UI membedakan redaksi vs penutup visual | P0 (penilaian), P2 (fitur) |
+| CR-15 | Sanitasi metadata/JS/lampiran | Privasi dokumen | N (12 channel) | Channel yang dicakup kosong setelah sanitasi, diverifikasi dengan pembaca struktur | P2 |
+| CR-16 | Signature visual (gambar) | Menandai persetujuan | N, G | Ditandai jelas sebagai **gambar**, bukan signature kriptografis | P2 |
+| CR-17 | Signature kriptografis + validasi | Keabsahan dokumen | N, G (`DigitalSignatures`) | Ditandatangani dengan sertifikat uji; divalidasi oleh validator independen; perubahan pasca-tanda-tangan terdeteksi | P0 (penilaian jalur), P3 (fitur) |
+| CR-18 | Kompresi/optimasi | Ukuran file | N, S, G (`compress`) | Laporan delta; default noninvasif; output valid `qpdf --check` | P2 |
+| CR-19 | PDF → gambar/teks | Ekspor | N, S, G | Gambar & teks sesuai fixture | P2 |
+| CR-20 | Office ↔ PDF | Konversi | N (add-in), S (LibreOffice eksternal), G (Syncfusion) | Tidak dijanjikan layout identik; uji pada fixture | P3 |
+| CR-21 | Edit teks existing | Koreksi isi | N (Edit Text), S (dua jalur), G (`edit-text`) | Ditentukan setelah spike; dibedakan dari overlay | P3 |
+| CR-22 | Automation: preset, antrean, retry, recovery | Pekerjaan berulang | S (pipeline) | Satu command registry untuk UI/shortcut/automation; job dapat dibatalkan & dilanjutkan sesuai kontrak | P1 |
+| CR-23 | AI adapter opsional | Bantuan opsional | G (Copilot 27 aksi) | Fungsi inti jalan tanpa AI; AI hanya mengusulkan command + parameter; validasi & eksekusi di aplikasi; opt-in | P3 |
+
+### 13.3 Status teknis per baseline
+
+A = Tauri + React/TS + Rust + PDFium + QPDF · B = Tauri + React/TS + Rust + PDFium +
+Java/PDFBox · C = Tauri + React/TS + Rust + MuPDF/PyMuPDF worker.
+Kolom "Lama (benchmark)" = implementasi Python/PySide6/PyMuPDF yang ada, diukur
+2026-10-20 (`MEASURED-OLD`).
+
+| Req | A | B | C | Lama (benchmark) | Risiko utama | Status uji kandidat |
+|---|---|---|---|---|---|---|
+| CR-01 | `API` PDFium | `API` PDFium | `API` MuPDF | PASS (test) | Dokumen rusak di luar fixture | `UNPROVEN` |
+| CR-02 | `API` PDFium | `API` PDFium | `API` MuPDF atau PDFium | PASS S1 | Thread-safety PDFium (serialisasi) | `UNPROVEN` |
+| CR-03 | `API` PDFium | `API` PDFium | `API` MuPDF | PASS S1 | Unicode/RTL | `UNPROVEN` |
+| CR-04 | `API` PDFium (import/delete/rotate/move) atau QPDF | `API` PDFium atau PDFBox | `API` MuPDF | PASS S2 | Struktur (bookmark/link/form) saat import | `UNPROVEN` |
+| CR-05 | `CUSTOM` (Rust) + `API` save | `CUSTOM` + `API` | `CUSTOM` + `API` | Unit test PASS; belum dipakai UI | Konsistensi pemilik mutasi | `UNPROVEN` |
+| CR-06 | `API` PDFium objects | `API` | `API` | PASS S6 | Font/Unicode | `UNPROVEN` |
+| CR-07 | `API` — kesepuluh subtipe termasuk 13 subtipe yang dapat dibuat PDFium (*experimental*) | `API` PDFium atau PDFBox | `API` MuPDF | PASS S3 (sebagian subtipe) | Appearance stream pada pembaca lain | `UNPROVEN` |
+| CR-08 | `CUSTOM` (tidak dapat dibuat PDFium) | `API` PDFBox (kelas Polygon/Polyline/Caret) | `API` MuPDF (`NOT-VERIFIED`) | tidak diuji | Appearance | `UNPROVEN` |
+| CR-09 | `API` FORM_* | `API` PDFium atau PDFBox | `API` MuPDF | PASS S4 | Appearance setelah isi | `UNPROVEN` |
+| CR-10 | `CUSTOM` tingkat rendah | `API` PDFBox (contoh resmi) | `API` MuPDF | PASS S4 | Validitas struktur field | `UNPROVEN` |
+| CR-11 | `API` `FPDFPage_Flatten` | `API` PDFium | `API` MuPDF (`NOT-VERIFIED`) | tidak diuji | Mutu flatten | `UNPROVEN` |
+| CR-12 | `ENGINE+` OCR + `CUSTOM` text layer | idem | idem | Windows OCR PASS S10 (bersyarat) | Akurasi, bahasa | `UNPROVEN` |
+| CR-13 | `ENGINE+` QPDF (PDFium tidak menulis enkripsi) | `API` PDFBox (`NOT-VERIFIED`) | `API` MuPDF | PASS S8 | Lisensi QPDF `NOT-VERIFIED` | `UNPROVEN` |
+| CR-14 | `CUSTOM` penuh | `CUSTOM` (tanpa API redaksi) | `API` `apply_redactions` (dengan catatan dok) | PASS S5 (dokumen sintetis sederhana) | Kebocoran data tersisa | `UNPROVEN` |
+| CR-15 | `CUSTOM` | `CUSTOM` + `API` parsial | `API` parsial | tidak diuji | Channel terlewat | `UNPROVEN` |
+| CR-16 | `API` stamp/image | `API` | `API` | tidak diuji | Salah label | `UNPROVEN` |
+| CR-17 | `BLOCKED` — tidak ada library signing terverifikasi untuk stack ini | `API` PDFBox + Bouncy Castle (contoh resmi) | `UNPROVEN` | tidak diuji | Kunci privat, validasi | `UNPROVEN` |
+| CR-18 | `ENGINE+` QPDF (struktural) | `API` PDFBox (kompresi saat simpan) | `API` MuPDF | tidak diuji | Lossy vs lossless | `UNPROVEN` |
+| CR-19 | `API` PDFium | `API` PDFium | `API` MuPDF | PASS S7 | — | `UNPROVEN` |
+| CR-20 | `ENGINE+` (mis. LibreOffice) | idem | idem | tidak diuji | Ukuran, mutu layout | `UNPROVEN` |
+| CR-21 | `CUSTOM` | `CUSTOM` (PDFBox content stream) | `CUSTOM` | tidak diuji | Font subset, reflow | `UNPROVEN` |
+| CR-22 | `CUSTOM` (Rust job manager) | `CUSTOM` + IPC JVM | `CUSTOM` + IPC Python | `JobRunner` ada, belum dipakai UI | Recovery worker crash | `UNPROVEN` |
+| CR-23 | `CUSTOM` | `CUSTOM` | `CUSTOM` | tidak ada | Privasi | `UNPROVEN` |
+
+### 13.4 Dependency, lisensi, dan custom work per baseline
+
+| Item | A | B | C |
+|---|---|---|---|
+| Dependency tambahan di luar shell | PDFium (biner), QPDF (biner) | PDFium (biner), JRE/JVM, PDFBox, Bouncy Castle | Runtime Python + PyMuPDF (atau MuPDF C + FFI) |
+| Lisensi engine | PDFium BSD-style; QPDF `NOT-VERIFIED`; `pdfium-render` MIT OR Apache-2.0 | PDFium BSD-style; PDFBox Apache-2.0; Bouncy Castle `NOT-VERIFIED` | MuPDF/PyMuPDF **AGPL-3.0** atau komersial |
+| Custom work terbesar | Field authoring, anotasi di luar 13 subtipe, redaksi penuh, signature (tanpa library) | Redaksi, integrasi IPC JVM | Integrasi IPC Python/FFI, packaging Python |
+| Pemilik mutasi dokumen | PDFium dan QPDF (harus satu pemilik per revisi) | PDFium dan PDFBox (harus satu pemilik per revisi) | MuPDF |

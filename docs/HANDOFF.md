@@ -2,13 +2,145 @@
 
 > Untuk sesi berikutnya. Baca bersama `PROJECT_STATE.md` dan `TASKS.md`.
 
-**Sesi terakhir:** `2026-10-20T1800+0700` · 2026-10-20 18:29 WIB (UTC+7)
-**Fase:** M0 — Foundation · Fase A (analisis referensi) **DITUTUP**
-**Sesi sebelumnya:** `2026-10-20T1700+0700` · `2026-10-20T1624+0700`
+**Sesi terakhir:** `2026-10-21T1114+0700` — 2026-10-21 (WIB, UTC+7)
+**Fase:** Controlled restart — keputusan A-1…A-9 diterapkan; spike terbatas (lihat §00)
+**Sesi sebelumnya:** `2026-10-21T1057+0700` — `2026-10-21T1000+0700` — `2026-10-21T0932+0700` — `2026-10-21T0851+0700`
+
+> **Stack final dan cleanup BELUM DISETUJUI.** Tidak ada commit, push, instalasi,
+> scaffold, atau perubahan lisensi yang diizinkan. Sesi baru **tidak** berarti izin baru.
 
 ---
 
-## 1. Posisi saat ini
+## 00. Pembaruan sesi `2026-10-21T1114+0700`
+
+Keputusan pengguna A-1…A-9 tercatat di `docs/PROJECT_STATE.md` § "Status persetujuan".
+Diterapkan: redaksi dokumen analisis (A-3), perbaikan `TASKS.md` + indeks sesi (A-4),
+mapping milestone (A-8), pembaruan terbatas `AGENTS.md` (A-9), kriteria v2 di
+`STACK_EVALUATION.md` §10.2b (A-1, status REVIEW). Commit lokal (A-5) dan spike terbatas
+(A-6/A-7): lihat `docs/sessions/2026-10-21T1114+0700.md`.
+
+§0 di bawah adalah posisi GATE A revisi 1 (histori sesi `2026-10-21T1057+0700`);
+PUB-1 dan DOC-1 yang disebut di sana sudah ditangani.
+
+## 0. Posisi GATE A revisi 1 — controlled restart (2026-10-21, histori)
+
+**Langkah terakhir yang berhasil:** audit read-only + proposal GATE A revisi 1 ditulis
+dalam batas izin terbatas pengguna:
+`docs/RESTART_AUDIT.md`, `docs/CLEANUP_PLAN.md`, `docs/POST_ALL_REFERENCES_TECH_REVIEW.md`
+(baru); `docs/STACK_EVALUATION.md` §10, `docs/FEATURE_MATRIX.md` §13,
+`docs/TECH_SPIKES.md` §R (ditambahkan; isi lama dipertahankan);
+`docs/PROJECT_STATE.md`, file ini; `docs/sessions/2026-10-21T1057+0700.md`.
+
+**Koreksi teknis yang sudah dicatat:** PDFBox 3.0 minimum Java 8; PDFium punya
+`FPDFPage_CreateAnnot` (13 subtipe) tetapi tidak membuat field form, tidak menulis
+enkripsi, signature hanya introspeksi, tidak ada API redaksi; QPDF bukan engine ekstraksi
+teks/redaksi; `pdfium-binaries` bukan build resmi Google. Rincian:
+`docs/RESTART_AUDIT.md` §8.
+
+**Langkah gagal / temuan yang menghentikan:** tidak ada kegagalan alat. Temuan blocker:
+**PUB-1** — project token PostHog pihak ketiga utuh di `docs/ANALYSIS_STIRLING_PDF.md`
+baris 53 & 335 (saat itu di luar izin). *Pembaruan 2026-10-21 sesi 1114: disamarkan;
+klasifikasi dikoreksi menjadi project token publik, bukan personal API key.*
+
+**Tidak disentuh:** `src/`, `tests/`, `spikes/`, `scripts/`, dependency, `LICENSE`,
+`NOTICE`, `AGENTS.md`, `README.md`, `TASKS.md`, `SESSION_LOG.md`, `ANALYSIS_*.md`,
+metadata Git.
+
+### 0.1 Daftar approval yang ditunggu
+
+| ID | Keputusan | Pilihan |
+|---|---|---|
+| A-1 | Urutan prioritas kriteria E-1…E-9 (`STACK_EVALUATION.md` §10.2) | setuju / ubah |
+| A-2 | Toleransi ukuran distribusi (installer dan terpasang) | angka dari pengguna |
+| A-3 | Izin menyamarkan kunci PostHog di `ANALYSIS_STIRLING_PDF.md` + perlakuan path `<USERPROFILE>\…` di tiga dokumen analisis | ya / tidak; samarkan path ya / tidak |
+| A-4 | Izin memperbaiki defek `TASKS.md` (DOC-1) tanpa mengubah makna | ya / tidak |
+| A-5 | Pengamanan 13 file (`CLEANUP_PLAN.md` Fase 1) | 1a commit lokal tanpa push / 1b backup independen (+lokasi) / keduanya / tunda |
+| A-6 | Eksekusi spike fase 1 (RS-00, RS-01, RS-02/03/05 bagian PDFium) termasuk instalasi crate `pdfium-render` dan biner PDFium dari sumber yang disetujui di RS-00 | ya / tidak |
+| A-7 | Lokasi eksperimen `experiments/restart/` + output di-gitignore | ya / lokasi lain |
+| A-8 | Penomoran milestone: protokol restart (M9 Signature, M10 Release) atau `ROADMAP.md` lama | protokol / lama |
+| A-9 | Ubah referensi `AGENTS.md` §5 ke `POST_ALL_REFERENCES_TECH_REVIEW.md` | ya / tidak |
+
+**Belum diajukan sekarang (menunggu hasil spike):** keputusan stack (K-4), cleanup
+Fase 2–3, ratifikasi ulang lisensi (K-7).
+
+### 0.2 Perintah berikutnya (read-only, aman)
+
+```powershell
+cd D:\dokumentasi\Project\UnionPDF
+git status --short                              # harus: 13 file pra-restart + dokumen sesi 1057
+.\.venv\Scripts\python.exe scripts\lint.py      # skrip read-only; dicek isinya 2026-10-21
+```
+
+Hasil yang diharapkan: tidak ada perubahan di `src/`, `tests/`, `spikes/`; lint 0 temuan.
+
+### 0.3 Risiko
+
+- Snapshot REA berada di folder temp sistem — bisa hilang sebelum backup disetujui.
+- Commit sebelum PUB-1 ditangani akan mengabadikan token pihak ketiga di histori
+  (*sudah ditangani sesi 1114*).
+- Membaca §1–§10 di bawah tanpa §0 dapat menyesatkan: bagian itu histori pra-restart
+  (mis. "jangan buka ulang perbandingan stack" sudah tidak berlaku).
+
+### 0.4 Lima langkah kelanjutan
+
+1. Tunggu jawaban A-1 … A-9; jangan menafsirkan diam sebagai persetujuan.
+2. Bila A-3/A-4 disetujui: perbaiki PUB-1 dan DOC-1, jalankan `lint.py`.
+3. Bila A-5 disetujui: jalankan Fase 1 persis seperti `CLEANUP_PLAN.md` (per-file, tanpa push).
+4. Bila A-6/A-7 disetujui: spike fase 1 sesuai `TECH_SPIKES.md` §R; catat hasil dan bukti.
+5. Ajukan keputusan baseline berdasarkan hasil spike → ADR baru.
+
+### 0.5 Jangan diulang
+
+- Audit read-only workspace 2026-10-21 (`RESTART_AUDIT.md`).
+- Verifikasi sumber primer PDFium/PDFBox/QPDF/MuPDF/pdfium-binaries
+  (`POST_ALL_REFERENCES_TECH_REVIEW.md` §5) — ulangi hanya bila versi target berubah.
+- Analisis REA tiga referensi.
+
+---
+
+## 1. Posisi sesi analisis (2026-10-21 pagi — histori)
+
+**Titik berat proyek berubah.** Pengguna menyatakan dokumen lama di workspace
+dianggap belum sah karena analisis belum mendahului keputusan, dan meminta
+analisis referensi lebih dulu. Sesi ini memenuhi permintaan itu.
+
+- **Dokumen analisis baru (otoritatif untuk fase ini):**
+  `docs/ANALYSIS_NITRO14.md` — analisis mandiri Nitro PDF Pro 14.41.0.15:
+  inventaris arsitektur, katalog fitur penuh 15 domain, deep-dive 25 fitur,
+  12 operasi REA MCP, status unknown, dan indeks bukti.
+- **Bukti dapat diverifikasi ulang:** `scripts/verify_analysis_corpus.py`
+  mencocokkan 8 angka kunci dokumen dengan korporas — saat ini **8/8 OK (exit 0)**.
+- **Korporas di-refresh** (re-run 5 skrip read-only). 3 dari 4 file korporas
+  **identik byte-per-byte** dengan run sebelumnya, jadi instalasi referensi tidak
+  berubah; angka lama tetap berlaku kecuali koreksi di §0.2 dokumen baru.
+- **Koreksi angka lama:** 36 `.mui` (bukan 35) - **13 tab bernama** (bukan 14) -
+  228 grup toolbar kontekstual (bukan 90) - 20 model bahasa OCR (cocok).
+- **Temuan baru utama:** arsitektur **out-of-process** (`nitro_module_loader.exe`),
+  kontrak plugin `handshake_v3_data`, PDF/A **preflight + laporan validasi**,
+  XFA sebagai **aplikasi web lokal terpisah** (109,6 MB), Ghostscript **GPL**,
+  4 algoritma enkripsi, mode OCR *searchable* vs *searchable-and-editable*.
+- **Target kedua selesai** — `docs/ANALYSIS_STIRLING_PDF.md`: Stirling-PDF 3.2.0
+  (Windows). Arsitektur: shell **Tauri/Rust + WebView2** → backend **Spring Boot 4.1.1 +
+  Jetty 12** di `127.0.0.1:8080` (JRE 25.0.4.1 ter-bundel) → engine **Apache PDFBox 3.0.8 +
+  PDFium (jpdfium)**. 177 controller · 248 dependency · 47 jalur API · 84 chunk UI React.
+  Temuan kunci: fitur berat (**Ghostscript, QPDF, Tesseract, LibreOffice**) bergantung tool
+  eksternal yang **tidak dibundel**; model *open-core* (inti MIT + paket proprietary) dengan
+  tier lisensi di server; **telemetri PostHog** (project token tertanam) dan
+  `include-stacktrace=always`.
+  Bukti: `scripts/verify_stirling_artifact.py` (10/10 OK). Installed copy di
+  `C:\Program Files\Stirling PDF\` **byte-identik** dengan MSI yang dianalisis.
+- **Target ketiga selesai** — `docs/ANALYSIS_PDFGEAR.md`: PDFgear 3.0.0 =
+  **.NET Framework 4.6.2 / WPF** dengan **4 pustaka PDF komersial** (Pdfium.Net, Patagames,
+  SautinSoft PDF Focus, Syncfusion), **2 engine OCR ter-bundel** (Tesseract 4.1.1 + NsOCR,
+  227,5 MB), **Copilot 27 aksi** dengan konfirmasi 11 bahasa, telemetri GA4 + Google Ads +
+  Sentry, dan `PaidUserVisibilityConverter` (fitur berbayar). Verifikasi
+  `scripts/verify_pdfgear_artifact.py` (12/12 OK). Installer 132 MB ditolak REA
+  (batas 64 MiB) → analisis memakai instalasi aktif.
+
+Stack **tidak diubah** (ADR-001: Python 3.13 + PySide6 6.11 + MuPDF 1.27 +
+Windows OCR), tetapi **belum diratifikasi ulang** setelah analisis baru ini.
+
+## 1b. Posisi sebelumnya (2026-10-20 — histori)
 
 Tiga milestone terpenuhi sekaligus:
 - **REA ditutup.** Enam unknown ditutup (U-08/U-10/U-11/U-12 *closed*,
@@ -39,7 +171,14 @@ description, homepage, dan 9 topik. Verifikasi: 89 blob di remote, `LICENSE` /
 
 ## 4. Berkas yang sedang dimodifikasi
 
-Tidak ada. Semua perubahan tersimpan.
+Tidak ada file sumber yang sedang diedit. File **baru** (belum di-commit):
+
+| File | Status |
+|---|---|
+| `docs/ANALYSIS_NITRO14.md` | baru, belum di-commit (menunggu izin) |
+| `scripts/verify_analysis_corpus.py` | baru, belum di-commit |
+| `docs/sessions/2026-10-21T0851+0700.md` | log sesi |
+| `docs/TASKS.md`, `docs/PROJECT_STATE.md`, `docs/HANDOFF.md`, `docs/SESSION_LOG.md` | checkpoint |
 
 ## 5. Perubahan belum terverifikasi
 
@@ -51,14 +190,18 @@ diuji visual, `RenderCache` belum diukur memory-nya.
 
 ```powershell
 cd D:\dokumentasi\Project\UnionPDF
-.\.venv\Scripts\python.exe -m pytest tests -q
+.\.venv\Scripts\python.exe scripts\verify_analysis_corpus.py   # cek angka analisis
+.\.venv\Scripts\python.exe scripts\lint.py                      # 0 temuan
+.\.venv\Scripts\python.exe -m pytest tests -q                     # baseline tidak boleh turun
 ```
 
-Setelah itu, task aktif berikutnya adalah `UPDF-012` (lihat `TASKS.md`).
-
+Setelah itu: **baca `docs/ANALYSIS_NITRO14.md`**, lalu jawab 5 blok ratifikasi
+(stack, scope REPLACE/DEFER/REJECT, prioritas M8, publikasi bukti mentah,
+toleransi ukuran EXE). Task implementasi (`UPDF-012`) menunggu keputusan
+tersebut agar tidak membangun di atas asumsi lama.
 ## 7. Hasil yang diharapkan
 
-- `pytest` → 55 passed (baseline saat ini).
+- `pytest` → 69 passed (tercatat 2026-10-20 18:29; tidak dijalankan ulang sejak itu).
 - Semua task baru harus menambah test; **jangan** menurunkan jumlah test.
 
 ## 8. Keputusan terbuka
@@ -76,11 +219,21 @@ Setelah itu, task aktif berikutnya adalah `UPDF-012` (lihat `TASKS.md`).
 
 - Inventaris folder referensi (nama modul + versi) — **jangan** ulangi.
 - Spikes S1–S12 — **jangan** ulangi; hasil ada di `spikes/out/*.json`.
-- Perbandingan stack A/B/C/B' + pembobotan — **jangan** buka ulang; sudah
-  dikonfirmasi pada §18 `POST_REA_TECH_REVIEW.md`.
+- ~~Perbandingan stack A/B/C/B' + pembobotan — jangan buka ulang~~ —
+  **tidak berlaku lagi**: pengguna membuka ulang perbandingan stack pada controlled
+  restart 2026-10-21 (lihat `STACK_EVALUATION.md` §10). "Dikonfirmasi" pada §18
+  `POST_REA_TECH_REVIEW.md` adalah evaluasi agent, bukan persetujuan pengguna.
 - **Ekstraksi UI biner v14** (14.452 string, 783 kontrol) — **jangan** ulangi;
   hasilnya sudah di `docs/research/*.json` (lokal, tidak di-commit).
 - Inventaris bahasa OCR (20 paket) — **jangan** ulangi.
+- **Re-run ekstraksi korporas v14 (2026-10-21)** — **jangan** ulangi; hasilnya
+  identik dengan run sebelumnya (lihat `docs/ANALYSIS_NITRO14.md` §0.2). Butuh
+  hanya jika instalasi referensi berubah.
+- **REA pada `np_pdfa.dll` & `nitro_module_loader.exe`** — **jangan** ulangi;
+  12 operasi dan evidence ID tercatat di `docs/ANALYSIS_NITRO14.md` §6.1.
+- **Analisis Stirling-PDF 3.2.0** (2026-10-21) — **jangan** ulangi; 12 operasi REA
+  tercatat di `docs/ANALYSIS_STIRLING_PDF.md` §9.1. Ekstraksi payload MSI memakai
+  `msiexec /a` ke temp (read-only) — ulangi hanya bila versi berubah.
 - Penyiapan venv + daftar dependency — sudah ada di `requirements*.txt`.
 - Struktur `src/unionpdf/` — sudah sesuai ADR-001.
 - Berkas `LICENSE` + `NOTICE` + repo publik — sudah dibuat.
@@ -89,16 +242,15 @@ Setelah itu, task aktif berikutnya adalah `UPDF-012` (lihat `TASKS.md`).
 
 ## 10. Lima langkah berikutnya
 
-1. **UPDF-012** — sambungkan `Save As` ke `atomic_write` + verifikasi →
+1. **Baca dua dokumen analisis** — `docs/ANALYSIS_NITRO14.md` (target 1) dan
+   `docs/ANALYSIS_STIRLING_PDF.md` (target 2).
+2. **Ratifikasi 5 blok** (§8): stack, scope REPLACE/DEFER/REJECT, prioritas M8,
+   publikasi bukti mentah, toleransi ukuran EXE.
+3. **Tentukan perlakuan dokumen lama** — tulis ulang mengikuti analisis baru, atau jadikan
+   arsip yang digantikan dokumen baru.
+4. **Commit** dokumen + 2 skrip verifikasi (menunggu izin).
+5. **UPDF-012** — sambungkan `Save As` ke `atomic_write` + verifikasi →
    `src/unionpdf/ui/main_window.py`, `src/unionpdf/infrastructure/file_store.py`.
-2. **UPDF-013** — operasi halaman di UI (putar, hapus, gabung) memakai
-   `JobRunner` + progress + cancel → `src/unionpdf/ui/`, `application/jobs.py`.
-3. **UPDF-015** — spike edit teks existing, **diarahkan T-12**: uji pendekatan
-   annotate-layer (redact + reinsert) lebih dulu sebelum content-stream surgery
-   → `spikes/spike_06_text_edit.py`.
-4. **UPDF-014** — pasang PyInstaller di venv dev, build one-dir, **ukur**
-   ukuran → `docs/PACKAGING.md`, `docs/BLOCKERS.md` B-03.
-5. **UPDF-022** — checklist pesan error dari `docs/research/V14_UI_EVIDENCE_SUMMARY.md`.
 
 ## 11. Peringatan
 

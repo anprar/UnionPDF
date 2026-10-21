@@ -1,7 +1,45 @@
-# ROADMAP.md — Milestone M0–M12
+# ROADMAP.md — Milestone M0–M10 (protokol restart) · histori M0–M12
 
 Roadmap **boleh direvisi** berdasarkan bukti. Setiap perubahan urutan harus
 dicatat di `CHANGELOG.md` dengan alasannya.
+
+## Penomoran aktif — protokol restart (keputusan pengguna A-8, 2026-10-21)
+
+Stack final **belum disetujui**; isi tiap milestone bergantung pada hasil spike.
+Status milestone di bagian histori di bawah merujuk ke **implementasi lama**.
+
+| Milestone | Isi |
+|---|---|
+| M0 | Foundation — controlled restart, dokumentasi, persetujuan stack, spike, build & packaging dasar |
+| M1 | Viewer — open, render, zoom, fit, navigasi, thumbnail, search/select |
+| M2 | Page operations — merge, split, extract, rotate, delete, reorder, insert, Save As |
+| M3 | Content additions — teks/gambar, watermark, header/footer, nomor halaman, stamp |
+| M4 | Annotations/forms — markup, komentar, isi/simpan, desain form bertahap, flatten bila teruji |
+| M5 | OCR — bahasa, searchable PDF, progress/cancel, hasil per halaman |
+| M6 | Automation — preset, antrean batch, retry, komposisi workflow, recovery |
+| M7 | Security — password, sanitasi, secure redaction, pengujian output |
+| M8 | Advanced editing/conversion — edit teks existing (sesuai spike), font/layout, konversi PDF/Office (sesuai kapabilitas terbukti) |
+| M9 | Signature/compliance — signature visual & kriptografis, validasi, PDF/A & aksesibilitas sesuai scope terbukti |
+| M10 | Release — packaging, uji mesin bersih, notices, dokumentasi pengguna, known limitations |
+
+### Mapping dari penomoran lama
+
+| Lama | Baru | Catatan |
+|---|---|---|
+| M0–M5 | M0–M5 | Nama M3 menjadi "Content additions" |
+| M6 Optimization & Batch | M6 Automation | Kompresi/optimasi sementara di M6 — protokol tidak menyebut kompresi; penempatan final menunggu keputusan |
+| M7 Security | M7 Security | — |
+| M8 Advanced Editing | M8 | — |
+| M9 Conversion | M8 | Konversi digabung ke M8 |
+| M10 Signatures | M9 | Ditambah compliance |
+| M11 Modern Workflows | M6 | Command palette, preset, batch resumable, CLI, preflight |
+| M12 Release Hardening | M10 | PDF/A & PDF/UA (dulu M12) → M9; AI opsional: penempatan menunggu keputusan |
+
+Task ID tidak berubah (`docs/TASKS.md` §"Mapping milestone").
+
+---
+
+## Histori — penomoran M0–M12 (sebelum 2026-10-21)
 
 Status milestone:
 

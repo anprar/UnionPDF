@@ -1,6 +1,9 @@
 # TECH_SPIKES.md — Hasil Technical Spike
 
-**Status:** selesai untuk M0. Spikes S1–S5 dijalankan dan menghasilkan bukti terukur.
+**Status:** S1–S12 tercatat (S12 = NO-GO untuk klaim packaging). Semua angka berlaku
+untuk **stack lama** (Python + PySide6 + PyMuPDF) dan sejak 2026-10-21 berperan sebagai
+**benchmark**, bukan bukti untuk kandidat stack baru. Rencana spike restart: **§R**
+(belum dieksekusi).
 **Sesi:** `2026-10-20T1624+0700`
 **Mesin:** Windows 11 build 26300, x64, 12 core, 16 GB (RAM terpasang tidak diverifikasi).
 **Python:** 3.13.9 (64-bit) — `D:\dokumentasi\Project\UnionPDF\.venv`
@@ -278,3 +281,60 @@ one-dir lebih dulu untuk mengukur, lalu one-file bila perlu.
 - Ukuran EXE final.
 - Signer kriptografis (M10).
 - Office → PDF (M9).
+
+---
+
+## R. Rencana spike restart (2026-10-21) — PERENCANAAN SAJA
+
+| Field | Nilai |
+|---|---|
+| Status | **PLANNED** — tidak ada spike yang dibuat, di-scaffold, atau dijalankan |
+| Sesi | `2026-10-21T1057+0700` |
+| Persetujuan eksekusi | **Belum ada** (K-5 = perencanaan saja; K-6 instalasi belum disetujui) |
+| Baseline | A = PDFium + QPDF · B = PDFium + Java/PDFBox · C = MuPDF/PyMuPDF worker (semua di bawah Tauri + React/TS + Rust) |
+| Benchmark | Implementasi lama + S1–S12 (fixture yang sama dijalankan juga pada implementasi lama bila relevan) |
+
+### R.1 Lokasi dan aturan (usulan, belum dibuat)
+
+- Lokasi usulan: `experiments/restart/<RS-ID>-<baseline>/`, terpisah dari `src/`,
+  `tests/`, dan `spikes/` lama. Folder output diusulkan di-gitignore.
+- Fixture **sintetis** dibuat oleh generator yang dicatat (nama alat, versi, parameter);
+  tidak memakai dokumen pribadi atau dokumen referensi proprietary.
+- **Hindari bias satu engine:** fixture yang dipakai menguji engine X dibuat oleh engine
+  lain; verifikasi output memakai minimal **satu pembaca independen** selain engine yang
+  diuji.
+- Pembaca independen yang **sudah ada** di mesin ini tanpa instalasi baru: PyMuPDF
+  1.27.2.2 di `.venv` (berguna untuk memverifikasi A dan B; untuk C dibutuhkan pembaca
+  lain, mis. PDFium).
+- Semua angka dicatat apa adanya; target performa **tidak** dikarang. Toleransi ukuran
+  ditetapkan pengguna sebelum RS-09.
+- Format catatan tiap spike: pertanyaan · input · langkah · go · no-go · hasil · bukti ·
+  keterbatasan · keputusan.
+
+### R.2 Daftar spike dan kriteria
+
+| ID | Pertanyaan | Baseline | Input | Go | No-go | Butuh instalasi (belum disetujui) |
+|---|---|---|---|---|---|---|
+| RS-00 | Biner PDFium mana yang provenance-nya dapat diterima? | A, B (C bila memakai PDFium) | Metadata rilis: upstream revision, pembangun, patch, workflow run, checksum penerbit, atestasi | Provenance tercatat lengkap dan diterima pengguna | Provenance tidak dapat ditelusuri atau ditolak pengguna | Unduh biner PDFium (atau toolchain build) |
+| RS-01 | Apakah render, zoom, thumbnail, ekstraksi & pencarian teks benar dan dapat dibatalkan? | A, B (PDFium); C (MuPDF) | 5 fixture: ukuran halaman campuran, Latin, Unicode/Arab, gambar, 500 halaman | Semua halaman dirender; teks = ground truth; permintaan render usang dapat dibatalkan; waktu halaman pertama & RAM **dicatat** | Crash, teks salah pada fixture Latin, atau render tidak dapat dibatalkan | `pdfium-render` (crate), PDFium |
+| RS-02 | Apakah anotasi yang dibuat tersimpan dan terbaca ulang dengan benar? | A (PDFium), B (PDFium & PDFBox), C (MuPDF) | Halaman kosong + halaman teks; subtipe CR-07 (+ CR-08 untuk B/C) | Setelah Save As & buka ulang: subtipe, rect, warna, isi sama di engine sendiri **dan** pembaca independen; area anotasi tidak kosong saat dirender | Subtipe P0 hilang/berbeda, atau tanpa appearance di pembaca independen tanpa jalur perbaikan | sama dengan RS-01; PDFBox (B) |
+| RS-03 | Apakah form dapat diisi dan disimpan? | A, B, C | AcroForm sintetis: text, checkbox, radio, choice (dibuat engine lain) | Nilai & appearance bertahan setelah buka ulang di dua engine | Nilai hilang, appearance basi, atau struktur field rusak | idem |
+| RS-04 | Apakah **field form baru** dapat dibuat? (dinilai terpisah dari RS-03) | A (kustom tingkat rendah, time-box), B (PDFBox), C (MuPDF) | Halaman kosong | Field text + checkbox dikenali sebagai field (nama, tipe, rect) oleh dua engine dan dapat diisi | Field tidak dikenali/tidak dapat diisi; untuk A: biaya kustom melampaui time-box yang ditetapkan | idem |
+| RS-05 | Apakah page ops mempertahankan struktur sesuai scope? | A (PDFium/QPDF), B (PDFium/PDFBox), C (MuPDF) | Fixture dengan bookmark, link internal, anotasi, field form, 3 ukuran halaman | Jumlah/urutan/rotasi benar; teks per halaman utuh; item struktur **dalam scope yang ditetapkan sebelum uji** tetap valid; pemeriksa struktur tanpa error | Halaman/teks salah, atau item dalam scope rusak tanpa jalur perbaikan | idem; pemeriksa struktur (mis. QPDF) |
+| RS-06 | Apakah Save As atomik dan kegagalan ditangani jujur? | Host (independen baseline) + engine | Fixture biasa; injeksi kegagalan: file tujuan terkunci, folder read-only, error tulis tersimulasi, cancel di tengah, proses worker dimatikan | Hash input tidak berubah; tidak ada file parsial di lokasi akhir; temp milik job dibersihkan; pesan error spesifik | Input berubah, file parsial dilaporkan sukses, atau error generik | Shell Tauri minimal (**scaffold butuh persetujuan**) |
+| RS-07 | Apakah redaksi benar-benar menghapus data? | A (kustom), B (kustom), C (`apply_redactions`) | Fixture dengan rahasia di: teks, teks dalam XObject, gambar, vektor, anotasi, nilai field, metadata Info/XMP, teks tersembunyi | Rahasia **tidak** ditemukan oleh ekstraksi dua engine dan pemindaian stream terdekompresi pada channel yang dicakup; piksel area kosong; konten di luar area utuh; channel yang tidak dicakup didaftar | Kebocoran pada channel yang diklaim tercakup | idem |
+| RS-08 | Adakah jalur signature kriptografis dengan library terpelihara? | A (cari library; bila tidak ada → `BLOCKED`), B (PDFBox + Bouncy Castle), C (`UNPROVEN`) | Sertifikat uji buatan sendiri (mis. `keytool` dari JDK/JRE yang ada — keberadaan alat belum diperiksa) | Tanda tangan valid menurut validator independen; perubahan pasca-tanda-tangan terdeteksi; kunci privat tidak dicatat | Tidak ada library terpelihara, atau validasi independen gagal | PDFBox + Bouncy Castle (B); library lain (A/C) |
+| RS-09 | Berapa ukuran dan resource usage paket, dan apakah berjalan tanpa toolchain dev? | A, B, C | Build rilis per baseline | Ukuran installer, ukuran terpasang, runtime eksternal, RAM idle & setelah buka fixture, waktu startup & halaman pertama **dicatat**; aplikasi berjalan dengan PATH tanpa toolchain dev | Gagal berjalan tanpa toolchain, atau melampaui toleransi ukuran pengguna | Tauri CLI, bundler; JRE/jlink (B); bundler Python (C) |
+| RS-10 | Apakah kegagalan worker ditangani tanpa merusak dokumen atau membekukan UI? | B (JVM), C (Python); A bila ada proses terpisah | Worker dimatikan, hang, respons rusak | UI tetap responsif; job gagal dengan status jelas; worker dapat dimulai ulang; tidak ada file rusak | UI membeku, file rusak, atau job "sukses" palsu | idem |
+
+### R.3 Urutan yang diusulkan
+
+| Fase | Spike | Alasan |
+|---|---|---|
+| 1 | RS-00, RS-01, RS-02 (bagian PDFium), RS-03 (bagian PDFium), RS-05 (bagian PDFium) | Dipakai A dan B; menentukan apakah A layak dilanjutkan |
+| 2 | RS-04, RS-07, RS-08 untuk B dan C (A: penilaian kelayakan saja) | Pembeda utama antar-baseline |
+| 3 | RS-06, RS-10 | Butuh shell host minimal (scaffold → persetujuan terpisah) |
+| 4 | RS-09 | Butuh build per baseline; toleransi ukuran ditetapkan dulu |
+
+Tidak semua spike harus selesai dalam satu sesi. Bila spike menunjukkan perubahan
+teknologi material, pekerjaan **berhenti** dan meminta persetujuan baru.

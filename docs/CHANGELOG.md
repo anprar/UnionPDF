@@ -9,6 +9,17 @@ Versi mengikuti [SemVer](https://semver.org/lang/id/).
 
 Status: **Fase M0 — Foundation.** Belum ada rilis publik.
 
+### Diubah (2026-10-21, controlled restart)
+- **Penomoran milestone** mengikuti protokol restart (keputusan pengguna A-8):
+  M0–M10, dengan M9 Signature/compliance dan M10 Release. Mapping dari M0–M12 lama
+  di `docs/ROADMAP.md` dan `docs/TASKS.md`. Alasan: keputusan pengguna; task ID tidak
+  diubah.
+- Dokumen analisis: project token PostHog pihak ketiga dan nama profil pengguna pada
+  path disamarkan (keputusan A-3).
+- `docs/TASKS.md`: baris rusak/duplikat diperbaiki; ID ganda UPDF-901/902 (Latar
+  Belakang) menjadi UPDF-032/033 (keputusan A-4).
+- Stack final dan cleanup aplikasi lama **belum disetujui**.
+
 ### Ditambahkan
 - **Repository publik:** <https://github.com/anprar/UnionPDF> (branch `main`,
   commit `336538a`, 89 blob, 0,4 MB).
