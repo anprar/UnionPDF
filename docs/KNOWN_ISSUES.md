@@ -23,6 +23,7 @@ Setiap entri harus bisa direproduksi.
 |---|---|---|---|
 | KL-01 | Edit teks existing dengan reflow tidak tersedia | Content-stream surgery belum dibuktikan (B-04) | Fitur M8 di-DEFER; UnionPDF menyediakan overlay + redaksi-reinsert yang **berlabel jujur** |
 | KL-02 | Bahasa OCR tidak bisa dideteksi otomatis | Binding WinRT 3.2.1 tidak mengekspos API (B-05) | User memilih bahasa; daftar statis sebagai bantuan |
+| KL-03 | Teks bawaan **installer** NSIS hanya bahasa Inggris (tombol Install/Uninstall), padahal UI aplikasi berbahasa Indonesia | Tauri tidak menyediakan berkas terjemahan untuk pesan kustom berbahasa Indonesia (warning `Custom tauri messages for Indonesian are not translated`) | Installer bilingual lewat `displayLanguageSelector`, tetapi teks kustom tidak diterjemahkan; perlu `custom_language_files` NSIS bila dialog bilingual diwajibkan |
 | KL-03 | Tidak ada PDF/A | Butuh validator; risiko kepatuhan tinggi | Ditunda ke M12 |
 | KL-04 | Tidak ada tanda tangan kriptografis | pyHanko belum dievaluasi | Ditunda ke M10 |
 | KL-05 | XFA form tidak didukung | Kompleksitas sangat tinggi | Ditolak |

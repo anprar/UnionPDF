@@ -5,14 +5,14 @@
 | Field | Nilai |
 |---|---|
 | Tanggal | 2026-10-22 |
-| Waktu | 14:15 WIB (UTC+7) |
+| Waktu | 14:30 WIB (UTC+7) |
 | Zona waktu | Asia/Bangkok / SE Asia Standard Time |
-| Session ID | `2026-10-22T1400+0700` (pembersihan ruang kerja 11,76 GB; checkpoint akhir + commit & push) |
+| Session ID | `2026-10-22T1430+0700` (build ulang dari sumber bersih + ulangi semua uji + artefak pengiriman +embersihan ulang) |
 | Fase aktif | **M1 — viewer & authoring dasar berjalan**; scope **reading tools, compact toolbar, bookmark, split, dan konversi** Priority A–F baru diimplementasikan (bukan "scope selesai"); sisanya: Office conversion, DPI 125–200 %, clean-install, seret mouse |
 | Milestone aktif | M1 (lihat `docs/ROADMAP.md`) |
 | Task aktif | UPDF-048 (vertical slice) **REVIEW → sebagian DONE**; UPDF-049 (worker PDFBox) **DONE**; UPDF-050/051/052 tersisa (outline re-order, bidi RTL, redaksi) |
-| Git repo | **`github.com/anprar/UnionPDF`** (public, branch `main`) — HEAD lokal `2a1718a` (**ahead 1, tidak di-push**); remote masih `d01cd16` |
-| Working tree | Tidak bersih — **tanpa commit (G-2)**: `apps/desktop/` (baru), `experiments/restart/`, `docs/sessions/2026-10-22T0900+0700.md` |
+| Git repo | **`github.com/anprar/UnionPDF`** (public, branch `main`) — HEAD `bc26983` **sudah di-push**, `main...origin/main` tanpa divergensi (per 2026-10-22 13:47 WIB) |
+| Working tree | Bersih sebelum sesi ini; sesi ini mengubah 2 skrip uji + 4 dokumen (di-commit per-file) |
 | Stack | **Fondasi disetujui (ADR-002)**: Tauri 2.12.4 · React 19.3.1 + TS 7.0.2 + Vite 8.3.4 · Rust 1.98 · **PDFium 151.0.7881.0** (renderer) · **PDFBox 3.0.8** (authoring, worker Java) · JSON/config tanpa database. Implementasi lama (Python/PySide6/PyMuPDF) = benchmark, tidak disentuh |
 | Lisensi proyek | `LICENSE` = **AGPL-3.0** (tidak diubah, tidak diratifikasi ulang). Lisensi baru untuk PDFBox/BC (Apache-2.0 / MIT-style) **dibaca** pada provenance, **belum** diratifikasi ke LICENSE/NOTICE (perlu persetujuan terpisah) |
 | Review pasca-REA | `docs/POST_ALL_REFERENCES_TECH_REVIEW.md` (DRAFT) · `docs/STACK_EVALUATION.md` §10 |
@@ -40,6 +40,13 @@ Workspace 12,70 GB → **0,94 GB** (11,76 GB artefak build yang bisa direproduks
 `target/`, cache cargo, `node_modules`, JDK toolchain, runtime jlink di luar paket, target spike).
 Deliverable tetap utuh di `apps/desktop/dist-package/` (paket mandiri 75,2 MB + installer NSIS 43,3 MB)
 dan sudah diverifikasi jalan dari sana. Rincian: `docs/sessions/2026-10-22T1400+0700.md`.
+
+**Build ulang dari sumber bersih (sesi `2026-10-22T1430+0700`)** — seluruh aplikasi dibangun ulang
+dari nol, semua uji diulang, paket & installer dihasilkan ulang dengan hash baru:
+exe `9cccc6ad…` (11,43 MB), installer `e4058c32…` (43,32 MB), ZIP `9fa97500…` (48,22 MB).
+Uji: `cargo test` 26 PASS · `npm test` 20 PASS · E2E 39 PASS + 1 NOT_RUN · uji paket/runtime
+bundel/tanpa Java eksternal PASS. Workspace dibersihkan kembali seperti sesi sebelumnya.
+Rincian: `docs/sessions/2026-10-22T1430+0700.md`.
 
 ---
 

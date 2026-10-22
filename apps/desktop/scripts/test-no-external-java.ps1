@@ -34,7 +34,8 @@ try {
         $win = $AE::RootElement.FindFirst($TS::Children, (C (P $AE::ProcessIdProperty $p.Id) (P $AE::NameProperty "UnionPDF")))
         if (-not $win) { throw "jendela UnionPDF tidak ditemukan" }
         $text = ($win.FindAll($TS::Descendants, (P $AE::ControlTypeProperty $CT::Text)) | ForEach-Object { $_.Current.Name }) -join ""
-        if ($text -notmatch "Authoring: PDFBox") { throw "worker authoring tidak terdeteksi: $text" }
+        # Status bar: "Anotasi & form aktif" = worker PDFBox (runtime bundel) siap.
+        if ($text -notmatch "Anotasi & form aktif") { throw "worker authoring tidak terdeteksi: $text" }
 
         # Bukalah panel form -> worker harus start (java.exe dari runtime bundel).
         $tab = $win.FindFirst($TS::Descendants, (P $AE::NameProperty "Form"))

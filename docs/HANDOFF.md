@@ -2,12 +2,44 @@
 
 > Untuk sesi berikutnya. Baca bersama `PROJECT_STATE.md` dan `TASKS.md`.
 
-**Sesi terakhir:** `2026-10-22T1400+0700` — 2026-10-22 (WIB, UTC+7)
+**Sesi terakhir:** `2026-10-22T1430+0700` — 2026-10-22 (WIB, UTC+7)
 **Fase:** M1 — viewer & authoring dasar berjalan; **scope reading tools, compact toolbar, bookmark, split, konversi masih berlanjut** (A–F baru diimplementasikan, belum "selesai")
 **Sesi sebelumnya:** `2026-10-22T1400+0700` — `2026-10-22T0900+0700` — `2026-10-21T1215+0700`
 
-> Cleanup aplikasi lama **BELUM DISETUJUI**. **Tidak ada commit/push** (G-2). Tidak ada
-> perubahan lisensi, instalasi global, atau komponen berbayar. Sesi baru **tidak** berarti izin baru.
+> Cleanup aplikasi lama **BELUM DISETUJUI**. Tidak ada perubahan lisensi, instalasi global,
+> atau komponen berbayar. Sesi baru **tidak** berarti izin baru.
+
+---
+
+## 000. Posisi saat ini — sesi `2026-10-22T1430+0700` (checkpoint 14:30 WIB)
+
+**Terbarui (rebuild dari sumber bersih):** seluruh aplikasi dibangun ulang dari nol, semua uji
+diulang, paket & installer dihasilkan ulang. Tidak ada perubahan fitur.
+
+| Artefak | Ukuran | SHA-256 |
+|---|---:|---|
+| `dist-package/UnionPDF-0.1.0/unionpdf-desktop.exe` | 11,43 MB | `9cccc6ad2737c5893817e9369213ef8d9719eefb77df773ee2c239b32f50587c` |
+| `dist-package/UnionPDF_0.1.0_x64-setup.exe` | 43,32 MB | `e4058c32cbe82c19bd5b519ab8fd7a2324e7bddc2ad6bc7451a9895073fb19aa` |
+| `dist-package/UnionPDF-0.1.0-portable.zip` | 48,22 MB | `9fa9750073421828504bd6384017d06c6969e61efdd13e33a270607dad07e684` |
+
+Uji: `cargo test` **26 PASS** · `npm test` **20 PASS** · E2E UI **39 PASS + 1 NOT_RUN** (UI-04) ·
+uji paket (path ber-spasi+Unicode, folder deny-write, tanpa Java eksternal) **PASS** · uji runtime
+Java bundel **PASS**. Exe rilis verified bebas string diagnostik dev (`UNIONPDF_E2E_DELAY_MS`,
+`geo runs=`).
+
+**Dua skrip uji diperbaiki** (`test-package.ps1`, `test-no-external-java.ps1`): sebelumnya mencari
+teks `"Authoring: PDFBox"` yang sudah tidak ada di UI (sekarang `"Anotasi & form aktif"`) → uji
+memberi false negative "authoring tidak terdeteksi". Sekarang gagal keras bila worker tidak aktif.
+
+**Warning installer:** Tauri tidak menyediakan terjemahan teks kustom untuk bahasa Indonesia →
+**teks bawaan installer** (tombol Install/Uninstall) tetap bahasa Inggris; UI aplikasi berbahasa
+Indonesia (`KNOWN_ISSUES.md` KL-03).
+
+**Penting:** jalankan `prepare-pdfium/prepare-pdfbox/prepare-java-runtime` **sampai selesai**
+sebelum `tauri build` — bila berjalan bersamaan, build script tauri gagal
+(`failed to run custom build command`) karena balapan tulis ke `src-tauri/worker/`.
+
+Rincian: `docs/sessions/2026-10-22T1430+0700.md`.
 
 ---
 
@@ -83,21 +115,24 @@ F (PDF→PNG/TXT terbukti; JPEG & gambar→PDF NOT_RUN).
 ### Deliverable & ruang
 
 Paket mandiri: `apps/desktop/dist-package/UnionPDF-0.1.0/` (klik dua kali) · installer:
-`apps/desktop/dist-package/UnionPDF_0.1.0_x64-setup.exe` · workspace 12,70 GB → 0,94 GB
-(artefak build dapat direproduksi; lihat `docs/sessions/2026-10-22T1400+0700.md`).
+`apps/desktop/dist-package/UnionPDF_0.1.0_x64-setup.exe` · ZIP:
+`apps/desktop/dist-package/UnionPDF-0.1.0-portable.zip` · workspace 12,70 GB → 0,94 GB
+(artefak build dapat direproduksi; lihat `docs/sessions/2026-10-22T1400+0700.md` dan
+`docs/sessions/2026-10-22T1430+0700.md` — rebuild 14:25–14:27, hash di §000 teratas).
 
 Untuk membangun ulang dari sumber: `npm install` → `scripts\prepare-pdfium.ps1` →
 `scripts\prepare-pdfbox.ps1` → `scripts\prepare-java-runtime.ps1` → `npx tauri build --no-bundle`
-→ `scripts\stage-release.ps1` → `scripts\package-standalone.ps1`.
+→ `scripts\stage-release.ps1` → `scripts\package-standalone.ps1` → `npx tauri build`.
+**Jalankan ketiga `prepare-*` sampai selesai sebelum `tauri build`** (balapan tulis ke
+`src-tauri/worker/` membuat build script tauri gagal).
 
 ### Langkah berikutnya (konkret)
 
-1. **Uji manual pengguna**: `apps/desktop/MANUAL_TEST.md` M-01…M-24 (scroll manual, anotas
+1. **Uji manual pengguna**: `apps/desktop/MANUAL_TEST.md` M-01…M-43 (scroll manual, anotasi
    dengan mouse, prompt timpa, DPI 125–200 %, clean-install installer).
 2. UPDF-051 reordering bidi untuk teks RTL (PDFium mengembalikan urutan visual).
 3. UPDF-053: jenis anotasi lain (kotak/poligon/garis) + preflight untuk reorder halaman.
-4. Continous scroll: tambahkan **text/selection layer** per halaman (belum ada) dan caret
-   navigasi keyboard; pertahankan anchor saat jendela di-resize.
+4. Teks installer NSIS bilingual (KL-03) bila dialog installer berbahasa Indonesia diwajibkan.
 5. Redaksi: tetap ditunda; jangan mengklaim *secure redaction* sebelum fixture `rs07` lolos.
 
 ---

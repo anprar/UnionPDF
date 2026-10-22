@@ -57,7 +57,10 @@ try {
     $text = ($win.FindAll($TS::Descendants, (P $AE::ControlTypeProperty $CT::Text)) | ForEach-Object { $_.Current.Name }) -join ""
     if ($text -notmatch "UnionPDF") { throw "UI tidak termuat: $text" }
     Write-Output "[test] aplikasi start dari path ber-spasi + Unicode, UI tampil"
-    if ($text -match "Authoring: PDFBox") { Write-Output "[test] authoring: worker PDFBox terdeteksi" } else { Write-Output "[test] authoring: TIDAK terdeteksi (runtime Java mungkin belum ada di paket)" }
+    # Status bar app: "Anotasi & form aktif" bila worker PDFBox siap, "tidak aktif" bila tidak.
+    if ($text -match "Anotasi & form aktif") { Write-Output "[test] authoring: worker PDFBox terdeteksi (Anotasi & form aktif)" }
+    elseif ($text -match "Anotasi & form tidak aktif") { throw "worker PDFBox TIDAK aktif di paket (runtime Java suspect)" }
+    else { throw "status authoring tidak terbaca di UI: $text" }
 
     # Buka dokumen dari fixture untuk memastikan PDFium termuat.
     $fx = Resolve-Path "$PSScriptRoot\..\src-tauri\tests\fixtures\rs05_structure.pdf"
