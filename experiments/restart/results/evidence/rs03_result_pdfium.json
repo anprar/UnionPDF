@@ -1,0 +1,81 @@
+{
+  "actions": [
+    {
+      "action": "text.set_value",
+      "err": null,
+      "field": "nama",
+      "ok": true
+    },
+    {
+      "action": "checkbox.set_checked(true)",
+      "err": null,
+      "field": "setuju",
+      "ok": true
+    },
+    {
+      "action": "none",
+      "field": "pilihan",
+      "reason": "no setter exposed by pdfium-render 0.9.4 for Unknown"
+    },
+    {
+      "action": "none",
+      "field": "pilihan",
+      "reason": "no setter exposed by pdfium-render 0.9.4 for Unknown"
+    },
+    {
+      "action": "none",
+      "field": "kota",
+      "reason": "no setter exposed by pdfium-render 0.9.4 for ComboBox"
+    }
+  ],
+  "fields_before": [
+    {
+      "name": "nama",
+      "type": "Text"
+    },
+    {
+      "name": "setuju",
+      "type": "Checkbox"
+    },
+    {
+      "name": "pilihan",
+      "type": "Unknown"
+    },
+    {
+      "name": "pilihan",
+      "type": "Unknown"
+    },
+    {
+      "name": "kota",
+      "type": "ComboBox"
+    }
+  ],
+  "input": "rs03_form.pdf",
+  "output": "filled.pdf",
+  "reopened_by_pdfium": [
+    {
+      "name": "nama",
+      "type": "Text",
+      "value": "Diisi PDFium RS03"
+    },
+    {
+      "checked": true,
+      "name": "setuju",
+      "type": "Checkbox"
+    },
+    {
+      "name": "pilihan",
+      "type": "Unknown"
+    },
+    {
+      "name": "pilihan",
+      "type": "Unknown"
+    },
+    {
+      "name": "kota",
+      "type": "ComboBox",
+      "value": "Jakarta"
+    }
+  ],
+  "spike": "RS-03 (PDFium part)"
+}

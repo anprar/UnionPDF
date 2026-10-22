@@ -1,0 +1,21 @@
+# Eksperimen restart — yang TIDAK dilacak Git.
+# Catatan: raw output BUKAN cache bebas hapus; ia bukti mentah spike.
+# Ringkasan & manifestnya dilacak di results/ dan fixtures/FIXTURES.md.
+
+# Biner pihak ketiga (provenance dicatat di deps/PROVENANCE.md)
+deps/download/
+deps/pdfium/
+deps/pdfbox/
+
+# Hasil kompilasi spike Java
+pdfbox-spike/build/
+
+# Cache Cargo lokal-proyek (CARGO_HOME) dan hasil build
+.cargo-home/
+pdfium-spike/target/
+
+# Fixture sintetis hasil generator (dibuat ulang dari generate_fixtures.py)
+fixtures/generated/
+
+# Raw output spike (bukti mentah; jangan dihapus tanpa persetujuan)
+raw/

@@ -455,3 +455,20 @@ Tidak ada baseline yang direkomendasikan untuk dikunci sekarang. Usulan:
 3. Bila RS-02/RS-03 menunjukkan PDFium cukup dan pengguna menerima gap signature,
    A tetap terbuka; bila tidak, A gugur tanpa perlu spike lanjutan.
 4. Keputusan dicatat sebagai ADR baru; ADR-001 tidak diedit diam-diam.
+
+### 10.7 Masukan dari spike terbatas PDFium (2026-10-21) — bukan keputusan
+
+Hasil (`experiments/restart/results/SUMMARY.md`) relevan untuk **A dan B** (keduanya memakai
+PDFium) pada kriteria K2-1/K2-2:
+
+- Viewer & page ops in-place: terbukti pada fixture sintetis.
+- Authoring anotasi/form **melalui PDFium + `pdfium-render`**: belum memenuhi kriteria
+  interoperabilitas (tanpa `/AP`, objek langsung, setter form cacat). Untuk A, gap ini harus
+  ditutup kode kustom yang belum terbukti; untuk B, PDFBox menjadi kandidat pemilik authoring
+  — **belum diuji**.
+- Impor halaman ke dokumen baru kehilangan outline/link/AcroForm → merge/extract/split yang
+  mempertahankan struktur butuh kerja kustom atau engine lain (A: QPDF/kustom; B: PDFBox;
+  C: MuPDF) — **belum diuji** untuk B dan C.
+
+Tidak ada baseline yang dipilih atau digugurkan berdasarkan hasil ini saja; pembandingan pada
+fixture yang sama diperlukan (`TECH_SPIKES.md` §R.4, `results/SUMMARY.md` §7).

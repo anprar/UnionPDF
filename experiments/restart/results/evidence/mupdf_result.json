@@ -1,0 +1,262 @@
+{
+ "engine": "MuPDF via PyMuPDF 1.27.2.2",
+ "rs02": {
+  "output": "rs02_annotated.pdf",
+  "created": [
+   {
+    "page": 1,
+    "kind": "highlight",
+    "via": "PyMuPDF",
+    "rect": [
+     60.0,
+     717.81,
+     291.1,
+     737.05
+    ],
+    "contents": "RS02-highlight"
+   },
+   {
+    "page": 1,
+    "kind": "underline",
+    "via": "PyMuPDF",
+    "rect": [
+     60.0,
+     677.81,
+     296.54,
+     697.05
+    ],
+    "contents": "RS02-underline"
+   },
+   {
+    "page": 1,
+    "kind": "strikeout",
+    "via": "PyMuPDF",
+    "rect": [
+     60.0,
+     637.81,
+     291.87,
+     657.05
+    ],
+    "contents": "RS02-strikeout"
+   },
+   {
+    "page": 1,
+    "kind": "squiggly",
+    "via": "PyMuPDF",
+    "rect": [
+     60.0,
+     597.81,
+     290.31,
+     617.05
+    ],
+    "contents": "RS02-squiggly"
+   },
+   {
+    "page": 0,
+    "kind": "text",
+    "via": "PyMuPDF",
+    "rect": [
+     60,
+     700,
+     84,
+     724
+    ],
+    "contents": "RS02-text"
+   },
+   {
+    "page": 0,
+    "kind": "freetext",
+    "via": "PyMuPDF",
+    "rect": [
+     120,
+     690,
+     320,
+     730
+    ],
+    "contents": "RS02-freetext"
+   },
+   {
+    "page": 0,
+    "kind": "square",
+    "via": "PyMuPDF",
+    "rect": [
+     60,
+     560,
+     200,
+     660
+    ],
+    "contents": "RS02-square"
+   },
+   {
+    "page": 0,
+    "kind": "circle",
+    "via": "PyMuPDF",
+    "rect": [
+     240,
+     560,
+     360,
+     660
+    ],
+    "contents": "RS02-circle"
+   },
+   {
+    "page": 0,
+    "kind": "stamp",
+    "via": "PyMuPDF",
+    "rect": [
+     380,
+     560,
+     540,
+     640
+    ],
+    "contents": "RS02-stamp"
+   },
+   {
+    "page": 0,
+    "kind": "ink",
+    "via": "PyMuPDF",
+    "rect": [
+     60,
+     420,
+     300,
+     520
+    ],
+    "contents": "RS02-ink"
+   },
+   {
+    "page": 0,
+    "kind": "line",
+    "via": "PyMuPDF",
+    "rect": [
+     320,
+     420,
+     540,
+     470
+    ],
+    "contents": "RS02-line"
+   },
+   {
+    "page": 0,
+    "kind": "polygon",
+    "via": "PyMuPDF",
+    "rect": [
+     60,
+     300,
+     200,
+     400
+    ],
+    "contents": "RS02-polygon"
+   },
+   {
+    "page": 0,
+    "kind": "polyline",
+    "via": "PyMuPDF",
+    "rect": [
+     240,
+     300,
+     380,
+     400
+    ],
+    "contents": "RS02-polyline"
+   },
+   {
+    "page": 0,
+    "kind": "caret",
+    "via": "PyMuPDF",
+    "rect": [
+     420,
+     330,
+     440,
+     350
+    ],
+    "contents": "RS02-caret"
+   }
+  ],
+  "errors": []
+ },
+ "rs03": {
+  "output": "rs03_filled.pdf",
+  "actions": [
+   {
+    "field": "nama",
+    "on_state": null,
+    "ok": true
+   },
+   {
+    "field": "setuju",
+    "on_state": "Yes",
+    "ok": true
+   },
+   {
+    "field": "pilihan",
+    "on_state": "A",
+    "ok": true
+   },
+   {
+    "field": "pilihan",
+    "on_state": "B",
+    "ok": true
+   },
+   {
+    "field": "kota",
+    "on_state": null,
+    "ok": true
+   }
+  ]
+ },
+ "rs04": {
+  "output": "rs04_fields.pdf",
+  "errors": []
+ },
+ "rs05": {
+  "operations": [
+   {
+    "op": "merge (open structure + insert_pdf merge_source)",
+    "output": "rs05_merge.pdf",
+    "ms": 2.14
+   },
+   {
+    "op": "extract p2-4 (insert_pdf ke dokumen baru + set_toc)",
+    "output": "rs05_extract_p2-4.pdf",
+    "toc_note": "set_toc dengan pemetaan ulang (API)",
+    "ms": 4.19
+   }
+  ]
+ },
+ "rs07": {
+  "outputs": {
+   "apply_only": "rs07_redacted_apply_only.pdf",
+   "apply_plus_scrub": "rs07_redacted_apply_plus_scrub.pdf"
+  },
+  "notes": [
+   "apply_redactions menghapus konten halaman di area (teks, gambar piksel, vektor)",
+   "anotasi non-redaksi, nilai field, dan metadata TIDAK disentuh apply_redactions; varian kedua memakai delete_annot + scrub()"
+  ]
+ },
+ "rs08_review": {
+  "pymupdf_document_api_with_sig": [
+   "get_sigflags"
+  ],
+  "low_level_mupdf_symbols_sample": [
+   "PdfPkcs7Signer",
+   "ll_pdf_drop_signer",
+   "pdf_pkcs7_signer",
+   "pdf_sign_signature",
+   "pdf_sign_signature_with_appearance",
+   "pdf_signature_appearance_signed",
+   "pdf_signature_appearance_unsigned",
+   "pdf_signature_byte_range",
+   "pdf_signature_contents",
+   "pdf_signature_contents_outparams_fn",
+   "pdf_signature_drop_distinguished_name",
+   "pdf_signature_error_description",
+   "pdf_signature_format_distinguished_name",
+   "pdf_signature_hash_bytes",
+   "pdf_signature_incremental_change_since_signing",
+   "pdf_signature_info",
+   "pdf_signature_is_signed",
+   "pdf_signature_set_value"
+  ],
+  "note": "Penelusuran saja; tidak ada implementasi signing dalam spike ini."
+ }
+}

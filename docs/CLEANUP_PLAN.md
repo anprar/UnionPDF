@@ -33,6 +33,11 @@ Tidak ada tindakan.
 
 ### Fase 1 — Pengamanan 13 file yang belum di-commit (butuh persetujuan C-1)
 
+> **Status 2026-10-21:** opsi 1a **dilaksanakan** atas persetujuan A-5 — commit lokal
+> `2a1718a` (24 file: 13 file pra-restart + dokumen audit/review/koreksi yang disetujui),
+> stage per file, tidak di-push. Opsi 1b (backup independen) **belum** — lokasi belum dipilih
+> pengguna; commit lokal **bukan** backup independen.
+
 **Prasyarat sebelum commit apa pun:**
 
 | # | Prasyarat | Alasan | Butuh izin tulis |

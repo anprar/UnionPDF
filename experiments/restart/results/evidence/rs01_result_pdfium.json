@@ -1,0 +1,340 @@
+{
+  "cancel": {
+    "cancel_signalled_after_completed": 5,
+    "cancel_to_worker_stop_ms": 0.807,
+    "dropped_without_render": 54,
+    "granularity": "between requests (a page already being rendered completes)",
+    "rendered_count": 6,
+    "rendered_pages": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "requests_queued": 60
+  },
+  "engine": "PDFium chromium/7881 via pdfium-render 0.9.4",
+  "fixtures": [
+    {
+      "all_pages_loop_ms (render x1 + text + png)": 28.52,
+      "fixture": "rs01_mixed_sizes.pdf",
+      "load_ms": 0.17,
+      "memory_after": {
+        "peak_private_bytes": 35979264,
+        "peak_working_set_bytes": 44023808,
+        "private_bytes": 3809280,
+        "working_set_bytes": 12066816
+      },
+      "page_count": 4,
+      "pages_detail": [
+        {
+          "page": 0,
+          "png_x2": "rs01_mixed_sizes_p0_x2.png",
+          "text": "UnionPDF RS01 mixed page 1 size A4"
+        },
+        {
+          "page": 1,
+          "png_x2": "rs01_mixed_sizes_p1_x2.png",
+          "text": "UnionPDF RS01 mixed page 2 size A4-landscape"
+        },
+        {
+          "page": 2,
+          "png_x2": "rs01_mixed_sizes_p2_x2.png",
+          "text": "UnionPDF RS01 mixed page 3 size Letter"
+        },
+        {
+          "page": 3,
+          "png_x2": "rs01_mixed_sizes_p3_x2.png",
+          "text": "UnionPDF RS01 mixed page 4 size A5"
+        }
+      ],
+      "render_errors": [],
+      "render_scale1_all_pages_ok": 4,
+      "render_scale1_total_ms": 2.258,
+      "text_mismatches": [],
+      "thumbnail_160_ms": 0.293,
+      "thumbnail_png": "rs01_mixed_sizes_p0_thumb160.png",
+      "zoom_page0": [
+        {
+          "height": 421,
+          "ms": 0.411,
+          "scale": 0.5,
+          "width": 298
+        },
+        {
+          "height": 842,
+          "ms": 0.488,
+          "scale": 1.0,
+          "width": 595
+        },
+        {
+          "height": 1684,
+          "ms": 2.486,
+          "scale": 2.0,
+          "width": 1190
+        },
+        {
+          "height": 3368,
+          "ms": 6.233,
+          "scale": 4.0,
+          "width": 2380
+        }
+      ]
+    },
+    {
+      "all_pages_loop_ms (render x1 + text + png)": 27.333,
+      "fixture": "rs01_latin.pdf",
+      "load_ms": 0.214,
+      "memory_after": {
+        "peak_private_bytes": 40087552,
+        "peak_working_set_bytes": 48115712,
+        "private_bytes": 7958528,
+        "working_set_bytes": 16121856
+      },
+      "page_count": 2,
+      "pages_detail": [
+        {
+          "page": 0,
+          "png_x2": "rs01_latin_p0_x2.png",
+          "text": "The quick brown fox jumps over the lazy dog 0123456789.\r\nCafe naive cooperation resume - plain ASCII line.\r\nAccented Latin: Café naïve façade Ångström Œuvre Straße."
+        },
+        {
+          "page": 1,
+          "png_x2": "rs01_latin_p1_x2.png",
+          "text": "Second page for search: UNIONPDF-SEARCH-TOKEN appears once.\r\nPunctuation check: (brackets) [square] {curly} 'quote' \"dq\"."
+        }
+      ],
+      "render_errors": [],
+      "render_scale1_all_pages_ok": 2,
+      "render_scale1_total_ms": 3.1399999999999997,
+      "text_mismatches": [],
+      "thumbnail_160_ms": 0.57,
+      "thumbnail_png": "rs01_latin_p0_thumb160.png",
+      "zoom_page0": [
+        {
+          "height": 421,
+          "ms": 1.212,
+          "scale": 0.5,
+          "width": 298
+        },
+        {
+          "height": 842,
+          "ms": 0.595,
+          "scale": 1.0,
+          "width": 595
+        },
+        {
+          "height": 1684,
+          "ms": 1.823,
+          "scale": 2.0,
+          "width": 1190
+        },
+        {
+          "height": 3368,
+          "ms": 9.603,
+          "scale": 4.0,
+          "width": 2380
+        }
+      ]
+    },
+    {
+      "all_pages_loop_ms (render x1 + text + png)": 15.619,
+      "fixture": "rs01_unicode_arabic.pdf",
+      "load_ms": 0.138,
+      "memory_after": {
+        "peak_private_bytes": 40087552,
+        "peak_working_set_bytes": 48115712,
+        "private_bytes": 7278592,
+        "working_set_bytes": 14958592
+      },
+      "page_count": 1,
+      "pages_detail": [
+        {
+          "page": 0,
+          "png_x2": "rs01_unicode_arabic_p0_x2.png",
+          "text": "Bahasa Indonesia: dokumen uji sintetis.\r\nملاعلاب ابحرم\r\nGreek & symbols: αβγ Ω € ™ ±"
+        }
+      ],
+      "render_errors": [],
+      "render_scale1_all_pages_ok": 1,
+      "render_scale1_total_ms": 1.744,
+      "text_mismatches": [
+        {
+          "extracted": "Bahasa Indonesia: dokumen uji sintetis.\r\nملاعلاب ابحرم\r\nGreek & symbols: αβγ Ω € ™ ±",
+          "missing": [
+            "مرحبا بالعالم"
+          ],
+          "page": 0
+        }
+      ],
+      "thumbnail_160_ms": 0.347,
+      "thumbnail_png": "rs01_unicode_arabic_p0_thumb160.png",
+      "zoom_page0": [
+        {
+          "height": 421,
+          "ms": 0.407,
+          "scale": 0.5,
+          "width": 298
+        },
+        {
+          "height": 842,
+          "ms": 0.578,
+          "scale": 1.0,
+          "width": 595
+        },
+        {
+          "height": 1684,
+          "ms": 1.521,
+          "scale": 2.0,
+          "width": 1190
+        },
+        {
+          "height": 3368,
+          "ms": 9.946,
+          "scale": 4.0,
+          "width": 2380
+        }
+      ]
+    },
+    {
+      "all_pages_loop_ms (render x1 + text + png)": 18.798,
+      "fixture": "rs01_images.pdf",
+      "load_ms": 0.142,
+      "memory_after": {
+        "peak_private_bytes": 40087552,
+        "peak_working_set_bytes": 48115712,
+        "private_bytes": 4947968,
+        "working_set_bytes": 13385728
+      },
+      "page_count": 1,
+      "pages_detail": [
+        {
+          "page": 0,
+          "png_x2": "rs01_images_p0_x2.png",
+          "text": "UnionPDF RS01 image page"
+        }
+      ],
+      "render_errors": [],
+      "render_scale1_all_pages_ok": 1,
+      "render_scale1_total_ms": 7.019,
+      "text_mismatches": [],
+      "thumbnail_160_ms": 1.66,
+      "thumbnail_png": "rs01_images_p0_thumb160.png",
+      "zoom_page0": [
+        {
+          "height": 421,
+          "ms": 1.797,
+          "scale": 0.5,
+          "width": 298
+        },
+        {
+          "height": 842,
+          "ms": 2.92,
+          "scale": 1.0,
+          "width": 595
+        },
+        {
+          "height": 1684,
+          "ms": 5.715,
+          "scale": 2.0,
+          "width": 1190
+        },
+        {
+          "height": 3368,
+          "ms": 17.533,
+          "scale": 4.0,
+          "width": 2380
+        }
+      ]
+    },
+    {
+      "all_pages_loop_ms (render x1 + text + png)": 339.928,
+      "fixture": "rs01_large_500p.pdf",
+      "load_ms": 0.436,
+      "memory_after": {
+        "peak_private_bytes": 40087552,
+        "peak_working_set_bytes": 48115712,
+        "private_bytes": 6418432,
+        "working_set_bytes": 14422016
+      },
+      "page_count": 500,
+      "pages_detail": [
+        {
+          "page": 0,
+          "png_x2": "rs01_large_500p_p0_x2.png",
+          "text": "UnionPDF RS01 large page 1"
+        },
+        {
+          "page": 1,
+          "png_x2": "rs01_large_500p_p1_x2.png",
+          "text": "UnionPDF RS01 large page 2"
+        },
+        {
+          "page": 2,
+          "png_x2": "rs01_large_500p_p2_x2.png",
+          "text": "UnionPDF RS01 large page 3"
+        }
+      ],
+      "render_errors": [],
+      "render_scale1_all_pages_ok": 500,
+      "render_scale1_total_ms": 279.4449999999999,
+      "text_mismatches": [],
+      "thumbnail_160_ms": 0.193,
+      "thumbnail_png": "rs01_large_500p_p0_thumb160.png",
+      "zoom_page0": [
+        {
+          "height": 421,
+          "ms": 0.244,
+          "scale": 0.5,
+          "width": 298
+        },
+        {
+          "height": 842,
+          "ms": 0.403,
+          "scale": 1.0,
+          "width": 595
+        },
+        {
+          "height": 1684,
+          "ms": 1.575,
+          "scale": 2.0,
+          "width": 1190
+        },
+        {
+          "height": 3368,
+          "ms": 6.04,
+          "scale": 4.0,
+          "width": 2380
+        }
+      ]
+    }
+  ],
+  "library_bind_and_init_ms": 6.155,
+  "memory_after_init": {
+    "peak_private_bytes": 2109440,
+    "peak_working_set_bytes": 8495104,
+    "private_bytes": 2105344,
+    "working_set_bytes": 8495104
+  },
+  "memory_end": {
+    "peak_private_bytes": 40087552,
+    "peak_working_set_bytes": 48115712,
+    "private_bytes": 3792896,
+    "working_set_bytes": 12218368
+  },
+  "not_tested": [
+    "mid-page progressive render cancellation (FPDF_RenderPageBitmap_Start + IFSDK_PAUSE)",
+    "Arabic shaping (generator inserts logical-order glyphs without shaping)"
+  ],
+  "search": {
+    "expected_page": 1,
+    "found_on_pages": [
+      1
+    ],
+    "token": "UNIONPDF-SEARCH-TOKEN"
+  },
+  "spike": "RS-01",
+  "time_to_first_render_ms (load rs01_mixed_sizes + render p0 x1.5, library already initialised)": 4.474
+}

@@ -1,0 +1,1420 @@
+{
+ "reader": "PyMuPDF 1.27.2.2",
+ "inputs": {
+  "rs01_images.pdf": {
+   "sha256_manifest": "29282151f341e09c59b6e2f6a872a96b8316b66db9241fdecf8d2799c172cd7a",
+   "sha256_now": "29282151f341e09c59b6e2f6a872a96b8316b66db9241fdecf8d2799c172cd7a",
+   "unchanged": true
+  },
+  "rs01_large_500p.pdf": {
+   "sha256_manifest": "9921537a9acc9d84b385d7fdb6f6d7ad78c0c0682e2bec3ca110418e70900e15",
+   "sha256_now": "9921537a9acc9d84b385d7fdb6f6d7ad78c0c0682e2bec3ca110418e70900e15",
+   "unchanged": true
+  },
+  "rs01_latin.pdf": {
+   "sha256_manifest": "1d0ec805d40972650096ca94457ffbda7b424a61f7511ee86612b8a1481a4976",
+   "sha256_now": "1d0ec805d40972650096ca94457ffbda7b424a61f7511ee86612b8a1481a4976",
+   "unchanged": true
+  },
+  "rs01_mixed_sizes.pdf": {
+   "sha256_manifest": "83acf9a349dc7a7d2c8f40c9db9274589a7ab65efe8ea8e06cdef1647262bdf3",
+   "sha256_now": "83acf9a349dc7a7d2c8f40c9db9274589a7ab65efe8ea8e06cdef1647262bdf3",
+   "unchanged": true
+  },
+  "rs01_unicode_arabic.pdf": {
+   "sha256_manifest": "166cb1486dd8e8969484f6812613ce4cfa5238c04253db1e23705c5bff72cd07",
+   "sha256_now": "166cb1486dd8e8969484f6812613ce4cfa5238c04253db1e23705c5bff72cd07",
+   "unchanged": true
+  },
+  "rs02_annot_base.pdf": {
+   "sha256_manifest": "e5301d3a70c89b2276a8a6d48fdeb71e100450340742b8770175bebe857b4ee7",
+   "sha256_now": "e5301d3a70c89b2276a8a6d48fdeb71e100450340742b8770175bebe857b4ee7",
+   "unchanged": true
+  },
+  "rs03_form.pdf": {
+   "sha256_manifest": "b2880b40615005d108603e4ef7c880ca8b9896eb9fd3f4e1312d92ccfe10a512",
+   "sha256_now": "b2880b40615005d108603e4ef7c880ca8b9896eb9fd3f4e1312d92ccfe10a512",
+   "unchanged": true
+  },
+  "rs05_merge_source.pdf": {
+   "sha256_manifest": "e9342e4bf0a3bc3f880e2b2ddb8d8f91607872bc8e3fbe4c220e66dbf0cba2dd",
+   "sha256_now": "e9342e4bf0a3bc3f880e2b2ddb8d8f91607872bc8e3fbe4c220e66dbf0cba2dd",
+   "unchanged": true
+  },
+  "rs05_structure.pdf": {
+   "sha256_manifest": "adb50d4b6075cf55d5bfd0b6b5011ee2b3254f6a80bc90a6254f749d5577d352",
+   "sha256_now": "adb50d4b6075cf55d5bfd0b6b5011ee2b3254f6a80bc90a6254f749d5577d352",
+   "unchanged": true
+  },
+  "rs07_redact.pdf": {
+   "sha256_manifest": "4fd69d77af718bb481198446a8b962228cab18fe41b5588356b6e277fdc76e75",
+   "sha256_now": "4fd69d77af718bb481198446a8b962228cab18fe41b5588356b6e277fdc76e75",
+   "unchanged": true
+  }
+ },
+ "rs01": {
+  "render_compare": [
+   {
+    "fixture": "rs01_mixed_sizes.pdf",
+    "page": 0,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.093,
+    "pct_pixels_diff_gt_64": 0.055,
+    "match": true
+   },
+   {
+    "fixture": "rs01_mixed_sizes.pdf",
+    "page": 1,
+    "size_pdfium": [
+     1684,
+     1190
+    ],
+    "size_pymupdf": [
+     1684,
+     1190
+    ],
+    "gray_mad": 0.118,
+    "pct_pixels_diff_gt_64": 0.069,
+    "match": true
+   },
+   {
+    "fixture": "rs01_mixed_sizes.pdf",
+    "page": 2,
+    "size_pdfium": [
+     1224,
+     1584
+    ],
+    "size_pymupdf": [
+     1224,
+     1584
+    ],
+    "gray_mad": 0.103,
+    "pct_pixels_diff_gt_64": 0.059,
+    "match": true
+   },
+   {
+    "fixture": "rs01_mixed_sizes.pdf",
+    "page": 3,
+    "size_pdfium": [
+     840,
+     1190
+    ],
+    "size_pymupdf": [
+     840,
+     1190
+    ],
+    "gray_mad": 0.178,
+    "pct_pixels_diff_gt_64": 0.101,
+    "match": true
+   },
+   {
+    "fixture": "rs01_latin.pdf",
+    "page": 0,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.261,
+    "pct_pixels_diff_gt_64": 0.134,
+    "match": true
+   },
+   {
+    "fixture": "rs01_latin.pdf",
+    "page": 1,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.226,
+    "pct_pixels_diff_gt_64": 0.12,
+    "match": true
+   },
+   {
+    "fixture": "rs01_unicode_arabic.pdf",
+    "page": 0,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.113,
+    "pct_pixels_diff_gt_64": 0.055,
+    "match": true
+   },
+   {
+    "fixture": "rs01_images.pdf",
+    "page": 0,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.07,
+    "pct_pixels_diff_gt_64": 0.039,
+    "match": true
+   },
+   {
+    "fixture": "rs01_large_500p.pdf",
+    "page": 0,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.052,
+    "pct_pixels_diff_gt_64": 0.026,
+    "match": true
+   },
+   {
+    "fixture": "rs01_large_500p.pdf",
+    "page": 1,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.051,
+    "pct_pixels_diff_gt_64": 0.025,
+    "match": true
+   },
+   {
+    "fixture": "rs01_large_500p.pdf",
+    "page": 2,
+    "size_pdfium": [
+     1190,
+     1684
+    ],
+    "size_pymupdf": [
+     1190,
+     1684
+    ],
+    "gray_mad": 0.051,
+    "pct_pixels_diff_gt_64": 0.025,
+    "match": true
+   }
+  ],
+  "render_all_match": true,
+  "text_mismatch_classification": [
+   {
+    "fixture": "rs01_unicode_arabic.pdf",
+    "page": 0,
+    "expected": "مرحبا بالعالم",
+    "pdfium_matches_after_nfkc": false,
+    "pymupdf_extracts_expected": true,
+    "pymupdf_line": null,
+    "pdfium_line": null
+   }
+  ]
+ },
+ "rs02": {
+  "structure": {
+   "is_repaired": false,
+   "mupdf_warnings": ""
+  },
+  "annotations_raw": [
+   {
+    "indirect_object": false,
+    "subtype": "Text",
+    "contents": "RS02-text",
+    "rect": [
+     60.0,
+     700.0,
+     84.0,
+     724.0
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": false,
+    "page": 0
+   },
+   {
+    "indirect_object": false,
+    "subtype": "FreeText",
+    "contents": "RS02-freetext",
+    "rect": [
+     120.0,
+     690.0,
+     320.0,
+     730.0
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": false,
+    "page": 0
+   },
+   {
+    "indirect_object": false,
+    "subtype": "Square",
+    "contents": "RS02-square",
+    "rect": [
+     60.0,
+     560.0,
+     200.0,
+     660.0
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": false,
+    "page": 0
+   },
+   {
+    "indirect_object": false,
+    "subtype": "Stamp",
+    "contents": "RS02-stamp",
+    "rect": [
+     380.0,
+     560.0,
+     540.0,
+     640.0
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": false,
+    "page": 0
+   },
+   {
+    "indirect_object": false,
+    "subtype": "Circle",
+    "contents": "RS02-circle",
+    "rect": [
+     240.0,
+     560.0,
+     360.0,
+     660.0
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": false,
+    "page": 0
+   },
+   {
+    "indirect_object": false,
+    "subtype": "Ink",
+    "contents": "RS02-ink",
+    "rect": [
+     60.0,
+     420.0,
+     300.0,
+     520.0
+    ],
+    "has_AP": false,
+    "has_InkList": true,
+    "has_QuadPoints": false,
+    "page": 0
+   },
+   {
+    "indirect_object": false,
+    "subtype": "Highlight",
+    "contents": "RS02-highlight",
+    "rect": [
+     60.0,
+     717.81,
+     291.1,
+     737.05
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": true,
+    "page": 1
+   },
+   {
+    "indirect_object": false,
+    "subtype": "Underline",
+    "contents": "RS02-underline",
+    "rect": [
+     60.0,
+     677.81,
+     296.54,
+     697.05
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": true,
+    "page": 1
+   },
+   {
+    "indirect_object": false,
+    "subtype": "StrikeOut",
+    "contents": "RS02-strikeout",
+    "rect": [
+     60.0,
+     637.81,
+     291.87,
+     657.05
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": true,
+    "page": 1
+   },
+   {
+    "indirect_object": false,
+    "subtype": "Squiggly",
+    "contents": "RS02-squiggly",
+    "rect": [
+     60.0,
+     597.81,
+     290.31,
+     617.05
+    ],
+    "has_AP": false,
+    "has_InkList": false,
+    "has_QuadPoints": true,
+    "page": 1
+   }
+  ],
+  "pymupdf_annot_api_load": [
+   {
+    "page": 0,
+    "xref": 0,
+    "type_code": 0,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 0,
+    "xref": 0,
+    "type_code": 2,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 0,
+    "xref": 0,
+    "type_code": 4,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 0,
+    "xref": 0,
+    "type_code": 13,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 0,
+    "xref": 0,
+    "type_code": 5,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 0,
+    "xref": 0,
+    "type_code": 15,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 1,
+    "xref": 0,
+    "type_code": 8,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 1,
+    "xref": 0,
+    "type_code": 9,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 1,
+    "xref": 0,
+    "type_code": 11,
+    "loadable_by_pymupdf_annot_api": false
+   },
+   {
+    "page": 1,
+    "xref": 0,
+    "type_code": 10,
+    "loadable_by_pymupdf_annot_api": false
+   }
+  ],
+  "visibility": [
+   {
+    "kind": "highlight",
+    "via": "pdfium-render high-level",
+    "page": 1,
+    "visible_pdfium": 0.0018,
+    "visible_pymupdf": 0.4189,
+    "visible_both": false,
+    "present_in_file": true,
+    "subtype_in_file": "Highlight",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "underline",
+    "via": "pdfium-render high-level",
+    "page": 1,
+    "visible_pdfium": 0.0001,
+    "visible_pymupdf": 0.3842,
+    "visible_both": false,
+    "present_in_file": true,
+    "subtype_in_file": "Underline",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "strikeout",
+    "via": "pdfium-render high-level",
+    "page": 1,
+    "visible_pdfium": 0.0001,
+    "visible_pymupdf": 0.0873,
+    "visible_both": false,
+    "present_in_file": true,
+    "subtype_in_file": "StrikeOut",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "squiggly",
+    "via": "pdfium-render high-level",
+    "page": 1,
+    "visible_pdfium": 0.0001,
+    "visible_pymupdf": 0.4099,
+    "visible_both": false,
+    "present_in_file": true,
+    "subtype_in_file": "Squiggly",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "text",
+    "via": "pdfium-render high-level",
+    "page": 0,
+    "visible_pdfium": 0.4232,
+    "visible_pymupdf": 0.3265,
+    "visible_both": true,
+    "present_in_file": true,
+    "subtype_in_file": "Text",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "freetext",
+    "via": "pdfium-render high-level",
+    "page": 0,
+    "visible_pdfium": 0.8913,
+    "visible_pymupdf": 0.8913,
+    "visible_both": true,
+    "present_in_file": true,
+    "subtype_in_file": "FreeText",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "square",
+    "via": "pdfium-render high-level",
+    "page": 0,
+    "visible_pdfium": 0.0318,
+    "visible_pymupdf": 0.0318,
+    "visible_both": true,
+    "present_in_file": true,
+    "subtype_in_file": "Square",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "stamp",
+    "via": "pdfium-render high-level",
+    "page": 0,
+    "visible_pdfium": 0.0,
+    "visible_pymupdf": 0.1092,
+    "visible_both": false,
+    "present_in_file": true,
+    "subtype_in_file": "Stamp",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "circle",
+    "via": "raw FFI FPDFPage_CreateAnnot",
+    "page": 0,
+    "visible_pdfium": 0.0369,
+    "visible_pymupdf": 0.037,
+    "visible_both": true,
+    "present_in_file": true,
+    "subtype_in_file": "Circle",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": false
+   },
+   {
+    "kind": "ink",
+    "via": "raw FFI FPDFPage_CreateAnnot",
+    "page": 0,
+    "visible_pdfium": 0.026,
+    "visible_pymupdf": 0.0259,
+    "visible_both": true,
+    "present_in_file": true,
+    "subtype_in_file": "Ink",
+    "indirect_object": false,
+    "has_AP_in_file": false,
+    "has_InkList": true
+   }
+  ]
+ },
+ "rs03": {
+  "structure": {
+   "is_repaired": false,
+   "mupdf_warnings": ""
+  },
+  "raw_widgets": [
+   {
+    "xref": 7,
+    "T": "nama",
+    "FT": "/Tx",
+    "AS": [
+     "null",
+     "null"
+    ],
+    "V": [
+     "string",
+     "Diisi PDFium RS03"
+    ],
+    "text_AP_contains_new_value": false,
+    "AS_is_name": true
+   },
+   {
+    "xref": 9,
+    "T": "setuju",
+    "FT": "/Btn",
+    "AS": [
+     "string",
+     "/Yes"
+    ],
+    "V": [
+     "string",
+     "/Yes"
+    ],
+    "AS_is_name": false
+   },
+   {
+    "xref": 13,
+    "T": "null",
+    "FT": "null",
+    "AS": [
+     "name",
+     "/Off"
+    ],
+    "V": [
+     "null",
+     "null"
+    ],
+    "AS_is_name": true
+   },
+   {
+    "xref": 16,
+    "T": "null",
+    "FT": "null",
+    "AS": [
+     "name",
+     "/Off"
+    ],
+    "V": [
+     "null",
+     "null"
+    ],
+    "AS_is_name": true
+   },
+   {
+    "xref": 19,
+    "T": "kota",
+    "FT": "/Ch",
+    "AS": [
+     "null",
+     "null"
+    ],
+    "V": [
+     "string",
+     "Jakarta"
+    ],
+    "AS_is_name": true
+   }
+  ],
+  "acroform": [
+   "dict",
+   "<</Fields[7 0 R 9 0 R 19 0 R 22 0 R]>>"
+  ],
+  "pymupdf_page_load_error": "FzErrorArgument: code=4: key is not a name (dictionary)",
+  "pymupdf_widgets": null
+ },
+ "rs05": {
+  "operations": [
+   {
+    "output": "rotate.pdf",
+    "labels": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "rotations": [
+     0,
+     90,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": {
+     "bookmarks": true,
+     "internal_link": true,
+     "annotation": true,
+     "form_field": true
+    },
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     }
+    ],
+    "links": [
+     {
+      "from_label": 1,
+      "to_label": 4
+     }
+    ],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "delete.pdf",
+    "labels": [
+     1,
+     2,
+     3,
+     4,
+     6
+    ],
+    "rotations": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": {
+     "bookmarks": true,
+     "internal_link": true,
+     "annotation": true,
+     "form_field": true
+    },
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     }
+    ],
+    "links": [
+     {
+      "from_label": 1,
+      "to_label": 4
+     }
+    ],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "reorder.pdf",
+    "labels": [
+     6,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "rotations": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": {
+     "bookmarks": true,
+     "internal_link": true,
+     "annotation": true,
+     "form_field": true
+    },
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     }
+    ],
+    "links": [
+     {
+      "from_label": 1,
+      "to_label": 4
+     }
+    ],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "insert_blank.pdf",
+    "labels": [
+     1,
+     2,
+     null,
+     3,
+     4,
+     5,
+     6
+    ],
+    "rotations": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": {
+     "bookmarks": true,
+     "internal_link": true,
+     "annotation": true,
+     "form_field": true
+    },
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     }
+    ],
+    "links": [
+     {
+      "from_label": 1,
+      "to_label": 4
+     }
+    ],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "merge_append.pdf",
+    "labels": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     "m1",
+     "m2"
+    ],
+    "rotations": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": {
+     "bookmarks": true,
+     "internal_link": true,
+     "annotation": true,
+     "form_field": true
+    },
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": true,
+      "target_page_present": true,
+      "points_to_correct_page": true
+     }
+    ],
+    "links": [
+     {
+      "from_label": 1,
+      "to_label": 4
+     }
+    ],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "merge_new.pdf",
+    "labels": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     "m1",
+     "m2"
+    ],
+    "rotations": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": null,
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     }
+    ],
+    "links": [],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "extract_p2-4.pdf",
+    "labels": [
+     2,
+     3,
+     4
+    ],
+    "rotations": [
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": null,
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": false,
+      "target_page_present": false,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": false,
+      "target_page_present": false,
+      "points_to_correct_page": null
+     }
+    ],
+    "links": [],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "split_a_p1-3.pdf",
+    "labels": [
+     1,
+     2,
+     3
+    ],
+    "rotations": [
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": null,
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": false,
+      "target_page_present": false,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": false,
+      "target_page_present": false,
+      "points_to_correct_page": null
+     }
+    ],
+    "links": [],
+    "annotations": [
+     {
+      "label": 2,
+      "type": "Text",
+      "indirect_object": true
+     },
+     {
+      "label": 2,
+      "type": "Popup",
+      "indirect_object": true
+     }
+    ],
+    "widgets": [
+     {
+      "label": 3,
+      "name": "rs05_field",
+      "value": "nilai awal"
+     }
+    ],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   },
+   {
+    "output": "split_b_p4-6.pdf",
+    "labels": [
+     4,
+     5,
+     6
+    ],
+    "rotations": [
+     0,
+     0,
+     0
+    ],
+    "mandatory": {
+     "page_count": true,
+     "order": true,
+     "rotation": true,
+     "no_repair_no_warning": true
+    },
+    "in_scope_structure": null,
+    "toc": [
+     {
+      "title": "Bab 1",
+      "orig_page": 1,
+      "present": false,
+      "target_page_present": false,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 3",
+      "orig_page": 3,
+      "present": false,
+      "target_page_present": false,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Sub 3.1 ke hal 4",
+      "orig_page": 4,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     },
+     {
+      "title": "Bab 6",
+      "orig_page": 6,
+      "present": false,
+      "target_page_present": true,
+      "points_to_correct_page": null
+     }
+    ],
+    "links": [],
+    "annotations": [],
+    "widgets": [],
+    "structure_state": {
+     "is_repaired": false,
+     "mupdf_warnings": ""
+    }
+   }
+  ]
+ }
+}

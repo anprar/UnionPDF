@@ -1,0 +1,1239 @@
+{
+ "rs02": {
+  "pdfium": {
+   "output": "rs02_annotated.pdf",
+   "structure_pymupdf": {
+    "is_repaired": false,
+    "mupdf_warnings": ""
+   },
+   "annotations": [
+    {
+     "kind": "highlight",
+     "in_file": true,
+     "subtype": "Highlight",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0018,
+     "visible_pymupdf": 0.4189,
+     "visible_both": false
+    },
+    {
+     "kind": "underline",
+     "in_file": true,
+     "subtype": "Underline",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0001,
+     "visible_pymupdf": 0.3842,
+     "visible_both": false
+    },
+    {
+     "kind": "strikeout",
+     "in_file": true,
+     "subtype": "StrikeOut",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0001,
+     "visible_pymupdf": 0.0873,
+     "visible_both": false
+    },
+    {
+     "kind": "squiggly",
+     "in_file": true,
+     "subtype": "Squiggly",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0001,
+     "visible_pymupdf": 0.4099,
+     "visible_both": false
+    },
+    {
+     "kind": "text",
+     "in_file": true,
+     "subtype": "Text",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.4232,
+     "visible_pymupdf": 0.3265,
+     "visible_both": true
+    },
+    {
+     "kind": "freetext",
+     "in_file": true,
+     "subtype": "FreeText",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.8913,
+     "visible_pymupdf": 0.8913,
+     "visible_both": true
+    },
+    {
+     "kind": "square",
+     "in_file": true,
+     "subtype": "Square",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0318,
+     "visible_pymupdf": 0.0318,
+     "visible_both": true
+    },
+    {
+     "kind": "stamp",
+     "in_file": true,
+     "subtype": "Stamp",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0,
+     "visible_pymupdf": 0.1092,
+     "visible_both": false
+    },
+    {
+     "kind": "circle",
+     "in_file": true,
+     "subtype": "Circle",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0369,
+     "visible_pymupdf": 0.037,
+     "visible_both": true
+    },
+    {
+     "kind": "ink",
+     "in_file": true,
+     "subtype": "Ink",
+     "has_AP": false,
+     "indirect": false,
+     "pymupdf_api_loadable": false,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.026,
+     "visible_pymupdf": 0.0259,
+     "visible_both": true
+    }
+   ]
+  },
+  "mupdf": {
+   "output": "rs02_annotated.pdf",
+   "structure_pymupdf": {
+    "is_repaired": false,
+    "mupdf_warnings": ""
+   },
+   "annotations": [
+    {
+     "kind": "highlight",
+     "in_file": true,
+     "subtype": "Highlight",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.7128,
+     "visible_pymupdf": 0.6969,
+     "visible_both": true
+    },
+    {
+     "kind": "underline",
+     "in_file": true,
+     "subtype": "Underline",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0624,
+     "visible_pymupdf": 0.0626,
+     "visible_both": true
+    },
+    {
+     "kind": "strikeout",
+     "in_file": true,
+     "subtype": "StrikeOut",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0685,
+     "visible_pymupdf": 0.0594,
+     "visible_both": true
+    },
+    {
+     "kind": "squiggly",
+     "in_file": true,
+     "subtype": "Squiggly",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0866,
+     "visible_pymupdf": 0.088,
+     "visible_both": true
+    },
+    {
+     "kind": "text",
+     "in_file": true,
+     "subtype": "Text",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.3265,
+     "visible_pymupdf": 0.3265,
+     "visible_both": true
+    },
+    {
+     "kind": "freetext",
+     "in_file": true,
+     "subtype": "FreeText",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0263,
+     "visible_pymupdf": 0.0243,
+     "visible_both": true
+    },
+    {
+     "kind": "square",
+     "in_file": true,
+     "subtype": "Square",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0321,
+     "visible_pymupdf": 0.0321,
+     "visible_both": true
+    },
+    {
+     "kind": "circle",
+     "in_file": true,
+     "subtype": "Circle",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.037,
+     "visible_pymupdf": 0.0371,
+     "visible_both": true
+    },
+    {
+     "kind": "stamp",
+     "in_file": true,
+     "subtype": "Stamp",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.1368,
+     "visible_pymupdf": 0.1402,
+     "visible_both": true
+    },
+    {
+     "kind": "ink",
+     "in_file": true,
+     "subtype": "Ink",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0259,
+     "visible_pymupdf": 0.0259,
+     "visible_both": true
+    },
+    {
+     "kind": "line",
+     "in_file": true,
+     "subtype": "Line",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0261,
+     "visible_pymupdf": 0.0257,
+     "visible_both": true
+    },
+    {
+     "kind": "polygon",
+     "in_file": true,
+     "subtype": "Polygon",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0334,
+     "visible_pymupdf": 0.0334,
+     "visible_both": true
+    },
+    {
+     "kind": "polyline",
+     "in_file": true,
+     "subtype": "PolyLine",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0227,
+     "visible_pymupdf": 0.0227,
+     "visible_both": true
+    },
+    {
+     "kind": "caret",
+     "in_file": true,
+     "subtype": "Caret",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0747,
+     "visible_pymupdf": 0.0751,
+     "visible_both": true
+    }
+   ]
+  },
+  "pdfbox": {
+   "output": "rs02_annotated.pdf",
+   "structure_pymupdf": {
+    "is_repaired": false,
+    "mupdf_warnings": ""
+   },
+   "annotations": [
+    {
+     "kind": "highlight",
+     "in_file": true,
+     "subtype": "Highlight",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.7129,
+     "visible_pymupdf": 0.6971,
+     "visible_both": true
+    },
+    {
+     "kind": "underline",
+     "in_file": true,
+     "subtype": "Underline",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0622,
+     "visible_pymupdf": 0.0624,
+     "visible_both": true
+    },
+    {
+     "kind": "strikeout",
+     "in_file": true,
+     "subtype": "StrikeOut",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0518,
+     "visible_pymupdf": 0.0525,
+     "visible_both": true
+    },
+    {
+     "kind": "squiggly",
+     "in_file": true,
+     "subtype": "Squiggly",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0657,
+     "visible_pymupdf": 0.0524,
+     "visible_both": true
+    },
+    {
+     "kind": "text",
+     "in_file": true,
+     "subtype": "Text",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.412,
+     "visible_pymupdf": 0.412,
+     "visible_both": true
+    },
+    {
+     "kind": "freetext",
+     "in_file": true,
+     "subtype": "FreeText",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.8913,
+     "visible_pymupdf": 0.8913,
+     "visible_both": true
+    },
+    {
+     "kind": "square",
+     "in_file": true,
+     "subtype": "Square",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0318,
+     "visible_pymupdf": 0.0318,
+     "visible_both": true
+    },
+    {
+     "kind": "circle",
+     "in_file": true,
+     "subtype": "Circle",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0367,
+     "visible_pymupdf": 0.0366,
+     "visible_both": true
+    },
+    {
+     "kind": "stamp",
+     "in_file": true,
+     "subtype": "Stamp",
+     "has_AP": false,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0,
+     "visible_pymupdf": 0.1092,
+     "visible_both": false
+    },
+    {
+     "kind": "ink",
+     "in_file": true,
+     "subtype": "Ink",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.026,
+     "visible_pymupdf": 0.026,
+     "visible_both": true
+    },
+    {
+     "kind": "line",
+     "in_file": true,
+     "subtype": "Line",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0266,
+     "visible_pymupdf": 0.0265,
+     "visible_both": true
+    },
+    {
+     "kind": "polygon",
+     "in_file": true,
+     "subtype": "Polygon",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0334,
+     "visible_pymupdf": 0.0334,
+     "visible_both": true
+    },
+    {
+     "kind": "polyline",
+     "in_file": true,
+     "subtype": "PolyLine",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.0227,
+     "visible_pymupdf": 0.0227,
+     "visible_both": true
+    },
+    {
+     "kind": "caret",
+     "in_file": true,
+     "subtype": "Caret",
+     "has_AP": true,
+     "indirect": true,
+     "pymupdf_api_loadable": true,
+     "pdfium_reads": true,
+     "visible_pdfium": 0.105,
+     "visible_pymupdf": 0.1029,
+     "visible_both": true
+    }
+   ]
+  }
+ },
+ "rs03": {
+  "pdfium": {
+   "output": "rs03_filled.pdf",
+   "checks": {
+    "text_value": true,
+    "text_appearance_updated": false,
+    "checkbox_AS_is_name_Yes": false,
+    "radio_B_selected_only": false,
+    "combo_value": false,
+    "combo_appearance_updated": false,
+    "pymupdf_can_load_page": false
+   },
+   "raw_widgets": [
+    {
+     "name": "nama",
+     "AS": [
+      "null",
+      "null"
+     ],
+     "V": [
+      "string",
+      "Diisi PDFium RS03"
+     ],
+     "AP_N_contains_value": false
+    },
+    {
+     "name": "setuju",
+     "AS": [
+      "string",
+      "/Yes"
+     ],
+     "V": [
+      "string",
+      "/Yes"
+     ]
+    },
+    {
+     "name": "pilihan",
+     "AS": [
+      "name",
+      "/Off"
+     ],
+     "V": [
+      "null",
+      "null"
+     ],
+     "parent_V": [
+      "name",
+      "/Off"
+     ]
+    },
+    {
+     "name": "pilihan",
+     "AS": [
+      "name",
+      "/Off"
+     ],
+     "V": [
+      "null",
+      "null"
+     ],
+     "parent_V": [
+      "name",
+      "/Off"
+     ]
+    },
+    {
+     "name": "kota",
+     "AS": [
+      "null",
+      "null"
+     ],
+     "V": [
+      "string",
+      "Jakarta"
+     ],
+     "AP_N_contains_value": false
+    }
+   ],
+   "pymupdf_widgets": null,
+   "pymupdf_page_error": "FzErrorArgument: code=4: key is not a name (dictionary)",
+   "pdfium_fields": [
+    {
+     "name": "nama",
+     "type": "Text",
+     "value": "Diisi PDFium RS03"
+    },
+    {
+     "checked": true,
+     "name": "setuju",
+     "type": "Checkbox"
+    },
+    {
+     "name": "pilihan",
+     "type": "Unknown"
+    },
+    {
+     "name": "pilihan",
+     "type": "Unknown"
+    },
+    {
+     "name": "kota",
+     "type": "ComboBox",
+     "value": "Jakarta"
+    }
+   ]
+  },
+  "mupdf": {
+   "output": "rs03_filled.pdf",
+   "checks": {
+    "text_value": true,
+    "text_appearance_updated": true,
+    "checkbox_AS_is_name_Yes": true,
+    "radio_B_selected_only": true,
+    "combo_value": true,
+    "combo_appearance_updated": true,
+    "pymupdf_can_load_page": true
+   },
+   "raw_widgets": [
+    {
+     "name": "nama",
+     "AS": [
+      "null",
+      "null"
+     ],
+     "V": [
+      "string",
+      "Diisi MuPDF RS03"
+     ],
+     "AP_N_contains_value": true
+    },
+    {
+     "name": "setuju",
+     "AS": [
+      "name",
+      "/Yes"
+     ],
+     "V": [
+      "name",
+      "/Yes"
+     ]
+    },
+    {
+     "name": "pilihan",
+     "AS": [
+      "name",
+      "/Off"
+     ],
+     "V": [
+      "null",
+      "null"
+     ],
+     "parent_V": [
+      "string",
+      "B"
+     ]
+    },
+    {
+     "name": "pilihan",
+     "AS": [
+      "name",
+      "/B"
+     ],
+     "V": [
+      "null",
+      "null"
+     ],
+     "parent_V": [
+      "string",
+      "B"
+     ]
+    },
+    {
+     "name": "kota",
+     "AS": [
+      "null",
+      "null"
+     ],
+     "V": [
+      "string",
+      "Surabaya"
+     ],
+     "AP_N_contains_value": true
+    }
+   ],
+   "pymupdf_widgets": [
+    {
+     "name": "nama",
+     "value": "Diisi MuPDF RS03"
+    },
+    {
+     "name": "setuju",
+     "value": "Yes"
+    },
+    {
+     "name": "pilihan",
+     "value": "Off"
+    },
+    {
+     "name": "pilihan",
+     "value": "B"
+    },
+    {
+     "name": "kota",
+     "value": "Surabaya"
+    }
+   ],
+   "pymupdf_page_error": null,
+   "pdfium_fields": [
+    {
+     "name": "nama",
+     "type": "Text",
+     "value": "Diisi MuPDF RS03"
+    },
+    {
+     "checked": true,
+     "name": "setuju",
+     "type": "Checkbox"
+    },
+    {
+     "name": "pilihan",
+     "type": "Unknown"
+    },
+    {
+     "name": "pilihan",
+     "type": "Unknown"
+    },
+    {
+     "name": "kota",
+     "type": "ComboBox",
+     "value": "Surabaya"
+    }
+   ]
+  },
+  "pdfbox": {
+   "output": "rs03_filled.pdf",
+   "checks": {
+    "text_value": true,
+    "text_appearance_updated": true,
+    "checkbox_AS_is_name_Yes": true,
+    "radio_B_selected_only": true,
+    "combo_value": true,
+    "combo_appearance_updated": true,
+    "pymupdf_can_load_page": true
+   },
+   "raw_widgets": [
+    {
+     "name": "nama",
+     "AS": [
+      "null",
+      "null"
+     ],
+     "V": [
+      "string",
+      "Diisi PDFBox RS03"
+     ],
+     "AP_N_contains_value": true
+    },
+    {
+     "name": "setuju",
+     "AS": [
+      "name",
+      "/Yes"
+     ],
+     "V": [
+      "name",
+      "/Yes"
+     ]
+    },
+    {
+     "name": "pilihan",
+     "AS": [
+      "name",
+      "/Off"
+     ],
+     "V": [
+      "null",
+      "null"
+     ],
+     "parent_V": [
+      "name",
+      "/B"
+     ]
+    },
+    {
+     "name": "pilihan",
+     "AS": [
+      "name",
+      "/B"
+     ],
+     "V": [
+      "null",
+      "null"
+     ],
+     "parent_V": [
+      "name",
+      "/B"
+     ]
+    },
+    {
+     "name": "kota",
+     "AS": [
+      "null",
+      "null"
+     ],
+     "V": [
+      "string",
+      "Surabaya"
+     ],
+     "AP_N_contains_value": true
+    }
+   ],
+   "pymupdf_widgets": [
+    {
+     "name": "nama",
+     "value": "Diisi PDFBox RS03"
+    },
+    {
+     "name": "setuju",
+     "value": "Yes"
+    },
+    {
+     "name": "pilihan",
+     "value": "Off"
+    },
+    {
+     "name": "pilihan",
+     "value": "B"
+    },
+    {
+     "name": "kota",
+     "value": "Surabaya"
+    }
+   ],
+   "pymupdf_page_error": null,
+   "pdfium_fields": [
+    {
+     "name": "nama",
+     "type": "Text",
+     "value": "Diisi PDFBox RS03"
+    },
+    {
+     "checked": true,
+     "name": "setuju",
+     "type": "Checkbox"
+    },
+    {
+     "name": "pilihan",
+     "type": "Unknown"
+    },
+    {
+     "name": "pilihan",
+     "type": "Unknown"
+    },
+    {
+     "name": "kota",
+     "type": "ComboBox",
+     "value": "Surabaya"
+    }
+   ]
+  }
+ },
+ "rs04": {
+  "pdfium": null,
+  "mupdf": {
+   "output": "rs04_fields.pdf",
+   "acroform_present": true,
+   "pymupdf_widgets": [
+    {
+     "name": "rs04_text",
+     "type": "Text",
+     "value": "awal"
+    },
+    {
+     "name": "rs04_check",
+     "type": "CheckBox",
+     "value": "Off"
+    }
+   ],
+   "widget_has_AP": {
+    "rs04_text": true,
+    "rs04_check": true
+   },
+   "pdfium_fields": [
+    {
+     "name": "rs04_text",
+     "type": "Text",
+     "value": "awal"
+    },
+    {
+     "checked": false,
+     "name": "rs04_check",
+     "type": "Checkbox"
+    }
+   ],
+   "pdfium_fields_after_refill": [
+    {
+     "name": "rs04_text",
+     "type": "Text",
+     "value": "diisi pembaca lain"
+    },
+    {
+     "checked": true,
+     "name": "rs04_check",
+     "type": "Checkbox"
+    }
+   ],
+   "checks": {
+    "both_fields_recognised_by_pdfium": true,
+    "both_fields_recognised_by_pymupdf": true,
+    "refill_visible_to_pdfium": true
+   }
+  },
+  "pdfbox": {
+   "output": "rs04_fields.pdf",
+   "acroform_present": true,
+   "pymupdf_widgets": [
+    {
+     "name": "rs04_text",
+     "type": "Text",
+     "value": "awal"
+    },
+    {
+     "name": "rs04_check",
+     "type": "CheckBox",
+     "value": "Off"
+    }
+   ],
+   "widget_has_AP": {
+    "rs04_text": true,
+    "rs04_check": true
+   },
+   "pdfium_fields": [
+    {
+     "name": "rs04_text",
+     "type": "Text",
+     "value": "awal"
+    },
+    {
+     "checked": false,
+     "name": "rs04_check",
+     "type": "Checkbox"
+    }
+   ],
+   "pdfium_fields_after_refill": [
+    {
+     "name": "rs04_text",
+     "type": "Text",
+     "value": "diisi pembaca lain"
+    },
+    {
+     "checked": true,
+     "name": "rs04_check",
+     "type": "Checkbox"
+    }
+   ],
+   "checks": {
+    "both_fields_recognised_by_pdfium": true,
+    "both_fields_recognised_by_pymupdf": true,
+    "refill_visible_to_pdfium": true
+   }
+  }
+ },
+ "rs05": {
+  "pdfium": [
+   {
+    "output": "rs05_merge.pdf",
+    "labels": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     "m1",
+     "m2"
+    ],
+    "checks": {
+     "order": true,
+     "no_repair_no_warning": true,
+     "bookmarks_in_scope_preserved": true,
+     "internal_link_preserved": true,
+     "form_field_preserved_as_field": true,
+     "text_annotation_preserved": true,
+     "pdfium_bookmarks": 4
+    }
+   },
+   {
+    "output": "rs05_extract_p2-4.pdf",
+    "labels": [
+     2,
+     3,
+     4
+    ],
+    "checks": {
+     "order": true,
+     "no_repair_no_warning": true,
+     "bookmarks_in_scope_preserved": false,
+     "internal_link_preserved": true,
+     "form_field_preserved_as_field": false,
+     "text_annotation_preserved": true,
+     "pdfium_bookmarks": 0
+    }
+   }
+  ],
+  "mupdf": [
+   {
+    "output": "rs05_merge.pdf",
+    "labels": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     "m1",
+     "m2"
+    ],
+    "checks": {
+     "order": true,
+     "no_repair_no_warning": true,
+     "bookmarks_in_scope_preserved": true,
+     "internal_link_preserved": true,
+     "form_field_preserved_as_field": true,
+     "text_annotation_preserved": true,
+     "pdfium_bookmarks": 4
+    }
+   },
+   {
+    "output": "rs05_extract_p2-4.pdf",
+    "labels": [
+     2,
+     3,
+     4
+    ],
+    "checks": {
+     "order": true,
+     "no_repair_no_warning": true,
+     "bookmarks_in_scope_preserved": true,
+     "internal_link_preserved": true,
+     "form_field_preserved_as_field": true,
+     "text_annotation_preserved": true,
+     "pdfium_bookmarks": 2
+    }
+   }
+  ],
+  "pdfbox": [
+   {
+    "output": "rs05_merge.pdf",
+    "labels": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     "m1",
+     "m2"
+    ],
+    "checks": {
+     "order": true,
+     "no_repair_no_warning": true,
+     "bookmarks_in_scope_preserved": true,
+     "internal_link_preserved": true,
+     "form_field_preserved_as_field": true,
+     "text_annotation_preserved": true,
+     "pdfium_bookmarks": 4
+    }
+   },
+   {
+    "output": "rs05_extract_pageextractor.pdf",
+    "labels": [
+     2,
+     3,
+     4
+    ],
+    "checks": {
+     "order": true,
+     "no_repair_no_warning": true,
+     "bookmarks_in_scope_preserved": false,
+     "internal_link_preserved": true,
+     "form_field_preserved_as_field": false,
+     "text_annotation_preserved": true,
+     "pdfium_bookmarks": 0
+    }
+   },
+   {
+    "output": "rs05_extract_inplace.pdf",
+    "labels": [
+     2,
+     3,
+     4
+    ],
+    "checks": {
+     "order": true,
+     "no_repair_no_warning": true,
+     "bookmarks_in_scope_preserved": true,
+     "internal_link_preserved": true,
+     "form_field_preserved_as_field": true,
+     "text_annotation_preserved": true,
+     "pdfium_bookmarks": 4
+    }
+   }
+  ]
+ },
+ "rs07_mupdf": [
+  {
+   "output": "rs07_redacted_apply_only.pdf",
+   "channels": {
+    "content_text": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "xobject_text": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "hidden_text": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "annotation": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "form_field": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": true,
+     "in_raw_objects_or_streams": true,
+     "in_metadata": false,
+     "leaked": true
+    },
+    "metadata": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": true,
+     "in_metadata": true,
+     "leaked": true
+    }
+   },
+   "image_area_dark_fraction": 1.0,
+   "vector_area_dark_fraction": 1.0,
+   "public_text_preserved_pdfium": true,
+   "structure_pymupdf": {
+    "is_repaired": false,
+    "mupdf_warnings": ""
+   }
+  },
+  {
+   "output": "rs07_redacted_apply_plus_scrub.pdf",
+   "channels": {
+    "content_text": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "xobject_text": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "hidden_text": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "annotation": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    },
+    "form_field": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": true,
+     "in_raw_objects_or_streams": true,
+     "in_metadata": false,
+     "leaked": true
+    },
+    "metadata": {
+     "in_text_pdfium": false,
+     "in_text_pymupdf": false,
+     "in_raw_objects_or_streams": false,
+     "in_metadata": false,
+     "leaked": false
+    }
+   },
+   "image_area_dark_fraction": 1.0,
+   "vector_area_dark_fraction": 1.0,
+   "public_text_preserved_pdfium": true,
+   "structure_pymupdf": {
+    "is_repaired": false,
+    "mupdf_warnings": ""
+   }
+  }
+ ],
+ "rs08_pdfbox": {
+  "bc_verify_original": {
+   "signature_count": 1,
+   "byte_range": [
+    0,
+    2366,
+    21312,
+    840
+   ],
+   "byte_range_covers_file_except_contents": true,
+   "signer_subject": "CN=UnionPDF Spike Test Signer,O=UnionPDF Test Only",
+   "cms_signature_valid_against_embedded_cert": true
+  },
+  "bc_verify_tampered": {
+   "signature_count": 1,
+   "byte_range": [
+    0,
+    2366,
+    21312,
+    840
+   ],
+   "byte_range_covers_file_except_contents": true,
+   "error": "CMSSignerDigestMismatchException: message-digest attribute value does not match calculated value",
+   "cms_signature_valid_against_embedded_cert": false
+  },
+  "pdfium_signature_count": 1,
+  "pdfium_signatures": [
+   {
+    "contents_bytes": 9472,
+    "reason": "RS-08 spike (test certificate, not trusted)",
+    "signing_date": "D:20261021115734+07'00'"
+   }
+  ],
+  "pymupdf_sigflags": 3,
+  "pdfium_loads_tampered": true,
+  "limits": "self-signed test cert; integritas diverifikasi BC (library yang sama); rantai kepercayaan tidak dinilai"
+ }
+}

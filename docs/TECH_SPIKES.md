@@ -338,3 +338,20 @@ one-dir lebih dulu untuk mengukur, lalu one-file bila perlu.
 
 Tidak semua spike harus selesai dalam satu sesi. Bila spike menunjukkan perubahan
 teknologi material, pekerjaan **berhenti** dan meminta persetujuan baru.
+
+### R.4 Hasil eksekusi terbatas (2026-10-21, sesi `2026-10-21T1114+0700`)
+
+Disetujui A-6/A-7: RS-00, RS-01, bagian PDFium RS-02/RS-03/RS-05. Rincian lengkap, command,
+environment, dan bukti: `experiments/restart/results/SUMMARY.md`.
+
+| Spike | Hasil ringkas |
+|---|---|
+| RS-00 | **PASS** — PDFium `chromium/7881` dari `bblanchon/pdfium-binaries` (pihak ketiga, bukan build Google): digest cocok, atestasi SLSA v1 terverifikasi, patch hanya build/ekspor, lisensi permisif dengan kewajiban notice; DLL tidak bertanda tangan Authenticode |
+| RS-01 | Render 508/508 halaman tanpa error; cocok dengan PyMuPDF (MAD maks 0,306 ≤ 10); zoom/thumbnail/pencarian PASS; pembatalan antar-request PASS (latensi 1,05 ms); pembatalan di tengah halaman NOT_RUN; teks Latin 1 baris FAIL karena **cacat fixture**; Unicode/Arab NOT_RUN (fixture tidak valid) |
+| RS-02 (PDFium) | 10 subtipe dibuat & dibaca ulang PDFium dengan benar; **tetapi** ditulis sebagai objek langsung tanpa `/AP` → 0/10 dapat dimuat API anotasi PyMuPDF; PDFium sendiri tidak merender highlight/underline/strikeout/squiggly/stamp yang dibuatnya |
+| RS-03 (PDFium) | Nilai teks tersimpan, appearance tidak diperbarui; setter checkbox wrapper menulis `/AS` sebagai string (halaman gagal dimuat PyMuPDF); radio no-op; choice tanpa setter; jalur `FORM_*` native NOT_RUN |
+| RS-05 (PDFium) | 9/9 operasi benar (jumlah/urutan/rotasi, tanpa repair); struktur in-place utuh; impor ke dokumen baru membuang outline, tujuan link, dan `/AcroForm` |
+
+Kesimpulan terbatas: PDFium memadai untuk viewer dan page ops in-place pada fixture ini;
+authoring anotasi/form lewat PDFium + `pdfium-render` **belum** memenuhi kriteria
+interoperabilitas tanpa pekerjaan kustom yang belum terbukti. Ini **bukan** keputusan stack.

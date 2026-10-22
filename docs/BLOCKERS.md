@@ -217,3 +217,31 @@ korpus penuh ke repo / gist pribadi / tetap lokal).
 source offer dipasang di dialog "Tentang", 14 test menjaga.
 → **TIDAK perlu konfirmasi ulang.** Disimpan di sini hanya untuk kelengkapan.
 
+
+---
+
+## B-RT1 - Runtime Java untuk distribusi worker PDFBox
+
+**Prioritas:** Sedang · **Owner:** pengguna · **Blokir:** installer/distribusi fitur authoring
+(tidak memblokir development, viewer, atau operasi halaman) · **Status: Menunggu Persetujuan**
+
+**Masalah.** Worker PDFBox butuh Java. Saat ini aplikasi mencari `UNIONPDF_JAVA` → `worker/jre/`
+bawaan → `JAVA_HOME` → `PATH`. Di mesin development, `JAVA_HOME` menunjuk OpenJDK 17.0.2 milik
+aplikasi lain (`C:\orlansoft_erp\openjdk`) dan **itulah yang dipakai**; komputer pengguna tidak
+boleh diasumsikan punya Java. Tanpa Java, fitur authoring (anotasi, form, extract/merge yang
+mempertahankan struktur) tidak tersedia dan UI menyembunyikan tombolnya; extract/merge jatuh ke
+PDFium dengan peringatan + konfirmasi.
+
+| Opsi | Konsekuensi |
+|---|---|
+| A. JRE minimal (jlink, JDK 17/21 LTS, mis. Temurin/Zulu, GPLv2+CE) dibawa di `worker/jre/` | Mandiri; tambahan ukuran **NOT_MEASURED** (perlu spike jlink); kewajiban lisensi GPLv2+CE (teks lisensi + sumber tersedia dari vendor) |
+| B. Wajibkan pengguna memasang Java | Ukuran kecil; UX buruk, versi tak terkontrol |
+| C. Kompilasi worker ke native (GraalVM native-image) | Tanpa JRE; risiko kompatibilitas PDFBox/AWT tinggi; **NOT_MEASURED** |
+
+**Rekomendasi:** A, setelah spike jlink mengukur ukuran dan startup.
+**Yang dibutuhkan:** persetujuan arah (A/B/C) dan anggaran ukuran; izin spike jlink (unduh JDK lokal-proyek).
+
+**Status: ~~Menunggu Persetujuan~~ SELESAI - 2026-10-22.** Pengguna memilih opsi A (bundling
+runtime Java khusus UnionPDF). Ter PARTY: runtime image Temurin JDK 17.0.20.1 dipangkas dengan
+`jlink` -> 53,1 MB, disertakan dalam paket; `docs/decisions/ADR-003-java-runtime-and-packaging.md`.
+Fallback ke Java eksternal hanya di build debug atau `UNIONPDF_ALLOW_EXTERNAL_JAVA=1`.

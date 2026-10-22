@@ -1,0 +1,18 @@
+# Dependency & build output (dapat diregenerasi)
+node_modules/
+dist/
+dist-package/
+src-tauri/target/
+src-tauri/gen/
+.cargo-home/
+
+# Toolchain JDK lokal (unduhan untuk runtime Java bundel)
+.toolchain/
+
+# Biner PDFium lokal (provenance: experiments/restart/deps/PROVENANCE.md;
+# disiapkan oleh scripts/prepare-pdfium.ps1)
+src-tauri/pdfium/
+
+# Worker PDFBox hasil build + JAR pihak ketiga (scripts/prepare-pdfbox.ps1)
+src-tauri/worker/
+worker-pdfbox/build/

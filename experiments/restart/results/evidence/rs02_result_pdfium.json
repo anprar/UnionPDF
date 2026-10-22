@@ -1,0 +1,324 @@
+{
+  "created": [
+    {
+      "contents": "RS02-highlight",
+      "kind": "highlight",
+      "page": 1,
+      "rect": [
+        60.0,
+        717.8099975585938,
+        291.1000061035156,
+        737.0499877929688
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-underline",
+      "kind": "underline",
+      "page": 1,
+      "rect": [
+        60.0,
+        677.8099975585938,
+        296.5400085449219,
+        697.0499877929688
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-strikeout",
+      "kind": "strikeout",
+      "page": 1,
+      "rect": [
+        60.0,
+        637.8099975585938,
+        291.8699951171875,
+        657.0499877929688
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-squiggly",
+      "kind": "squiggly",
+      "page": 1,
+      "rect": [
+        60.0,
+        597.8099975585938,
+        290.30999755859375,
+        617.0499877929688
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-text",
+      "kind": "text",
+      "page": 0,
+      "rect": [
+        60.0,
+        700.0,
+        84.0,
+        724.0
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-freetext",
+      "kind": "freetext",
+      "page": 0,
+      "rect": [
+        120.0,
+        690.0,
+        320.0,
+        730.0
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-square",
+      "kind": "square",
+      "page": 0,
+      "rect": [
+        60.0,
+        560.0,
+        200.0,
+        660.0
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-stamp",
+      "kind": "stamp",
+      "page": 0,
+      "rect": [
+        380.0,
+        560.0,
+        540.0,
+        640.0
+      ],
+      "via": "pdfium-render high-level"
+    },
+    {
+      "contents": "RS02-circle",
+      "ink_stroke_index": -2,
+      "kind": "circle",
+      "page": 0,
+      "rect": [
+        240.0,
+        560.0,
+        360.0,
+        660.0
+      ],
+      "set_color_ok": true,
+      "set_contents_ok": true,
+      "set_rect_ok": true,
+      "via": "raw FFI FPDFPage_CreateAnnot"
+    },
+    {
+      "contents": "RS02-ink",
+      "ink_stroke_index": 0,
+      "kind": "ink",
+      "page": 0,
+      "rect": [
+        60.0,
+        420.0,
+        300.0,
+        520.0
+      ],
+      "set_color_ok": true,
+      "set_contents_ok": true,
+      "set_rect_ok": true,
+      "via": "raw FFI FPDFPage_CreateAnnot"
+    }
+  ],
+  "creation_errors": [],
+  "input": "rs02_annot_base.pdf",
+  "output": "annotated.pdf",
+  "reopened_by_pdfium": [
+    {
+      "attachment_points": 0,
+      "bounds": [
+        60.0,
+        700.0,
+        84.0,
+        724.0
+      ],
+      "contents": "RS02-text",
+      "page": 0,
+      "stroke_color": [
+        255,
+        200,
+        0,
+        255
+      ],
+      "type": "Text"
+    },
+    {
+      "attachment_points": 0,
+      "bounds": [
+        120.0,
+        690.0,
+        320.0,
+        730.0
+      ],
+      "contents": "RS02-freetext",
+      "page": 0,
+      "stroke_color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "type": "FreeText"
+    },
+    {
+      "attachment_points": 0,
+      "bounds": [
+        60.0,
+        560.0,
+        200.0,
+        660.0
+      ],
+      "contents": "RS02-square",
+      "page": 0,
+      "stroke_color": [
+        200,
+        0,
+        200,
+        255
+      ],
+      "type": "Square"
+    },
+    {
+      "attachment_points": 0,
+      "bounds": [
+        380.0,
+        560.0,
+        540.0,
+        640.0
+      ],
+      "contents": "RS02-stamp",
+      "page": 0,
+      "stroke_color": [
+        0,
+        128,
+        128,
+        255
+      ],
+      "type": "Stamp"
+    },
+    {
+      "attachment_points": 0,
+      "bounds": [
+        240.0,
+        560.0,
+        360.0,
+        660.0
+      ],
+      "contents": "RS02-circle",
+      "page": 0,
+      "stroke_color": [
+        0,
+        90,
+        200,
+        255
+      ],
+      "type": "Circle"
+    },
+    {
+      "attachment_points": 0,
+      "bounds": [
+        60.0,
+        420.0,
+        300.0,
+        520.0
+      ],
+      "contents": "RS02-ink",
+      "page": 0,
+      "stroke_color": [
+        200,
+        60,
+        0,
+        255
+      ],
+      "type": "Ink"
+    },
+    {
+      "attachment_points": 1,
+      "bounds": [
+        60.0,
+        717.8099975585938,
+        291.1000061035156,
+        737.0499877929688
+      ],
+      "contents": "RS02-highlight",
+      "page": 1,
+      "stroke_color": [
+        255,
+        230,
+        0,
+        255
+      ],
+      "type": "Highlight"
+    },
+    {
+      "attachment_points": 1,
+      "bounds": [
+        60.0,
+        677.8099975585938,
+        296.5400085449219,
+        697.0499877929688
+      ],
+      "contents": "RS02-underline",
+      "page": 1,
+      "stroke_color": [
+        0,
+        120,
+        255,
+        255
+      ],
+      "type": "Underline"
+    },
+    {
+      "attachment_points": 1,
+      "bounds": [
+        60.0,
+        637.8099975585938,
+        291.8699951171875,
+        657.0499877929688
+      ],
+      "contents": "RS02-strikeout",
+      "page": 1,
+      "stroke_color": [
+        220,
+        0,
+        0,
+        255
+      ],
+      "type": "Strikeout"
+    },
+    {
+      "attachment_points": 1,
+      "bounds": [
+        60.0,
+        597.8099975585938,
+        290.30999755859375,
+        617.0499877929688
+      ],
+      "contents": "RS02-squiggly",
+      "page": 1,
+      "stroke_color": [
+        0,
+        160,
+        60,
+        255
+      ],
+      "type": "Squiggly"
+    }
+  ],
+  "spike": "RS-02 (PDFium part)",
+  "wrapper_notes": [
+    "pdfium-render 0.9.4 exposes create_* for: free_text, highlight, ink, link, popup, square, squiggly, stamp, strikeout, text, underline",
+    "circle is creatable upstream but not wrapped -> raw FFI used",
+    "ink: wrapper has no InkList stroke API -> raw FPDFAnnot_AddInkStroke used",
+    "raw bindings obtained by calling Pdfium::bind_to_library twice before Pdfium::new (accessor trait is pub(crate) in 0.9.4)"
+  ]
+}

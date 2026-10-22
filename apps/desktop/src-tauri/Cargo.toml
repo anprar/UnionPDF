@@ -1,0 +1,31 @@
+[package]
+name = "unionpdf-desktop"
+version = "0.1.0"
+description = "UnionPDF desktop application (Tauri 2)"
+edition = "2021"
+publish = false
+
+[lib]
+name = "unionpdf_desktop_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "=2.7.3", features = [] }
+
+[dependencies]
+tauri = { version = "=2.12.4", features = [] }
+tauri-plugin-dialog = "=2.8.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Renderer awal: PDFium (chromium/7881) lewat pdfium-render 0.9.4 — provenance:
+# experiments/restart/deps/PROVENANCE.md. Tanpa fitur `image` (render dikirim sebagai RGBA mentah).
+pdfium-render = { version = "=0.9.4", default-features = false, features = ["pdfium_7881", "thread_safe"] }
+# Encoder gambar untuk konversi PDF -> PNG/JPEG (hanya dipakai pada command `convert`).
+image = { version = "=0.25.10", default-features = false, features = ["png", "jpeg"] }
+
+[features]
+# Hook pengujian E2E UI (penundaan job agar tombol Batalkan dapat diuji). Tidak aktif di build biasa.
+e2e-hooks = []
+
+[profile.release]
+debug = false

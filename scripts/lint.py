@@ -19,6 +19,29 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SKIP_DIRS = {".venv", "node_modules", ".git", "spikes", "out", "__pycache__"}
 
+# Dependency/vendor/cache pihak ketiga dan output build — path eksplisit (relatif ke ROOT).
+# Sengaja TIDAK memakai "semua file gitignored": source proyek yang penting tetap dipindai.
+VENDOR_PREFIXES = (
+    "experiments/restart/.cargo-home/",
+    "experiments/restart/deps/pdfium/",
+    "experiments/restart/deps/download/",
+    "experiments/restart/deps/pdfbox/",
+    "experiments/restart/pdfium-spike/target/",
+    "experiments/restart/pdfbox-spike/build/",
+    "experiments/restart/raw/",
+    "experiments/restart/fixtures/generated/",
+    "apps/desktop/src-tauri/target/",
+    "apps/desktop/src-tauri/pdfium/",
+    "apps/desktop/src-tauri/worker/",
+    "apps/desktop/dist-package/",
+    "apps/desktop/.toolchain/",
+    "apps/desktop/dist/",
+    "apps/desktop/.cargo-home/",
+    "apps/desktop/src-tauri/gen/",
+    "apps/desktop/src-tauri/icons/",
+    ".cargo-home/",
+)
+
 HANGUL_CJK = re.compile(r"[\u1100-\u11ff\u3130-\u318f\ua960-\ua97f\uac00-\ud7af\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]")
 LINK_MD = re.compile(r"\[[^\]]*\]\((?!https?://|mailto:)([^)#]+)(?:#[^)]*)?\)")
 PLACEHOLDERS = re.compile(r"\blorem ipsum\b|\bTBD!|\bFIXME\b", re.IGNORECASE)
@@ -37,6 +60,8 @@ def iter_files() -> list[pathlib.Path]:
         if not f.exists():
             continue
         if SKIP_DIRS & set(f.relative_to(ROOT).parts):
+            continue
+        if f.relative_to(ROOT).as_posix().startswith(VENDOR_PREFIXES):
             continue
         out.append(f)
     return out

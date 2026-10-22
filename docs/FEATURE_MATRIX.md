@@ -354,3 +354,64 @@ Kolom "Lama (benchmark)" = implementasi Python/PySide6/PyMuPDF yang ada, diukur
 | Lisensi engine | PDFium BSD-style; QPDF `NOT-VERIFIED`; `pdfium-render` MIT OR Apache-2.0 | PDFium BSD-style; PDFBox Apache-2.0; Bouncy Castle `NOT-VERIFIED` | MuPDF/PyMuPDF **AGPL-3.0** atau komersial |
 | Custom work terbesar | Field authoring, anotasi di luar 13 subtipe, redaksi penuh, signature (tanpa library) | Redaksi, integrasi IPC JVM | Integrasi IPC Python/FFI, packaging Python |
 | Pemilik mutasi dokumen | PDFium dan QPDF (harus satu pemilik per revisi) | PDFium dan PDFBox (harus satu pemilik per revisi) | MuPDF |
+
+### 13.5 Pembaruan setelah spike terbatas PDFium (2026-10-21)
+
+Baris di §13.3 tidak diubah; tabel ini mencatat status uji **bagian PDFium** saja
+(`experiments/restart/results/SUMMARY.md`). Baseline B dan C untuk kapabilitas yang sama
+belum diuji.
+
+| Req | Hasil uji PDFium (`chromium/7881` + `pdfium-render 0.9.4`) |
+|---|---|
+| CR-02 | **Terbukti pada fixture sintetis**: render semua halaman, cocok dengan pembaca independen, zoom/thumbnail, pembatalan antar-request |
+| CR-03 | Pencarian PASS; ekstraksi Latin PASS kecuali 1 baris (cacat fixture); Unicode/RTL belum dapat dinilai |
+| CR-04 | In-place (rotate/delete/reorder/insert/merge-append): **terbukti**, struktur utuh. Impor ke dokumen baru: outline, tujuan link, dan `/AcroForm` hilang → `CUSTOM` untuk merge/extract/split yang mempertahankan struktur |
+| CR-07 | Pembuatan & round-trip internal PDFium berhasil, **tetapi** anotasi tanpa `/AP` dan sebagai objek langsung (interop gagal; PDFium tak merender markup/stamp buatannya) → efektif `CUSTOM` (AP kustom), jalur perbaikan `UNPROVEN` |
+| CR-09 | Lewat setter `pdfium-render`: teks tersimpan tanpa appearance baru; checkbox menghasilkan file tidak valid bagi PyMuPDF; radio no-op; choice tanpa setter. Jalur `FORM_*` native belum diuji |
+
+### 13.6 Pembaruan setelah pembandingan tiga engine & vertical slice aplikasi (2026-10-22)
+
+Status **implementasi UnionPDF** (bukan status engine semata). Bukti:
+`experiments/restart/results/SUMMARY.md` §9 (pembandingan), `apps/desktop/src-tauri/src/ops.rs`
+(21 test backend), `apps/desktop/scripts/ui-e2e.ps1` (12 PASS + 1 NOT_RUN UI),
+`docs/sessions/2026-10-22T0900+0700.md`.
+
+| Req | Status UnionPDF | Bukti & catatan |
+|---|---|---|
+| CR-02 | **Terbukti di aplikasi**: render, navigasi, zoom/fit, thumbnail lazy | UI-01/UI-03; startup median 481 ms, halaman pertama 677 ms |
+| CR-03 | **Terbukti sebagian**: teks Latin &amp; Arab terbaca; **urutan RTL masih visual** (belum ada reordering bidi) | UPDF-051 |
+| CR-04 | **Terbukti di aplikasi**: putar, Save As (atomik, verifikasi), ekstrak, gabung; struktur dipertahankan lewat worker PDFBox (bookmark dipangkas, link/field disesuaikan, field bentrok diganti nama) dengan **peringatan + konfirmasi** bila ada yang dibuang | UPDF-048/049/050; U-03/U-06/U-08 |
+| CR-07 | **Terbukti di aplikasi** (lewat PDFBox, bukan PDFium): highlight, underline, note, free text dengan appearance tersimpan, bertahan setelah save/reopen | UPDF-049; U-12 (form) & M-01…M-08 (manual) |
+| CR-09 | **Terbukti di aplikasi** (lewat PDFBox): isi teks, checkbox, radio grup, combo; nilai & appearance bertahan setelah simpan | U-12 (PyMuPDF: nama=Budi Santoso, AP memuat nilai; setuju=Yes; pilihan=B; kota=Surabaya) |
+| CR-10 (redaksi) | **Ditunda** atas instruksi pengguna; fixture `rs07_redact.pdf` + temuan "nilai field lama masih ada di appearance stream" dipertahankan sebagai test gagal | UPDF-052 |
+| CR-11 (signature) | **Bukti minimal di spike** (PDFBox + sertifikat uji self-signed; rantai kepercayaan tidak dinilai); belum ada di aplikasi | `experiments/restart/results/SUMMARY.md` §9.1 |
+| Installer | **Belum ada** (`bundle.active=false`); yang ada build release lokal + staging | UPDF-057; B-RT1 untuk runtime Java |
+
+### 13.7 Pembaruan setelah continuous scroll, chrome, runtime Java & paket (2026-10-22)
+
+Status **aplikasi UnionPDF** (bukan engine semata). Bukti: `apps/desktop/src/viewer/layout.ts` +
+`layout.test.ts` (8 uji), `apps/desktop/scripts/ui-e2e.ps1` (18 PASS + 1 NOT_RUN),
+`apps/desktop/scripts/{test-bundled-jre,test-no-external-java,test-package}.ps1` (PASS),
+`docs/sessions/2026-10-22T1400+0700.md`.
+
+| Req | Status UnionPDF | Bukti & catatan |
+|---|---|---|
+| CR-02 | **Terbukti**: continuous vertical scroll (default) + mode satu halaman; virtualisasi; zoom menjaga posisi baca; thumbnail & nomor halaman sinkron | UI-14…UI-19; 8 uji layout |
+| CR-03 | **Terbukti sebagian**: navigasi & selection belum ada (selection layer per halaman masih TODO); urutan RTL masih visual | UPDF-051 |
+| CR-04 | **Terbukti**: putar, Save As, ekstrak, gabung; struktur dipertahankan (bookmark dipangkas, field bentrok diganti nama) + konfirmasi pra-eksekusi | U-03, U-06, U-08 |
+| CR-07 | **Terbukti**: sorot, garis bawah, catatan, teks bebas (PDFBox worker), appearance tersimpan | U-12, M-12 (manual) |
+| CR-09 | **Terbukti**: isi teks, checkbox, radio, combo; nilai & appearance bertahan | U-12 (PyMuPDF independen) |
+| CR-10 (redaksi) | **Ditunda** atas instruksi pengguna; fixture + temuan "nilai field lama masih ada" tetap | UPDF-052 |
+| CR-12 (runtime/paket) | **Terbukti**: runtime Java bundel (jlink, 53,1 MB), paket portabel 74,6 MB (ZIP 48,0 MB), installer NSIS 43,2 MB; app jalan tanpa Java eksternal, path ber-spasi/Unicode, folder tidak writable | ADR-003; clean-install NOT_RUN |
+| UI/UX | **Terbukti sebagian**: title bar, tab kategori, command bar kontekstual, sidebar, status bar, ikon sendiri, design tokens; tooltip/DPI/multi-monitor belum diuji | M-01…M-24 |
+
+### 13.8 Pembaruan setelah lapisan teks, anotasi teruji & strategi WebView2 (2026-10-22)
+
+| Req | Status UnionPDF | Bukti |
+|---|---|---|
+| CR-02 | **Terbukti**: continuous scroll (default), virtualisasi, anchor zoom, mode satu halaman, ukuran campuran & halaman berotasi dihormati | UI-14…UI-22; 8 uji layout |
+| CR-03 | **Terbukti sebagian**: lapisan teks per halaman (teks dapat dipilih/disalin); find belum ada; RTL masih urutan visual | UI-26; UPDF-051 |
+| CR-04 | **Terbukti**: putar/save/ekstrak/gabung + integritas struktur (bookmark dipangkas, field bentrok diganti nama) + konfirmasi pra-eksekusi | U-03, U-06, U-08 |
+| CR-07 | **Terbukti**: sorot, garis bawah, catatan, teks bebas; koordinat gesture dipetakan lewat fungsi murni (zoom/DPI/rotasi) dan dibatasi per halaman | `annotation.test.ts` (6), uji backend "anotasi di halaman kedua" |
+| CR-09 | **Terbukti**: isi form + save/reopen | U-12 |
+| CR-12 | **Terbukti**: runtime Java bundel (53,1 MB), paket 74,6 MB (ZIP 48,0 MB), installer 43,2 MB; strategi WebView2 evergreen eksplisit | ADR-003, `docs/WEBVIEW2-STRATEGY.md` |

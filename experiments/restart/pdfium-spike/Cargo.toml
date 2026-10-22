@@ -1,0 +1,16 @@
+[package]
+name = "pdfium-spike"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "UnionPDF controlled-restart spike: RS-01 and PDFium parts of RS-02/RS-03/RS-05. Not production code."
+license = "AGPL-3.0-only"
+
+[dependencies]
+# Versi dipin eksak sesuai review RS-00 (experiments/restart/deps/PROVENANCE.md).
+pdfium-render = { version = "=0.9.4" }
+image = { version = "0.25", default-features = false, features = ["png"] }
+serde_json = "1"
+
+[profile.release]
+debug = false

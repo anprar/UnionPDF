@@ -47,12 +47,42 @@ ter Relevan sudah dijalankan. Kode yang ada saja **bukan** bukti selesai.
 | UPDF-036 | Perbaikan `TASKS.md` + indeks `SESSION_LOG.md` (A-4) | Sedang | **DONE** | Persetujuan A-4; mapping ID di bagian "Mapping ID" |
 | UPDF-037 | Penomoran milestone mengikuti protokol restart (A-8) | Sedang | **DONE** | Persetujuan A-8; tabel mapping di bagian "Mapping milestone" dan `docs/ROADMAP.md` |
 | UPDF-038 | Pembaruan terbatas `AGENTS.md` (A-9) | Sedang | **DONE** | Persetujuan A-9; §5 + §5b |
-| UPDF-039 | Commit lokal pengamanan tanpa push (A-5) | Tinggi | IN_PROGRESS | Daftar path & isi: `docs/sessions/2026-10-21T1114+0700.md` |
-| UPDF-040 | Spike RS-00 — review dependency & provenance PDFium | Tinggi | TODO | Persetujuan A-6; `experiments/restart/` (A-7) |
-| UPDF-041 | Spike RS-01 — render, zoom, thumbnail, teks, cancel (PDFium) | Tinggi | TODO | Persetujuan A-6 |
-| UPDF-042 | Spike bagian PDFium dari RS-02 / RS-03 / RS-05 | Tinggi | TODO | Persetujuan A-6 |
-| UPDF-043 | Konfirmasi urutan kriteria evaluasi stack (A-1) | Tinggi | REVIEW | `docs/STACK_EVALUATION.md` §10.2b — menunggu konfirmasi pengguna |
-| UPDF-044 | Pembandingan PDFBox dan MuPDF pada fixture yang sama | Tinggi | TODO | Menunggu persetujuan gate berikutnya |
+| UPDF-039 | Commit lokal pengamanan tanpa push (A-5) | Tinggi | **DONE** | Commit `2a1718a` (24 file, lokal; `main` ahead 1, tidak di-push) — `docs/sessions/2026-10-21T1114+0700.md` |
+| UPDF-040 | Spike RS-00 — review dependency & provenance PDFium | Tinggi | **DONE** | `experiments/restart/deps/PROVENANCE.md` — PASS (pihak ketiga, atestasi SLSA terverifikasi) |
+| UPDF-041 | Spike RS-01 — render, zoom, thumbnail, teks, cancel (PDFium) | Tinggi | **DONE** (hasil: PASS sebagian; 1 FAIL karena cacat fixture; 2 NOT_RUN) | `experiments/restart/results/SUMMARY.md` §3 |
+| UPDF-042 | Spike bagian PDFium dari RS-02 / RS-03 / RS-05 | Tinggi | **DONE** (hasil: RS-02/RS-03 FAIL pada kriteria interop; RS-05 PASS) | `experiments/restart/results/SUMMARY.md` §3 |
+| UPDF-045 | Perbaiki fixture: `Œ` (font TrueType), teks Arab ber-shaping/bidi, radio sebagai grup | Tinggi | **DONE** | Persetujuan G-3; `fixtures/FIXTURES.md` v2 (+ `rs07_redact.pdf`) |
+| UPDF-043 | Konfirmasi urutan kriteria evaluasi stack (A-1) | Tinggi | **DONE** | Persetujuan G-1 (2026-10-21) |
+| UPDF-044 | Pembandingan PDFBox dan MuPDF pada fixture yang sama | Tinggi | **DONE** | Persetujuan G-3/G-4; `results/SUMMARY.md` §9, `evidence/compare_engines.json` |
+| UPDF-046 | Lint: pisahkan vendor/cache dari source proyek (G-7) | Sedang | **DONE** | `scripts/lint.py` `VENDOR_PREFIXES`; self-test: pelanggaran di `docs/` & `results/` tetap terdeteksi |
+| UPDF-047 | Fondasi restart dicatat sebagai ADR | Tinggi | **DONE** | Persetujuan pengguna 2026-10-21; `docs/decisions/ADR-002-restart-foundation.md` |
+| UPDF-048 | Vertical slice `apps/desktop/`: viewer + Save As/rotate/extract/merge dengan verifikasi output | Tinggi | **DONE** | `cargo test` 21/21; E2E UI 18 PASS + 1 NOT_RUN; build release + pengukuran — `docs/sessions/2026-10-22T1400+0700.md` |
+| UPDF-049 | Worker authoring PDFBox (sidecar Java, IPC stdio) + strategi JRE | Tinggi | **DONE** (worker terpasang & dipakai app; runtime distribusi → B-RT1) | `apps/desktop/worker-pdfbox/`, `src-tauri/src/worker.rs`; ukuran JRE **NOT_MEASURED** |
+| UPDF-050 | Pemangkasan outline saat extract; bookmark/field dokumen kedua saat merge | Sedang | **DONE** (extract: bookmark/link/field dipangkas; merge: field bentrok diganti nama) | `worker-pdfbox/.../Ops.java`; UPDF-050b reorder halaman **TODO** |
+| UPDF-051 | Reordering bidi untuk teks RTL dari PDFium (salin/cari) | Sedang | TODO | PDFium mengembalikan urutan visual (SUMMARY §9.1) |
+| UPDF-052 | Provider redaksi | Tinggi | BLOCKED | Menunggu keputusan lisensi (MuPDF AGPL) atau persetujuan redaksi kustom PDFBox — **ditunda atas instruksi pengguna** |
+| UPDF-053 | Anotasi tambahan (kotak/poligon/garis) + preflight reorder halaman | Sedang | TODO | Prioritas rendah; hanya bila ada penggunaan nyata |
+| UPDF-054 | E2E UI otomatis (UI Automation) | Tinggi | **DONE** | `apps/desktop/scripts/ui-e2e.ps1`: **18 PASS + 1 NOT_RUN** (prompt TaskDialog butuh keyboard sungguhan) |
+| UPDF-055 | Build release lokal + pengukuran startup/memori/ukuran | Sedang | **DONE** | `scripts/{stage-release,measure-release}.ps1`; startup median 481 ms, halaman pertama 677 ms, process tree 7 proses / Private 178,7 MB |
+| UPDF-056 | Uji manual pengguna (drag anotasi, prompt timpa, High-DPI) | Sedang | **REVIEW** | `apps/desktop/MANUAL_TEST.md` M-01…M-12 — menunggu hasil pengguna |
+| UPDF-057 | Installer/bundel (NSIS/MSI) + runtime Java untuk distribusi | Tinggi | **DONE** | ADR-003: runtime image Temurin 17 (jlink) 53,1 MB, paket portabel 74,6 MB (ZIP 48,0 MB), installer NSIS 43,2 MB; clean-install **NOT_RUN** (M-13…M-15) |
+| UPDF-058 | Continuous vertical scroll tervirtualisasi + chrome profesional (title bar, tab, command bar, sidebar, status bar) | Tinggi | **DONE** | `src/viewer/layout.ts` (+8 uji), `src/components/{DocumentView,PageSurface,Chrome,Sidebar,icons}.tsx`; E2E UI-14…UI-22 PASS |
+| UPDF-061 | Lapisan teks per halaman (teks dapat dipilih/disalin) + pemetaan koordinat anotasi teruji | Tinggi | **DONE** | `src-tauri/src/engine.rs` (`text_spans`), `src/components/TextLayer.tsx`, `src/viewer/annotation.ts` (+6 uji); E2E UI-26 PASS |
+| UPDF-062 | Strategi WebView2 eksplisit (internet saat instalasi, online/offline, ukuran, dipakai bersama) | Sedang | **DONE** | `apps/desktop/docs/WEBVIEW2-STRATEGY.md`; `bundle.windows.webviewInstallMode = downloadBootstrapper` |
+| UPDF-063 | E2E UI diperluas 13 → 26 kasus (fit/sidebar, ganti dokumen saat render, halaman berotasi, fokus keyboard, label aksesibel, toolbar sempit, lapisan teks) | Tinggi | **DONE** | `scripts/ui-e2e.ps1`: 24 PASS + 1 NOT_RUN |
+| UPDF-059 | Runtime Java mandiri (jlink) + paket mandiri + uji lingkungan hostile | Tinggi | **DONE** | `scripts/{prepare-java-runtime,package-standalone,test-bundled-jre,test-no-external-java,test-package}.ps1` → PASS |
+| UPDF-060 | Uji manual pengguna (drag anotasi, prompt timpa, DPI 125/150/200 %, multi-monitor, clean-install) | Sedang | **REVIEW** | `apps/desktop/MANUAL_TEST.md` M-01…M-28 — menunggu hasil pengguna |
+| UPDF-064 | **Prioritas A** — header/panel: toolbar kontekstual bisa disembunyikan (tab aktif diklik), tombol tampil/sembunyikan, sidebar kiri & kanan bisa ditutup, mode compact + overflow, ukur tinggi header & perubahan viewport | Tinggi | **DONE** | `src/components/Chrome.tsx`, `Sidebar.tsx`, `App.tsx`; E2E UI-27…UI-30 |
+| UPDF-065 | **Prioritas B** — pencarian seluruh dokumen: Ctrl+F, next/prev, Enter/Shift+Enter, jumlah hasil, highlight, scroll ke kecocokan, Escape, case-sensitive, cancel, invalidasi saat revisi berubah | Tinggi | **DONE** | backend `search_document`; `SearchBar.tsx`; E2E UI-31…UI-33 |
+| UPDF-066 | **Prioritas C** — auto-scroll: mulai/jeda, arah, slider kecepatan (waktu), berhenti di ujung, pause saat scroll manual/seleksi/dialog/drag, Escape | Sedang | **DONE** | `AutoScrollControl.tsx`; E2E UI-34 |
+| UPDF-067 | **Prioritas D** — text selection (jalur Ctrl+C) + bookmark PDF sebagai hierarki + penanda baca pribadi (tambah/hapus/nama, lokal) + navigasi first/prev/page/next/last | Tinggi | **DONE** | `BookmarkPanel.tsx`; backend `outline`; E2E UI-35…UI-37; salin via keyboard **NOT_RUN** (manual M-29) |
+| UPDF-068 | **Prioritas E** — UI merge lengkap (daftar file, urut, hapus, opsi output, progress/cancel, buka hasil) + split (tiap halaman / tiap N / rentang) | Tinggi | **DONE** | backend `split`; `MergeDialog.tsx`; E2E UI-38…UI-39 |
+| UPDF-069 | **Prioritas F** — konversi: PDF→PNG, PDF→JPEG, PDF→TXT, gambar→PDF + opsi (range, resolusi, kualitas, folder, naming, progress/cancel) | Tinggi | **DONE** | backend `convert`; `ConvertDialog.tsx`; E2E UI-40…UI-42 |
+| UPDF-070 | **Prioritas 8** — bahasa UI: hilangkan PDFium/PDFBox/JVM/worker/IPC dari pesan pengguna (detail di tooltip/log) | Tinggi | **DONE** | `Chrome.tsx`, `App.tsx`; status bar memakai pesan berorientasi tindakan |
+| UPDF-071 | **Prioritas A–F** — header/panel (toolbar collapse, sidebar kiri/kanan, compact), pencarian seluruh dokumen, auto-scroll, bookmark + penanda baca pribadi, split/merge UI, konversi PDF↔gambar↔teks | Tinggi | **DONE** (terimplementasi; E2E 36 PASS + 1 NOT_RUN) | `docs/sessions/2026-10-22T1900+0700.md` (peta permintaan → bukti) |
+| UPDF-074 | Perbaiki 2 bug: selection teks (tulisan ganda saat disorot) & auto-scroll tanpa arah atas | Tinggi | **DONE** | Akar: `::selection` menimpa `color: transparent` + geometri span pakai font UI; arah atas ada tapi ikon tak berbalik (scope `.flip`). Perbaikan: `src/viewer/geometry.ts`, `TextLayer.tsx`, `styles.css`, `AutoScrollControl.tsx`; UI-38/39/40 PASS; visual M-35…M-43 **NOT_RUN** |
+| UPDF-072 | Office conversion (evaluasi/implementasi sesuai mandat lama) | Sedang | TODO | Menunggu material baru (lisensi & batasan tidak berubah) |
+| UPDF-073 | Tombol navigasi First/Last + bookmark dengan destination tak didukung | Sedang | TODO | M-32 |
 
 ## Mapping milestone (A-8, 2026-10-21)
 

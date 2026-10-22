@@ -155,6 +155,21 @@ mampu. Itu pun harus dibuktikan perlu.
 | MuPDF (C) | C | `NOT-VERIFIED` | — |
 | Library Rust native | Rust | Tidak ada yang diverifikasi | `UNKNOWN` |
 
+### 2.8 Temuan uji spike terbatas PDFium (2026-10-21, `MEASURED` pada mesin ini)
+
+Melengkapi §2.1–2.3 dengan perilaku yang **teramati** (bukan dokumentasi):
+
+| Temuan | Bukti |
+|---|---|
+| Anotasi yang dibuat lewat `FPDFPage_CreateAnnot` (wrapper maupun FFI mentah) disimpan sebagai **kamus langsung** di array `/Annots` dan **tanpa `/AP`** | Objek mentah output; API anotasi PyMuPDF memuat 0/10 |
+| PDFium merender anotasi text, freetext, square, circle, ink tanpa `/AP`, tetapi **tidak** merender highlight/underline/strikeout/squiggly/stamp yang ia buat | Selisih piksel render dengan/tanpa anotasi |
+| Setter form `pdfium-render 0.9.4`: checkbox menulis `/AS` sebagai string; radio tidak berefek; getter radio salah; tidak ada setter choice; AP field teks tidak diperbarui | Objek mentah + source crate |
+| `FPDF_ImportPages` (lewat `append`/`copy_page_range_from_document`) ke dokumen baru tidak membawa outline, tujuan link, maupun `/AcroForm` | Objek mentah output |
+| Trait akses binding mentah `pdfium-render 0.9.4` masih `pub(crate)` (berbeda dari catatan README 0.9.2) | Source crate |
+| Biner `pdfium-binaries` memiliki atestasi SLSA provenance v1 yang dapat diverifikasi; DLL tidak bertanda tangan Authenticode; resource `CompanyName "Google Inc."` berasal dari template distributor | `gh attestation verify`, `patches/win/resources.rc` |
+
+Rincian: `experiments/restart/results/SUMMARY.md` dan `experiments/restart/deps/PROVENANCE.md`.
+
 ---
 
 ## 3. Implikasi untuk tiga baseline

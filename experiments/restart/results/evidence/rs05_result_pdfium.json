@@ -1,0 +1,831 @@
+{
+  "input": "rs05_structure.pdf",
+  "merge_source": "rs05_merge_source.pdf",
+  "operations": [
+    {
+      "error": null,
+      "op": "rotate p2 90deg",
+      "op_and_save_ms": 1.797,
+      "output": "rotate.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 6,
+        "pages": [
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  48.0,
+                  728.0,
+                  170.0,
+                  746.0
+                ],
+                "contents": null,
+                "type": "Link"
+              }
+            ],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 1\r\nLink ke halaman 4",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 595.0,
+            "index": 1,
+            "rotation": 90,
+            "text": "",
+            "width": 842.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 3,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 4,
+            "rotation": 0,
+            "text": "RS05 structure page 5",
+            "width": 420.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 5,
+            "rotation": 0,
+            "text": "RS05 structure page 6",
+            "width": 595.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "delete p5",
+      "op_and_save_ms": 1.298,
+      "output": "delete.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 5,
+        "pages": [
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  48.0,
+                  728.0,
+                  170.0,
+                  746.0
+                ],
+                "contents": null,
+                "type": "Link"
+              }
+            ],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 1\r\nLink ke halaman 4",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 842.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 2",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 3,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 4,
+            "rotation": 0,
+            "text": "RS05 structure page 6",
+            "width": 595.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "reorder p6 -> front (FPDF_MovePages)",
+      "op_and_save_ms": 0.749,
+      "output": "reorder.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 6,
+        "pages": [
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 6",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  48.0,
+                  728.0,
+                  170.0,
+                  746.0
+                ],
+                "contents": null,
+                "type": "Link"
+              }
+            ],
+            "height": 842.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 1\r\nLink ke halaman 4",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 842.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 2",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 3,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 4,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 5,
+            "rotation": 0,
+            "text": "RS05 structure page 5",
+            "width": 420.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "insert blank A4 at index 2",
+      "op_and_save_ms": 0.778,
+      "output": "insert_blank.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 7,
+        "pages": [
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  48.0,
+                  728.0,
+                  170.0,
+                  746.0
+                ],
+                "contents": null,
+                "type": "Link"
+              }
+            ],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 1\r\nLink ke halaman 4",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 842.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 2",
+            "width": 595.0
+          },
+          {
+            "annotations": [],
+            "height": 841.8898315429688,
+            "index": 2,
+            "rotation": 0,
+            "text": "",
+            "width": 595.2755737304688
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 3,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 4,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 5,
+            "rotation": 0,
+            "text": "RS05 structure page 5",
+            "width": 420.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 6,
+            "rotation": 0,
+            "text": "RS05 structure page 6",
+            "width": 595.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "merge: append merge_source into loaded structure doc",
+      "op_and_save_ms": 0.958,
+      "output": "merge_append.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 8,
+        "pages": [
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  48.0,
+                  728.0,
+                  170.0,
+                  746.0
+                ],
+                "contents": null,
+                "type": "Link"
+              }
+            ],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 1\r\nLink ke halaman 4",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 842.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 2",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 3,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 4,
+            "rotation": 0,
+            "text": "RS05 structure page 5",
+            "width": 420.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 5,
+            "rotation": 0,
+            "text": "RS05 structure page 6",
+            "width": 595.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 6,
+            "rotation": 0,
+            "text": "RS05 merge source page 1",
+            "width": 595.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 7,
+            "rotation": 0,
+            "text": "RS05 merge source page 2",
+            "width": 595.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "merge: new document <- structure + merge_source",
+      "op_and_save_ms": 1.448,
+      "output": "merge_new.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 8,
+        "pages": [
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  48.0,
+                  728.0,
+                  170.0,
+                  746.0
+                ],
+                "contents": null,
+                "type": "Link"
+              }
+            ],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 1\r\nLink ke halaman 4",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 842.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 2",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 3,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 4,
+            "rotation": 0,
+            "text": "RS05 structure page 5",
+            "width": 420.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 5,
+            "rotation": 0,
+            "text": "RS05 structure page 6",
+            "width": 595.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 6,
+            "rotation": 0,
+            "text": "RS05 merge source page 1",
+            "width": 595.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 7,
+            "rotation": 0,
+            "text": "RS05 merge source page 2",
+            "width": 595.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "extract p2-4 into new document",
+      "op_and_save_ms": 0.768,
+      "output": "extract_p2-4.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 3,
+        "pages": [
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 2",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "split_a_p1-3",
+      "op_and_save_ms": 0.674,
+      "output": "split_a_p1-3.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 3,
+        "pages": [
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  48.0,
+                  728.0,
+                  170.0,
+                  746.0
+                ],
+                "contents": null,
+                "type": "Link"
+              }
+            ],
+            "height": 842.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 1\r\nLink ke halaman 4",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  60.0,
+                  706.0,
+                  76.0,
+                  722.0
+                ],
+                "contents": "RS05 note on page 2",
+                "type": "Text"
+              },
+              {
+                "bounds": [
+                  32.0,
+                  730.0,
+                  232.0,
+                  830.0
+                ],
+                "contents": null,
+                "type": "Popup"
+              }
+            ],
+            "height": 842.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 2",
+            "width": 595.0
+          },
+          {
+            "annotations": [
+              {
+                "bounds": [
+                  50.0,
+                  660.0,
+                  250.0,
+                  682.0
+                ],
+                "contents": null,
+                "type": "Widget"
+              }
+            ],
+            "height": 792.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 3",
+            "width": 612.0
+          }
+        ]
+      }
+    },
+    {
+      "error": null,
+      "op": "split_b_p4-6",
+      "op_and_save_ms": 0.486,
+      "output": "split_b_p4-6.pdf",
+      "reopened_by_pdfium": {
+        "page_count": 3,
+        "pages": [
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 0,
+            "rotation": 0,
+            "text": "RS05 structure page 4",
+            "width": 842.0
+          },
+          {
+            "annotations": [],
+            "height": 595.0,
+            "index": 1,
+            "rotation": 0,
+            "text": "RS05 structure page 5",
+            "width": 420.0
+          },
+          {
+            "annotations": [],
+            "height": 842.0,
+            "index": 2,
+            "rotation": 0,
+            "text": "RS05 structure page 6",
+            "width": 595.0
+          }
+        ]
+      }
+    }
+  ],
+  "spike": "RS-05 (PDFium part)"
+}
